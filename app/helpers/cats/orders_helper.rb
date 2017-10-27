@@ -1,0 +1,2 @@
+module Cats::OrdersHelper
+end

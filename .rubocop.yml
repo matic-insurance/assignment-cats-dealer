@@ -1,0 +1,51 @@
+require: rubocop-rspec
+
+AllCops:
+  TargetRubyVersion: 2.4
+  Exclude:
+    - vendor/**/*
+    - config/**/*
+    - db/**/*
+    - bin/**/*
+    - tmp/**/*
+
+Metrics/LineLength:
+  Max: 95
+
+Style/Documentation:
+  Enabled: false
+
+Metrics/BlockLength:
+  Enabled: true
+  Max: 200
+
+Style/MultilineBlockChain:
+  Enabled: false
+
+Style/PredicateName:
+  NamePrefix:
+    - is_
+    - have_
+  NamePrefixBlacklist:
+    - is_
+    - have_
+
+Layout/SpaceInsideHashLiteralBraces:
+  EnforcedStyle: no_space
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+# Disabled because of fact that interfaces are implicit in Ruby
+# It's bad to use `instance_double` for some implementation from separate module
+# Because it couples tested code with that module
+RSpec/VerifiedDoubles:
+  Enabled: false
+
+RSpec/DescribeClass:
+  Exclude:
+    - 'spec/dependencies_spec.rb'
+    - 'spec/features/**/*'
+
+RSpec/DescribeMethod:
+  Enabled: false
