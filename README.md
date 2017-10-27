@@ -6,10 +6,16 @@ The are pussycat shops that have pricelists accessible via REST API. What your s
 
 We created 2 fake test shops for you.
 One can be accessed by this URL: 
-[https://nh7b1g9g23.execute-api.us-west-2.amazonaws.com/dev/cats/json].
+
+https://nh7b1g9g23.execute-api.us-west-2.amazonaws.com/dev/cats/json
+
 It returns JSON data.
+
 Another one is here:
-[https://nh7b1g9g23.execute-api.us-west-2.amazonaws.com/dev/cats/xml] and returns XML
+
+https://nh7b1g9g23.execute-api.us-west-2.amazonaws.com/dev/cats/xml
+
+and returns XML
 
 You may notice that both URLs point the same server, but in this task, please, consider them as absolutely different.
 
@@ -20,9 +26,9 @@ Please run the project, see how it works, and explore the code.
 
 You know, Trainee not always writes a good code. You probably agree if I say that the code is terrible! You definitely can do it better!
 
-#### So the task is:
-##### 1. Refactor or rewrite the existing code. We wanna see a clean OO design, readable code, good test coverage.
-##### 2. Implement "XML" integration, and improve business logic to find the best deal amongst two shops.
+### So the task is:
+#### 1. Refactor or rewrite the existing code. We wanna see a clean OO design, readable code, good test coverage.
+#### 2. Implement "XML" integration, and improve business logic to find the best deal amongst two shops.
 
-#### Be strong and good luck!
+## Be strong and good luck!
 
