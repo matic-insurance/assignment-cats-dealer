@@ -5,13 +5,13 @@ You are going to create simple service that allows finding the best pussycat - b
 The are pussycat shops that have pricelists accessible via REST API. What your service will do is just get prices from each shop, compare them and suggest the best deal for a customer!
 
 We created 2 fake test shops for you.
-One can be accessed by this URL: 
+One - "Cats Unlimited" - can be accessed by this URL: 
 
 https://nh7b1g9g23.execute-api.us-west-2.amazonaws.com/dev/cats/json
 
 It returns JSON data.
 
-Another one is here:
+Another - "Happy Cats" - one is here:
 
 https://nh7b1g9g23.execute-api.us-west-2.amazonaws.com/dev/cats/xml
 
