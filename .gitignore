@@ -1,0 +1,25 @@
+# Ignore bundler config.
+/.bundle
+/vendor/bundle
+
+# Ignore all logfiles and tempfiles.
+/log/*
+/tmp/*
+!/log/.keep
+!/tmp/.keep
+
+# Ignore IDE specific files
+/.idea
+
+# Ignore MacOS specific files
+*.tags*
+*.DS_Store
+
+# Ignore spec coverage reports
+coverage/*
+
+# Ignore sqlite temps
+/db/*.sqlite3
+/db/*.sqlite3-journal
+
+vendor/cache/
