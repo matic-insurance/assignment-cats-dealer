@@ -16,10 +16,11 @@ group :development do
 end
 
 group :test do
-  gem 'factory_bot_rails', '~> 4.8.0'
+  gem 'factory_bot_rails'
   gem 'i18n-tasks', '~> 0.9.0'
   gem 'rspec-rails', '~> 3.6.0'
   gem 'rubocop', '~> 0.54.0'
+  gem 'rails-controller-testing'
   gem 'simplecov', require: false
 end
 
