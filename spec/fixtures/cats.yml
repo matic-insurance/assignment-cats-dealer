@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  breed: MyString
+  location: MyString
+  price: 9.99
+  location: 1
+
+two:
+  breed: MyString
+  location: MyString
+  price: 9.99
+  location: 1
