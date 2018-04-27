@@ -1,3 +1,24 @@
 ---
 en:
-  hello: Hello world
+  application:
+    footer:
+      contact_us: Contact Us
+      support: Support
+      whatever: Whatever
+    header:
+      title: Cats Dealer
+  requests:
+    new:
+      header: Find you best kitty
+      select_location: 'Select your location:'
+      select_type: 'Select cat breed:'
+      submit_button: Send request
+      submit_button_disabled: Searching...
+    result:
+      best_price_label: Best price for your location -
+      no_cats: Sorry, no cats found for selected options
+      table_header:
+        image: Image
+        location: Location
+        price: Price
+        type: Type
