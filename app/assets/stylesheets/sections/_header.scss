@@ -1,0 +1,7 @@
+.navbar {
+  &.bg-gradient {
+    background: -moz-linear-gradient(left, $header-gradient-start 24%, $header-gradient-end 100%);
+    background: -webkit-linear-gradient(left, $header-gradient-start 24%, $header-gradient-end 100%);
+    background: linear-gradient(to right, $header-gradient-start 24%, $header-gradient-end 100%);
+  }
+}

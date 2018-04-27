@@ -1,1 +1,14 @@
+@import "variables";
 @import "bootstrap";
+
+// App Sections
+@import "sections/header";
+@import "sections/footer";
+@import "sections/main";
+
+
+// App Components
+@import "components/table";
+
+
+
