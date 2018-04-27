@@ -1,29 +1,37 @@
-<% if @cats_list.size > 0 %>
-  <p>
-    Best price for your location - <%= @cats_list.sort_by { |list| list[:price] }.first['price'] %>
-  </p>
+<div class="row justify-content-md-center">
+  <div class="col-md-8">
+    <div class="card ">
+      <div class="card-body">
+        <% if @cats_list.any? %>
+          <h5 class="card-title">
+            <%= t('.best_price_label') %> <%= @cats_list.min_by(&:price).price %>
+          </h5>
 
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Price</th>
-        <th>Location</th>
-        <th>Image</th>
-      </tr>
-    </thead>
+          <table class="table table-striped">
+            <thead class="thead-dark bg-gray">
+              <tr>
+                <th><%= t('.table_header.type') %></th>
+                <th><%= t('.table_header.price') %></th>
+                <th><%= t('.table_header.location') %></th>
+                <th><%= t('.table_header.image') %></th>
+              </tr>
+            </thead>
 
-    <tbody>
-      <% @cats_list.each do |cat| %>
-        <tr>
-          <td><%= cat['name'] %></td>
-          <td><%= cat['price'] %></td>
-          <td><%= cat['location'] %></td>
-          <td><%= image_tag(cat['image'], width: '150px') %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-<% else %>
-  <p>Sorry, no cats for your location</p>
-<% end %>
+            <tbody>
+              <% @cats_list.each do |cat| %>
+                <tr>
+                  <td><%= cat.breed %></td>
+                  <td><%= cat.price %></td>
+                  <td><%= cat.location %></td>
+                  <td><%= picture_for(cat) %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        <% else %>
+          <h5 class="card-title"><%= t('.no_cats') %></h5>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
