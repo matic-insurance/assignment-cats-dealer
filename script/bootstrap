@@ -1,0 +1,12 @@
+#!/bin/bash
+
+echo ' -- Copying .env to local copies'
+cp .env.example .env.development
+cp .env.example .env.test
+
+echo ' -- Migrating Database'
+rake db:migrate
+rake db:test:prepare
+
+echo ' -- Fetching fresh Cats =)'
+rake cats:storage:refresh
