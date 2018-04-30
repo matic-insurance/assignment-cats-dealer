@@ -22,9 +22,13 @@ group :development do
 end
 
 group :test do
+  gem 'capybara'
+  gem 'capybara-screenshot'
+  gem 'database_cleaner'
   gem 'factory_bot_rails'
   gem 'faraday-detailed_logger'
   gem 'i18n-tasks', '~> 0.9.0'
+  gem 'poltergeist'
   gem 'rails-controller-testing'
   gem 'rspec-rails', '~> 3.6.0'
   gem 'rubocop', '~> 0.54.0'
