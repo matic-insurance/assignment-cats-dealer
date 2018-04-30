@@ -7,7 +7,7 @@ module Providers
         @breed = attributes.fetch(:title, '')
         @price = attributes.fetch(:cost, '')
         @location = attributes.fetch(:location, '')
-        @picture_url = attributes.fetch(:image, '')
+        @picture_url = attributes.fetch(:img, '')
       end
     end
   end

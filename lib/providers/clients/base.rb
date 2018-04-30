@@ -7,11 +7,10 @@ module Providers
 
       def initialize
         @http_connection = Faraday.new(url: hostname)
-        @path = path
       end
 
       def get(params = {})
-        response = @http_connection.get(@path, params)
+        response = @http_connection.get(path, params)
         parser.parse(response.body)
       end
 

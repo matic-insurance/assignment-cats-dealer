@@ -1,5 +1,4 @@
 require 'providers/models/base_cat'
-require 'providers/models/json_attributes'
 
 module Providers
   module Models

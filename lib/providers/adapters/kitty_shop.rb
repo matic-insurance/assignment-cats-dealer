@@ -16,7 +16,7 @@ module Providers
       end
 
       def wrap(parsed_response)
-        super(parsed_response[:cats][:cat])
+        super(parsed_response.dig(:cats, :cat) || [])
       end
     end
   end
