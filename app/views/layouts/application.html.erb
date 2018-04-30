@@ -9,6 +9,16 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="app-header">
+      <%= content_for?(:app_header) ? yield(:app_header) : try_render('app_header') { render('application/header') } %>
+    </div>
+
+    <div class="app-main p-0 p-sm-4">
+      <%= content_for?(:main) ? yield(:main) : yield %>
+    </div>
+
+    <div class="app-footer mt-4">
+      <%= content_for?(:app_footer) ? yield(:app_footer) : try_render('app_footer') { render('application/footer') } %>
+    </div>
   </body>
 </html>

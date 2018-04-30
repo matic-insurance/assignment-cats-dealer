@@ -1,16 +1,24 @@
-<div class="row">
-  <div class="col-md-2 col-md-offset-5">
-    <%= form_tag(request_path, method: 'post', class: 'form-horizontal center') do %>
-        <p>
-          Select cat type:<br/>
-          <%= select_tag('cats_type', options_for_select(%w(Bengal Abyssin Persian))) %>
-        </p>
-        <p>
-          Select your location:<br/>
-          <%= select_tag('user_location', options_for_select(%w(Lviv Kiev Odessa))) %>
-        </p>
-        <div><%= submit_tag 'Send request', class: 'btn btn-default' %></div>
-    <% end %>
+<div class="row justify-content-md-center ">
+  <div class="col-md-auto">
+    <div class="card ">
+      <div class="card-body">
+        <h4 class="card-title"><%= t('.header') %></h4>
+
+        <%= form_tag(request_path, method: 'post') do %>
+          <div class="form-group">
+            <label for="breedTypeSelector"><%= t('.select_type') %></label>
+            <div><%= select_tag('breed', options_for_select(available_breeds), include_blank: 'Any', id: 'breedTypeSelector', class: 'form-control') %></div>
+          </div>
+
+          <div class="form-group">
+            <label for="locationSelector"><%= t('.select_location') %></label>
+            <div><%= select_tag('location', options_for_select(available_locations), include_blank: 'Any', id: 'locationSelector', class: 'form-control') %></div>
+          </div>
+
+          <%= submit_tag t('.submit_button'), class: 'btn btn-primary col-md-12 mt-3', data: { disable_with: t('.submit_button_disabled') } %>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>
-<br>
+

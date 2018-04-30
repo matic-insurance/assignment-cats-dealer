@@ -1,34 +1,43 @@
 ## Cats Dealer 
-### Hi, dude!
-You are going to create simple service that allows finding the best pussycat - best price for customer location.
 
-The are pussycat shops that have pricelists accessible via REST API. What your service will do is just get prices from each shop, compare them and suggest the best deal for a customer!
+### Setup
 
-We created 2 fake test shops for you.
-One - "Cats Unlimited" - can be accessed by this URL: 
+Run bundler to install dependencies:
 
-https://nh7b1g9g23.execute-api.us-west-2.amazonaws.com/dev/cats/json
+```
+bundle install
+```
 
-It returns JSON data.
+Bootstrap the ENVs
 
-Another - "Happy Cats" - one is here:
+```
+./script/bootstrap
+```
 
-https://nh7b1g9g23.execute-api.us-west-2.amazonaws.com/dev/cats/xml
+#### Environment Variables
+This project used [dotenv](https://github.com/bkeepers/dotenv) to set configuration values as environment variables. If you ran ` script/bootstrap `, you should have both a ` .env.development ` and a ` .env.test ` file.
 
-and returns XML
+When adding configuration values to the project, first make an entry in ` .env.example `. If the data is sensitive, such as passwords, use a placeholder:
 
-You may notice that both URLs point the same server, but in this task, please, consider them as absolutely different.
+```
+SECRET_PASSWORD = :put_your_super_secret_password_here
+```
 
-To help you understand the task, we asked our Trainee Ruby developer to create an MVP of "cats-dealer" - the project you have!
+If the data is not sensitive, like a URL, you can store it directly in ` .env.example ` and then commit it to git.
 
-There is only one integration - with "JSON" pussycat shop.
-Please run the project, see how it works, and explore the code.
+If you have environment specific variables, place these into their respective environments:
 
-You know, Trainee not always writes a good code. You probably agree if I say that the code is terrible! You definitely can do it better!
+ * .env.example - example used by ` script/bootstrap ` to create the next two files
+ * .env.development - loaded by development
+ * .env.test - loaded by test
 
-### So the task is:
-#### 1. Refactor or rewrite the existing code. We wanna see a clean OO design, readable code, good test coverage.
-#### 2. Implement "XML" integration, and improve business logic to find the best deal amongst two shops.
+#### Storage Update
+App is designed to fetch `Cats` from providers asynchronously in the background.
 
-## Be strong and good luck!
+It will do the initial fetch when you run ./script/bootstrap
 
+If you want ro refresh storage manually, please either run 
+```
+cats:storage:refresh
+```
+or setup background runner. It is already sheduled to run the job every 5 minutes.

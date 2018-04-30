@@ -1,5 +1,3 @@
-require: rubocop-rspec
-
 AllCops:
   TargetRubyVersion: 2.4
   Exclude:
@@ -8,9 +6,13 @@ AllCops:
     - db/**/*
     - bin/**/*
     - tmp/**/*
+  Include:
+    - rubocop-rspec
+    - '**/Gemfile'
+    - '**/Rakefile'
 
 Metrics/LineLength:
-  Max: 95
+  Max: 120
 
 Style/Documentation:
   Enabled: false
@@ -34,18 +36,4 @@ Layout/SpaceInsideHashLiteralBraces:
   EnforcedStyle: no_space
 
 Style/FrozenStringLiteralComment:
-  Enabled: false
-
-# Disabled because of fact that interfaces are implicit in Ruby
-# It's bad to use `instance_double` for some implementation from separate module
-# Because it couples tested code with that module
-RSpec/VerifiedDoubles:
-  Enabled: false
-
-RSpec/DescribeClass:
-  Exclude:
-    - 'spec/dependencies_spec.rb'
-    - 'spec/features/**/*'
-
-RSpec/DescribeMethod:
   Enabled: false

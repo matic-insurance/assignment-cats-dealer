@@ -5,4 +5,6 @@ Rails.application.routes.draw do
   resource :request, only: %i[create new] do
     get :result
   end
+
+  get '/request', to: redirect('/')
 end

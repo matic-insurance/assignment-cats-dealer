@@ -1,0 +1,10 @@
+// Custom progress bar colors
+$header-gradient-start: #313a50;
+$header-gradient-end: #8c8a89;
+
+// Override bootstrap theme
+$body-bg:#f5f5f5;
+
+$theme-colors: (
+  "primary": $header-gradient-start
+)

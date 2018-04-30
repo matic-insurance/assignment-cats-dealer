@@ -1,0 +1,48 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://nh7b1g9g23.execute-api.us-west-2.amazonaws.com/dev/cats/xml
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.15.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '2131'
+      Connection:
+      - keep-alive
+      Date:
+      - Mon, 30 Apr 2018 15:18:51 GMT
+      X-Amzn-Requestid:
+      - c9e3f3b6-4c89-11e8-95ae-f724c7053c52
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Amz-Apigw-Id:
+      - GKUKUH6rvHcFtiQ=
+      X-Amzn-Trace-Id:
+      - sampled=0;root=1-5ae733db-77df116e6a1294da900cb84d
+      X-Cache:
+      - Miss from cloudfront
+      Via:
+      - 1.1 ec3c5df6777270d9633f0082bf016380.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - A1mXWC9_GBvwP3QX_YvRM9AUi-PsrmzN92HKPkbLZ03ibt3JnvJlJg==
+    body:
+      encoding: UTF-8
+      string: <?xml version="1.0" encoding="UTF-8"?><cats></cats>
+    http_version: 
+  recorded_at: Mon, 30 Apr 2018 15:18:51 GMT
+recorded_with: VCR 4.0.0
