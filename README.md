@@ -30,3 +30,14 @@ If you have environment specific variables, place these into their respective en
  * .env.example - example used by ` script/bootstrap ` to create the next two files
  * .env.development - loaded by development
  * .env.test - loaded by test
+
+#### Storage Update
+App is designed to fetch `Cats` from providers asynchronously in the background.
+
+It will do the initial fetch when you run ./script/bootstrap
+
+If you want ro refresh storage manually, please either run 
+```
+cats:storage:refresh
+```
+or setup background runner. It is already sheduled to run the job every 5 minutes.
