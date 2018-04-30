@@ -12,17 +12,25 @@ module Support
       end
 
       def without_env(key)
-        original_value = ENV[key]
         remove_stubbed_value(key)
+        original_value = ENV[key]
+        ENV.delete(key)
         yield
       ensure
-        stub_env(key, original_value)
+        ENV[key] = original_value
+      end
+
+      def reset(*objects)
+        objects.each do |object|
+          RSpec::Mocks.space.proxy_for(object).reset
+        end
       end
 
       private
 
       STUBBED_KEY = '__STUBBED__'.freeze
 
+      # rubocop:disable Metrics/AbcSize
       def add_stubbed_value(key, value)
         allow(ENV).to receive(:[]).with(key).and_return(value)
         allow(ENV).to receive(:fetch).with(key).and_return(value)
@@ -36,6 +44,7 @@ module Support
         allow(ENV).to receive(:fetch).with(key).and_call_original
         allow(ENV).to receive(:fetch).with(key, anything).and_call_original
       end
+      # rubocop:enable Metrics/AbcSize
 
       def env_stubbed?
         ENV[STUBBED_KEY]
