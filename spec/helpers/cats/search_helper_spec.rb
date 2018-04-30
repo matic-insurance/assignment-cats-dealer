@@ -12,6 +12,26 @@ describe Cats::SearchHelper, type: :helper do
     end
   end
 
+  describe '#sort_by_price' do
+    let(:unordered_cats) { build_list(:cat, 10) }
+
+    it 'sorts passed cats in ascending order by price' do
+      sorted_cats = sort_by_price(unordered_cats)
+
+      expect(sorted_cats).to_not match(unordered_cats)
+      expect(sorted_cats.first.price).to be < sorted_cats.last.price
+    end
+
+    context 'if \'ascending\' parameter is set to false' do
+      it 'sorts passed cats in descending order' do
+        sorted_cats = sort_by_price(unordered_cats, ascending: false)
+
+        expect(sorted_cats).to_not match(unordered_cats)
+        expect(sorted_cats.first.price).to be > sorted_cats.last.price
+      end
+    end
+  end
+
   describe '#available_locations' do
     it 'delegates to Cat.locations' do
       allow(Cat).to receive(:locations).and_return(true)

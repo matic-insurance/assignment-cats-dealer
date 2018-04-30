@@ -4,4 +4,8 @@ table {
       background-color: $header-gradient-start !important;
     }
   }
+
+  td > img.small {
+    height: 5em;
+  }
 }

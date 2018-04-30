@@ -18,12 +18,12 @@
             </thead>
 
             <tbody>
-              <% @cats_list.each do |cat| %>
+              <% sort_by_price(@cats_list).each do |cat| %>
                 <tr>
-                  <td><%= cat.breed %></td>
-                  <td><%= cat.price %></td>
-                  <td><%= cat.location %></td>
-                  <td><%= picture_for(cat) %></td>
+                  <td class="align-middle"><%= cat.breed %></td>
+                  <td class="align-middle"><%= cat.price %></td>
+                  <td class="align-middle"><%= cat.location %></td>
+                  <td class="align-middle"><%= picture_for(cat) %></td>
                 </tr>
               <% end %>
             </tbody>

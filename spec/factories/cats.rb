@@ -4,7 +4,7 @@ require 'providers/models/best_pussycat'
 FactoryBot.define do
   factory :cat do
     breed 'Typical'
-    price 500
+    price { rand(500) }
     location 'Lviv'
     picture_url 'http://dummy.com/image.png'
 
