@@ -9,6 +9,7 @@ gem 'turbolinks', '~> 5'
 gem 'sqlite3'
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'rest-client'
+gem 'jquery-rails'
 
 group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
