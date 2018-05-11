@@ -2,10 +2,18 @@ class Cat
   attr_reader :shop, :location, :breed, :image, :price
 
   def initialize(opts={})
-    @location = opts.fetch(:location)
-    @shop = opts.fetch(:shop)
-    @breed = opts.fetch(:breed)
-    @image = opts.fetch(:image)
-    @price = opts.fetch(:price)
+    @location = opts.fetch(:location, nil)
+    @shop = opts.fetch(:shop, nil)
+    @breed = opts.fetch(:breed, nil)
+    @image = opts.fetch(:image, nil)
+    @price = opts.fetch(:price, nil)
+  end
+
+  def price
+    @price.to_i
+  end
+
+  def location
+    @location.nil? ? 'Unknown' : @location
   end
 end

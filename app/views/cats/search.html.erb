@@ -3,11 +3,11 @@
     <%= form_tag('/cats/search', method: 'get', class: 'form-horizontal center') do %>
       <p>
         Select cat type:<br/>
-        <%= select_tag('breed', options_for_select(@breeds, @breed), include_blank: true) %>
+        <%= select_tag('breed', options_for_select(@breeds, @search_params[:breed]), include_blank: true) %>
       </p>
       <p>
         Select your location:<br/>
-        <%= select_tag('location', options_for_select(@locations, @location), include_blank: true) %>
+        <%= select_tag('location', options_for_select(@locations, @search_params[:location]), include_blank: true) %>
       </p>
       <div><%= submit_tag 'Search', class: 'btn btn-default' %></div>
     <% end %>
@@ -30,15 +30,15 @@
   <% @cats_list.each_with_index do |cat, index| %>
       <tr>
         <td>
-          <%= cat['shop'] %>
+          <%= cat.shop %>
           <% if index == 0 %>
             <span class="label label-success">BEST PRICE</span>
           <% end %>
         </td>
-        <td><%= cat['breed'] %></td>
-        <td><%= cat['price'] %></td>
+        <td><%= cat.breed %></td>
+        <td><%= cat.price %></td>
         <td>
-          <object style="width: 100px; height: 100px" data="<%= cat['image'] %>" type="image/png">
+          <object style="width: 100px; height: 100px" data="<%= cat.image %>" type="image/png">
             <%= image_tag('cats/bad_cat.png', width: '100px', height: '100px') %>
           </object>
         </td>
@@ -46,7 +46,7 @@
   <% end %>
   </tbody>
 </table>
-<% elsif @location && @breed %>
+<% elsif !@search_params.empty? %>
   <p>
     Sorry, no cats for your location
   </p>
