@@ -11,7 +11,6 @@ class UnlimitedCatsConfig
   }.with_indifferent_access
   NAME           = 'Cats Unlimited'.freeze
   MODEL          = Cat
-  PARSER         = JSON
   RETRIES        = 3
 
   def self.mapper
@@ -19,7 +18,7 @@ class UnlimitedCatsConfig
   end
 
   def self.parser
-    PARSER
+    JSON
   end
 
   def self.wrapper

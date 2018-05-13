@@ -13,7 +13,6 @@ class HappyCatsConfig
   }.with_indifferent_access
   NAME = 'Happy Cats'.freeze
   MODEL = Cat
-  PARSER = HappyCatsParser
   RETRIES = 3
 
   def self.mapper

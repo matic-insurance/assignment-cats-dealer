@@ -22,18 +22,21 @@ class ProductAggregationService
     @shops ||= @products.collect(&:shop).compact.uniq
   end
 
-  def find_where(query = {}, strict: false)
-    query = strict ? query : filter_empty_params(query)
-    @products.select do |product|
-      query.map do |field, value|
-        value.include?(product.send(field.to_sym))
-      end .all?
-    end
+  def find(query_params = {})
+    filter_products(query_params)
+  end
+
+  def count(query = {})
+    find(query).size
   end
 
   private
 
-  def filter_empty_params(query)
-    query.reject { |_, value| value.blank? }
+  def filter_products(query_params)
+    @products.select do |product|
+      query_params.map do |field, value|
+        value.include?(product.send(field.to_sym))
+      end.all?
+    end
   end
 end
