@@ -1,7 +1,9 @@
+require_relative '../models/shop'
+
 class ShopsAggregationService
 
-  def initialize(shops)
-    @shops = shops
+  def initialize(shop_configs)
+    @shop_configs = shop_configs
   end
 
   def products
@@ -11,9 +13,10 @@ class ShopsAggregationService
   def aggregated
     @aggregated ||= begin
       threads = []
-      @shops.each { |shop|
+      @shop_configs.each { |shop_config|
         threads << Thread.new {
-          shop.list
+          shop = Shop.new(shop_config)
+          shop.products
         }
       }
       threads.map(&:join).map(&:value).flatten

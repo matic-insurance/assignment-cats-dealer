@@ -40,6 +40,8 @@ GEM
       tzinfo (~> 1.1)
     arel (8.0.0)
     bindex (0.5.0)
+    bootstrap-multiselect-rails (0.9.9)
+      rails (>= 4.0.0)
     bootstrap-sass (3.2.0.2)
       sass (~> 3.2)
     builder (3.2.3)
@@ -178,6 +180,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bootstrap-multiselect-rails
   bootstrap-sass (~> 3.2.0)
   coffee-rails (~> 4.2)
   jquery-rails

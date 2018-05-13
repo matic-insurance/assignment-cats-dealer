@@ -1,16 +1,22 @@
 require 'shops_aggregation_service'
-require 'product_aggregation_service'
-require 'integrations/shops/happy_cats_shop'
-require 'integrations/shops/unlimited_cats_shop'
+require 'cats_aggregation_service'
+require 'integrations/shops/happy_cats_config'
+require 'integrations/shops/unlimited_cats_config'
 
 class CatsController < ApplicationController
 
-  def search
-    @search_params = params.permit(:location, :breed).to_h
-    aggregation_service = ShopsAggregationService.new([HappyCatsShop.new, UnlimitedCatsShop.new])
-    product_aggregator = ProductAggregationService.new(aggregation_service.products)
-    @locations = product_aggregator.locations.sort
-    @breeds = product_aggregator.breeds.sort
-    @cats_list = product_aggregator.find_where(@search_params).sort_by(&:price)
+  def index
+    shop_aggregator = ShopsAggregationService.new([HappyCatsConfig, UnlimitedCatsConfig])
+    cats_aggregator = CatsAggregationService.new(shop_aggregator.products)
+    @search_params  = params.permit(cats_aggregator.allowed_query_params).to_h
+    @cats_list      = cats_aggregator.find_where(@search_params).sort_by(&:price)
+    @filter_options = cats_aggregator.filter_options
+  end
+
+  def count
+    shop_aggregator = ShopsAggregationService.new([HappyCatsConfig, UnlimitedCatsConfig])
+    cats_aggregator = CatsAggregationService.new(shop_aggregator.products)
+    @search_params  = params.permit(cats_aggregator.allowed_query_params).to_h
+    render :json => { count: cats_aggregator.find_where(@search_params).size }
   end
 end

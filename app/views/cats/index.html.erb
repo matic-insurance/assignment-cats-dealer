@@ -1,0 +1,69 @@
+<div class="container-fluid" style="margin: 18px">
+  <div class="row">
+    <div class="col-md-3">
+      <%= form_tag('/', method: 'get', class: 'form-horizontal center') do %>
+        <div class="col-md-10 col-sm-10 col-xs-10" style="padding: 0">
+          <span  class="label label-primary" style="margin-left: 10px">Find</span>
+          <%= select_tag('breed', options_for_select(@filter_options[:breeds], @search_params[:breed]), multiple: true) %>
+        </div>
+        <div class="col-md-2 col-sm-2 col-xs-2" style="padding: 0">
+          <button id="breed-clear" class="btn btn-link">
+            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+          </button>
+        </div>
+        <div class="col-md-10 col-sm-10 col-xs-10" style="padding: 0">
+          <div  class="label label-primary" style="margin-left: 10px">in</div>
+          <%= select_tag('location', options_for_select(@filter_options[:locations], @search_params[:location]), multiple: true) %>
+        </div>
+        <div class="col-md-2 col-sm-2 col-xs-2" style="padding: 0">
+          <button id="location-clear" class="btn btn-link btn-default">
+            <span class="glyphicon glyphicon-remove  " aria-hidden="true"></span>
+          </button>
+        </div>
+        <div class="col-md-10 col-sm-10 col-xs-10" style="padding: 0">
+          <div  class="label label-primary" style="margin-left: 10px">by</div>
+          <%= select_tag('shop', options_for_select(@filter_options[:shops], @search_params[:shop]), multiple: true) %>
+        </div>
+        <div class="col-md-2 col-sm-2 col-xs-2" style="padding: 0">
+          <button id="shop-clear" class="btn btn-link">
+            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+          </button>
+        </div>
+        <button type="submit" class="btn btn-primary" style="margin-top: 10px">
+          Show
+          <span id="results-counter" class="badge badge-info" style="margin-left: 5px"><%= @cats_list.size %></span>
+        </button>
+      <% end %>
+    </div>
+    <div class="thumbnails col-md-9 co;-sm-12">
+    <% if !@cats_list.empty? %>
+      <% @cats_list.each_with_index do |cat, index| %>
+          <div class="col-md-4 col-sm-12">
+            <div class="thumbnail">
+              <div class="row">
+                <div class="col-md-5 col-sm-2">
+                  <object style="width: 100px; height: 100px;" data="<%= cat.image %>" type="image/png">
+                    <%= image_tag('cats/bad_cat.png', width: '100px', height: '100px') %>
+                  </object>
+                </div>
+                <div class="col-md-7 col-sm-10">
+                  <h5><%= cat.breed %></h5>
+                  <span class="badge badge-light"><%= cat.price %> $</span>
+                  <% if index == 0 %><span class="label label-success">BEST DEAL</span><% end %>
+                  <p class="card-text"><%= cat.shop %></p>
+                  <p class="card-text"><small class="text-muted"><%= cat.location %></small></p>
+                </div>
+              </div>
+            </div>
+          </div>
+      <% end %>
+    <% elsif !@search_params.empty? %>
+      <p>
+        Sorry, we couldn't find <%=  (@search_params[:breed] || ['any breed']).map{|el| "<b>#{html_escape(el)}</b>"}.join(' or ').html_safe %>
+        in <%=  (@search_params[:location] || ['any location']).map{|el| "<b>#{html_escape(el)}</b>"}.join(' or ').html_safe %>
+        by <%=  (@search_params[:shop] || ['any shop']).map{|el| "<b>#{html_escape(el)}</b>"}.join(' or ').html_safe %>
+      </p>
+    <% end %>
+    </div>
+  </div>
+</div>
