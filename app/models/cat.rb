@@ -1,5 +1,5 @@
 class Cat
-  attr_reader :shop, :location, :breed, :image, :price
+  attr_reader :shop, :location, :breed, :image
 
   def initialize(opts = {})
     @location = opts.fetch(:location, nil)

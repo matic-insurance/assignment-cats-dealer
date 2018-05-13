@@ -1,7 +1,6 @@
 require 'active_support/core_ext/module/delegation'
 
 class Shop
-
   def initialize(config)
     @name     = config::NAME
     @mapper   = config.mapper
@@ -18,7 +17,7 @@ class Shop
   delegate :map_fields, to: :@mapper
 
   def products
-    parse(fetch).map {|product| convert(product)}
+    parse(fetch).map { |product| convert(product) }
   end
 
   def convert(product)

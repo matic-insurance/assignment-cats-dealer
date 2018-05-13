@@ -5,14 +5,13 @@ require_relative '../enrichers/shop_info_enricher'
 require_relative '../clients/api_client'
 
 class HappyCatsConfig
-
-  URL = 'https://nh7b1g9g23.execute-api.us-west-2.amazonaws.com/dev/cats/xml'
+  URL = 'https://nh7b1g9g23.execute-api.us-west-2.amazonaws.com/dev/cats/xml'.freeze
   FIELDS_MAPPING = {
     title: 'breed',
     cost: 'price',
     img: 'image'
   }.with_indifferent_access
-  NAME = 'Happy Cats'
+  NAME = 'Happy Cats'.freeze
   MODEL = Cat
   PARSER = HappyCatsParser
   RETRIES = 3

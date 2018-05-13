@@ -4,7 +4,6 @@ require 'integrations/shops/happy_cats_config'
 require 'integrations/shops/unlimited_cats_config'
 
 class CatsController < ApplicationController
-
   def index
     shop_aggregator = ShopsAggregationService.new([HappyCatsConfig, UnlimitedCatsConfig])
     cats_aggregator = CatsAggregationService.new(shop_aggregator.products)
@@ -17,6 +16,6 @@ class CatsController < ApplicationController
     shop_aggregator = ShopsAggregationService.new([HappyCatsConfig, UnlimitedCatsConfig])
     cats_aggregator = CatsAggregationService.new(shop_aggregator.products)
     @search_params  = params.permit(cats_aggregator.allowed_query_params).to_h
-    render :json => { count: cats_aggregator.find_where(@search_params).size }
+    render json: {count: cats_aggregator.find_where(@search_params).size}
   end
 end

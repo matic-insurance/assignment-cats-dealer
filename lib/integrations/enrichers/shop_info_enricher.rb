@@ -1,5 +1,4 @@
 class ShopInfoEnricher
-
   def initialize(name)
     @name = name
   end

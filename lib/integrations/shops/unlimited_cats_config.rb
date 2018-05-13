@@ -5,12 +5,11 @@ require_relative '../enrichers/shop_info_enricher'
 require_relative '../clients/api_client'
 
 class UnlimitedCatsConfig
-
-  URL            = 'https://nh7b1g9g23.execute-api.us-west-2.amazonaws.com/dev/cats/json'
+  URL            = 'https://nh7b1g9g23.execute-api.us-west-2.amazonaws.com/dev/cats/json'.freeze
   FIELDS_MAPPING = {
-    name: 'breed',
+    name: 'breed'
   }.with_indifferent_access
-  NAME           = 'Cats Unlimited'
+  NAME           = 'Cats Unlimited'.freeze
   MODEL          = Cat
   PARSER         = JSON
   RETRIES        = 3

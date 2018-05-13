@@ -1,16 +1,15 @@
 class CatsAggregationService < ProductAggregationService
-
   def allowed_query_params
-    super + [:breed => []]
+    super + [breed: []]
   end
 
   def filter_options
-    super.merge({
+    super.merge(
       breeds: breeds.sort
-    })
+    )
   end
 
   def breeds
-    @breeds ||= @products.collect {|product| product.breed}.compact.uniq
+    @breeds ||= @products.collect(&:breed).compact.uniq
   end
 end

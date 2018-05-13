@@ -4,8 +4,8 @@ class FieldsMapper
   end
 
   def map_fields(product)
-    product.map {
-      | field, value| [@mapping[field] || field, value]
-    }.to_h.with_indifferent_access
+    product.map do |field, value|
+      [@mapping[field] || field, value]
+    end.to_h.with_indifferent_access
   end
 end
