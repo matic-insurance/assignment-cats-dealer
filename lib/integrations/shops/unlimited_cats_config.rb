@@ -13,6 +13,10 @@ class UnlimitedCatsConfig
   MODEL          = Cat
   RETRIES        = 3
 
+  def self.name
+    NAME
+  end
+
   def self.mapper
     FieldsMapper.new(FIELDS_MAPPING)
   end

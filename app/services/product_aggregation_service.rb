@@ -1,10 +1,13 @@
 class ProductAggregationService
+
+  attr_accessor :products
+
   def initialize(products)
     @products = products
   end
 
   def allowed_query_params
-    [location: [], shop: []]
+    [{location: []}, {shop: []}]
   end
 
   def filter_options
@@ -15,25 +18,25 @@ class ProductAggregationService
   end
 
   def locations
-    @locations ||= @products.collect(&:location).compact.uniq
+    @locations ||= products.collect(&:location).compact.uniq
   end
 
   def shops
-    @shops ||= @products.collect(&:shop).compact.uniq
+    @shops ||= products.collect(&:shop).compact.uniq
   end
 
   def find(query_params = {})
     filter_products(query_params)
   end
 
-  def count(query = {})
-    find(query).size
+  def count(query_params = {})
+    filter_products(query_params).size
   end
 
   private
 
   def filter_products(query_params)
-    @products.select do |product|
+    products.select do |product|
       query_params.map do |field, value|
         value.include?(product.send(field.to_sym))
       end.all?

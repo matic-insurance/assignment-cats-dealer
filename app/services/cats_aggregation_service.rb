@@ -10,6 +10,6 @@ class CatsAggregationService < ProductAggregationService
   end
 
   def breeds
-    @breeds ||= @products.collect(&:breed).compact.uniq
+    @breeds ||= products.collect(&:breed).compact.uniq
   end
 end

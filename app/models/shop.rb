@@ -2,7 +2,7 @@ require 'active_support/core_ext/module/delegation'
 
 class Shop
   def initialize(config)
-    @name     = config::NAME
+    @name     = config.name
     @mapper   = config.mapper
     @parser   = config.parser
     @enricher = config.enricher

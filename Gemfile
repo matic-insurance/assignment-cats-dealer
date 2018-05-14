@@ -21,4 +21,5 @@ end
 
 group :test do
   gem 'rspec-rails', '~> 3.6.0'
+  gem 'rails-controller-testing'
 end

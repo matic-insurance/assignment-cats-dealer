@@ -6,19 +6,18 @@ class ShopsAggregationService
   end
 
   def products
-    aggregated
+    @products ||= @shop_configs.map do |shop_config|
+        get_products(shop_config)
+      end.map(&:join).map(&:value).flatten
   end
 
-  def aggregated
-    @aggregated ||= begin
-      threads = []
-      @shop_configs.each do |shop_config|
-        threads << Thread.new do
-          shop = Shop.new(shop_config)
-          shop.products
-        end
-      end
-      threads.map(&:join).map(&:value).flatten
+  def get_products(shop_config)
+    Thread.new do
+      shop(shop_config).products
     end
+  end
+
+  def shop(shop_config)
+    Shop.new(shop_config)
   end
 end

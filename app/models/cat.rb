@@ -10,6 +10,8 @@ class Cat
   end
 
   def price
-    @price.to_i
+    return if @price.nil?
+    price = @price.to_f
+    price.zero? ? 0 : price
   end
 end
