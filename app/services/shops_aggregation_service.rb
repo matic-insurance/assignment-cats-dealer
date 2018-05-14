@@ -1,8 +1,10 @@
 require_relative '../models/shop'
 
 class ShopsAggregationService
-  def initialize(shop_configs)
+  def initialize(shop_configs, model = Shop, executor = Thread )
     @shop_configs = shop_configs
+    @model = model
+    @executor = executor
   end
 
   def products
@@ -12,12 +14,12 @@ class ShopsAggregationService
   end
 
   def get_products(shop_config)
-    Thread.new do
+    @executor.new do
       shop(shop_config).products
     end
   end
 
   def shop(shop_config)
-    Shop.new(shop_config)
+    model.new(shop_config)
   end
 end
