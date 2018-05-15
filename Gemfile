@@ -17,13 +17,13 @@ group :production do
 end
 
 group :development do
-  gem 'sqlite3'
   gem 'rubocop', '~> 0.55.0'
   gem 'rubocop-rspec', '~> 1.25'
+  gem 'sqlite3'
   gem 'web-console', '>= 3.3.0'
 end
 
 group :test do
-  gem 'rspec-rails', '~> 3.6.0'
   gem 'rails-controller-testing'
+  gem 'rspec-rails', '~> 3.6.0'
 end

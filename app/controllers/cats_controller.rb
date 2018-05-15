@@ -4,7 +4,6 @@ require 'integrations/shops/happy_cats_config'
 require 'integrations/shops/unlimited_cats_config'
 
 class CatsController < ApplicationController
-
   def index
     shop_aggregator = ShopsAggregationService.new([HappyCatsConfig, UnlimitedCatsConfig])
     cats_aggregator = CatsAggregationService.new(shop_aggregator.products)

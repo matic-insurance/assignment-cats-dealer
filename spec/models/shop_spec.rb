@@ -7,8 +7,8 @@ describe Shop do
   end
 
   context 'delegates to correct handler' do
-    it 'should get all required data from config' do
-      Shop.new(@config)
+    it 'gets all required data from config' do
+      described_class.new(@config)
       expect(@config).to have_received(:wrapper).once
       expect(@config).to have_received(:name).once
       expect(@config).to have_received(:parser).once
@@ -17,51 +17,51 @@ describe Shop do
       expect(@config).to have_received(:client).once
     end
 
-    it 'should call fetch on client' do
+    it 'calls fetch on client' do
       @delegated = spy('client')
       allow(@config).to receive(:client).and_return(@delegated)
-      shop = Shop.new(@config)
+      shop = described_class.new(@config)
       shop.fetch
-      expect(@delegated ).to have_received(:fetch).once
+      expect(@delegated).to have_received(:fetch).once
     end
 
-    it 'should call parse om parser' do
-      @delegated  = spy('client')
+    it 'calls parse om parser' do
+      @delegated = spy('client')
       allow(@config).to receive(:parser).and_return(@delegated)
-      shop = Shop.new(@config)
+      shop = described_class.new(@config)
       shop.parse
-      expect(@delegated ).to have_received(:parse).once
+      expect(@delegated).to have_received(:parse).once
     end
 
-    it 'should call wrap on wrap' do
-      @delegated  = spy('client')
+    it 'calls wrap on wrap' do
+      @delegated = spy('client')
       allow(@config).to receive(:wrapper).and_return(@delegated)
-      shop = Shop.new(@config)
+      shop = described_class.new(@config)
       shop.wrap
-      expect(@delegated ).to have_received(:wrap).once
+      expect(@delegated).to have_received(:wrap).once
     end
 
-    it 'should call map_fields to mapper' do
-      @delegated  = spy('client')
+    it 'calls map_fields to mapper' do
+      @delegated = spy('client')
       allow(@config).to receive(:mapper).and_return(@delegated)
-      shop = Shop.new(@config)
+      shop = described_class.new(@config)
       shop.map_fields
-      expect(@delegated ).to have_received(:map_fields).once
+      expect(@delegated).to have_received(:map_fields).once
     end
 
-    it 'should call enrich to enricher' do
-      @delegated  = spy('client')
+    it 'calls enrich to enricher' do
+      @delegated = spy('client')
       allow(@config).to receive(:enricher).and_return(@delegated)
-      shop = Shop.new(@config)
+      shop = described_class.new(@config)
       shop.enrich
-      expect(@delegated ).to have_received(:enrich).once
+      expect(@delegated).to have_received(:enrich).once
     end
   end
 
   context 'products' do
-    it 'should fetch wrap and convert results' do
-      shop = Shop.new(@config)
-      results = JSON.generate([{"id" => 1}, {"id" => 2}])
+    it 'fetches wrap and convert results' do
+      shop = described_class.new(@config)
+      results = JSON.generate([{'id' => 1}, {'id' => 2}])
       allow(shop).to receive(:fetch).and_return(results)
       allow(shop).to receive(:parse) do |res|
         JSON.parse(res)
@@ -70,13 +70,13 @@ describe Shop do
         product['id'] = product['id'] + 1
         product
       end
-      expect(shop.products).to eq [{"id" => 2}, {"id" => 3}]
+      expect(shop.products).to eq [{'id' => 2}, {'id' => 3}]
     end
   end
 
   context 'convert' do
-    it 'should map_fields enrich and wrap' do
-      shop = Shop.new(@config)
+    it 'map_fieldses enrich and wrap' do
+      shop = described_class.new(@config)
       product = {breed: 'breed', location: 'location'}
 
       allow(shop).to receive(:map_fields).and_return(product)

@@ -1,7 +1,7 @@
 require_relative '../models/shop'
 
 class ShopsAggregationService
-  def initialize(shop_configs, model = Shop, executor = Thread )
+  def initialize(shop_configs, model = Shop, executor = Thread)
     @shop_configs = shop_configs
     @model = model
     @executor = executor
@@ -9,8 +9,8 @@ class ShopsAggregationService
 
   def products
     @products ||= @shop_configs.map do |shop_config|
-        get_products(shop_config)
-      end.map(&:join).map(&:value).flatten
+      get_products(shop_config)
+    end.map(&:join).map(&:value).flatten
   end
 
   def get_products(shop_config)

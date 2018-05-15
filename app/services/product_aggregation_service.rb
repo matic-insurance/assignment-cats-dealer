@@ -1,5 +1,4 @@
 class ProductAggregationService
-
   attr_accessor :products
 
   def initialize(products)
