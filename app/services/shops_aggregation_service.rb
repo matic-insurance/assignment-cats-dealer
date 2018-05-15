@@ -20,6 +20,6 @@ class ShopsAggregationService
   end
 
   def shop(shop_config)
-    model.new(shop_config)
+    @model.new(shop_config)
   end
 end

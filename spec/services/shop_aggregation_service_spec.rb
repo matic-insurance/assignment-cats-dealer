@@ -39,19 +39,12 @@ describe ShopsAggregationService do
       expect(thread).to have_received(:join).twice
       expect(thread).to have_received(:value).twice
     end
+  end
 
   context 'passing invalid shop_config' do
     it 'should raise Type error' do
       shop_aggregator = ShopsAggregationService.new([:first_config])
-      expect{shop_aggregator.products}.to raise_error(TypeError)
-    end
-
-    it 'should call get_products for each shop' do
-      shop_aggregator = ShopsAggregationService.new([:any_shop_config, :second_config])
-      shop_aggregator.products
-      expect(thread).to have_received(:join).twice
-      expect(thread).to have_received(:value).twice
-    end
+      expect{shop_aggregator.products}.to raise_error(NoMethodError)
     end
   end
 end

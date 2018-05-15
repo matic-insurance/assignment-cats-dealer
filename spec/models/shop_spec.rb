@@ -19,7 +19,7 @@ describe Shop do
 
     it 'should call fetch on client' do
       @delegated = spy('client')
-      allow(@config).to receive(:client).and_return(@delegated )
+      allow(@config).to receive(:client).and_return(@delegated)
       shop = Shop.new(@config)
       shop.fetch
       expect(@delegated ).to have_received(:fetch).once
