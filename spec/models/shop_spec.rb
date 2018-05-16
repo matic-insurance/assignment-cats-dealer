@@ -6,7 +6,7 @@ describe Shop do
     @config = spy('delegate')
   end
 
-  context 'delegates to correct handler' do
+  context 'with delegates to correct handler' do
     it 'gets all required data from config' do
       described_class.new(@config)
       expect(@config).to have_received(:wrapper).once
@@ -58,7 +58,7 @@ describe Shop do
     end
   end
 
-  context 'products' do
+  context 'when products' do
     it 'fetches wrap and convert results' do
       shop = described_class.new(@config)
       results = JSON.generate([{'id' => 1}, {'id' => 2}])
@@ -74,8 +74,8 @@ describe Shop do
     end
   end
 
-  context 'convert' do
-    it 'map_fieldses enrich and wrap' do
+  context 'when convert' do
+    it 'map_fields enrich and wrap' do
       shop = described_class.new(@config)
       product = {breed: 'breed', location: 'location'}
 

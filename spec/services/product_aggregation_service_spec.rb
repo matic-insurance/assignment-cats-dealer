@@ -21,21 +21,21 @@ describe ProductAggregationService do
     ].map { |config| Cat.new(config) }
   end
 
-  context 'call products' do
+  context 'when call products' do
     it 'returns products' do
       aggregated_products = described_class.new(products)
       expect(aggregated_products.products).to eq products
     end
   end
 
-  context 'allowed query params' do
+  context 'when allowed query params' do
     it 'returns allowed params' do
       aggregated_products = described_class.new(products)
       expect(aggregated_products.allowed_query_params).to eq [{location: []}, {shop: []}]
     end
   end
 
-  context 'filter options' do
+  context 'when filter options' do
     before do
       @aggregated_products = described_class.new(products)
       allow(@aggregated_products).to receive(:locations).and_return(%w[a c b])
@@ -54,7 +54,7 @@ describe ProductAggregationService do
     end
   end
 
-  context 'aggregates locations' do
+  context 'when aggregates locations' do
     before do
       @aggregated_products = described_class.new(products)
     end
@@ -73,7 +73,7 @@ describe ProductAggregationService do
     end
   end
 
-  context 'aggregates shops' do
+  context 'when aggregates shops' do
     it 'collects all values' do
       aggregated_products = described_class.new(products)
       expect(aggregated_products.shops).to eq products.collect(&:shop)
@@ -90,7 +90,7 @@ describe ProductAggregationService do
     end
   end
 
-  context 'find' do
+  context 'when find' do
     before do
       @aggregated_products = described_class.new(products)
     end
@@ -126,7 +126,7 @@ describe ProductAggregationService do
     end
   end
 
-  context 'count' do
+  context 'when count' do
     before do
       shops_aggregator = double('shops_aggregator', products: products)
       @aggregated_products = described_class.new(shops_aggregator)

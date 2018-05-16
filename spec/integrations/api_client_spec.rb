@@ -2,7 +2,7 @@ require 'rails_helper'
 require 'integrations/clients/api_client'
 
 describe ApiClient do
-  context 'fetch' do
+  context 'when fetch' do
     it 'calls client. get' do
       rest_client = spy('client')
       client = described_class.new('some_url', 0, rest_client)

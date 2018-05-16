@@ -26,14 +26,14 @@ describe CatsAggregationService do
     expect(aggregated_products).to be_a ProductAggregationService
   end
 
-  context 'allowed query params' do
+  context ' when allowed query params' do
     it 'returns allowed params' do
       aggregated_products = described_class.new(products)
       expect(aggregated_products.allowed_query_params).to eq [{location: []}, {shop: []}, {breed: []}]
     end
   end
 
-  context 'filter options' do
+  context 'when filter options' do
     before do
       @aggregated_products = described_class.new(products)
       allow(@aggregated_products).to receive(:locations).and_return(%w[a c b])
