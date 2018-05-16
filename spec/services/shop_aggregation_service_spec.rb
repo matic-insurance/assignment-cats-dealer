@@ -3,7 +3,7 @@ require 'shops_aggregation_service'
 require 'integrations/shops/happy_cats_config'
 
 describe ShopsAggregationService do
-  context 'calling products with one shop' do
+  context 'when calling products with one shop' do
     it 'calls shop.products' do
       shop = spy('shop')
       shop_aggregator = described_class.new([:any_shop_config])
@@ -71,7 +71,7 @@ describe ShopsAggregationService do
 
   context 'when called shops' do
     it 'returns and array of shops' do
-      shop_aggregator = described_class.new([])
+      shop_aggregator = described_class.new([HappyCatsConfig])
       expect(shop_aggregator.shops.first).to be_a(Shop)
     end
   end
