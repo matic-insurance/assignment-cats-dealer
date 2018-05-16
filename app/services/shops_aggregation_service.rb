@@ -8,15 +8,19 @@ class ShopsAggregationService
   end
 
   def products
-    @products ||= @shop_configs.map do |shop_config|
-      get_products(shop_config)
+    @products ||= shops.map do |shop|
+      get_products(shop)
     end.map(&:join).map(&:value).flatten
   end
 
-  def get_products(shop_config)
+  def get_products(shop)
     @executor.new do
-      shop(shop_config).products
+      shop.products
     end
+  end
+
+  def shops
+    @shops ||= @shop_configs.map{ |shop_config| shop(shop_config)}
   end
 
   def shop(shop_config)
