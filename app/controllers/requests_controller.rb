@@ -1,11 +1,20 @@
 class RequestsController < ApplicationController
+  include Requests
+  include Predicate
+
   def create
-    response = RestClient.get('https://nh7b1g9g23.execute-api.us-west-2.amazonaws.com/dev/cats/json')
-    result = JSON.parse(response.body)
-    redirect_to result_request_path(cats_list: result, cat_type: params[:cats_type], location: params[:user_location])
+    json_response = BaseRequest.json_response
+    xml_response = BaseRequest.xml_response
+    result = json_response + xml_response
+
+    caty_type = params[:caty_type]
+    location = params[:user_location]
+
+    redirect_to result_request_path(cats_list: result, cat_type: caty_type, location: location)
   end
 
   def result
-    @cats_list = params[:cats_list].select { |list| list['location'] == params[:location] && list['name'] ==  params[:cat_type]}
+    predicate = Predicate::Cats.new params[:cats_list]
+    @cats_list = predicate.result_by(params[:location], params[:cat_type])
   end
 end

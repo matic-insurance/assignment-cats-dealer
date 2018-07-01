@@ -9,13 +9,14 @@ gem 'turbolinks', '~> 5'
 gem 'sqlite3'
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'rest-client'
+gem 'rubocop'
 
 group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'web-console', '>= 3.3.0'
+  gem 'pry'
 end
 
-gem 'listen', '>= 3.0.5', '< 3.2'
 group :test do
   gem 'rspec-rails', '~> 3.6.0'
 end
