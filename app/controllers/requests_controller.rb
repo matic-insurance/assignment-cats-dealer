@@ -1,20 +1,21 @@
 class RequestsController < ApplicationController
-  include Requests
-  include Predicate
+  def new
+    @cities = %w[Lviv Odessa Kiev]
+    @cat_types = %w[Bengal Abyssin Persian]
+  end
 
   def create
-    json_response = BaseRequest.json_response
-    xml_response = BaseRequest.xml_response
-    result = json_response + xml_response
+    response = HTTPRequestService::BaseRequest.new(BaseAPIURL::JSON_URL)
 
-    caty_type = params[:caty_type]
+    cat_type = params[:cats_type]
     location = params[:user_location]
+    parameters = {cats_list: response.from_json, cat_type: cat_type, location: location}
 
-    redirect_to result_request_path(cats_list: result, cat_type: caty_type, location: location)
+    redirect_to result_request_path(parameters)
   end
 
   def result
-    predicate = Predicate::Cats.new params[:cats_list]
-    @cats_list = predicate.result_by(params[:location], params[:cat_type])
+    result = CatsAnalyzerService.new params[:cats_list]
+    @cats_list = result.all(params[:cat_type], params[:location])
   end
 end
