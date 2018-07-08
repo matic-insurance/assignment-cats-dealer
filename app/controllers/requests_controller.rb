@@ -1,11 +1,21 @@
 class RequestsController < ApplicationController
+  def new
+    @cities = %w[Lviv Odessa Kiev]
+    @cat_types = %w[Bengal Abyssin Persian]
+  end
+
   def create
-    response = RestClient.get('https://nh7b1g9g23.execute-api.us-west-2.amazonaws.com/dev/cats/json')
-    result = JSON.parse(response.body)
-    redirect_to result_request_path(cats_list: result, cat_type: params[:cats_type], location: params[:user_location])
+    response = HTTPRequestService::BaseRequest.new(BaseAPIURL::JSON_URL)
+
+    cat_type = params[:cats_type]
+    location = params[:user_location]
+    parameters = {cats_list: response.from_json, cat_type: cat_type, location: location}
+
+    redirect_to result_request_path(parameters)
   end
 
   def result
-    @cats_list = params[:cats_list].select { |list| list['location'] == params[:location] && list['name'] ==  params[:cat_type]}
+    result = CatsAnalyzerService.new params[:cats_list]
+    @cats_list = result.all(params[:cat_type], params[:location])
   end
 end
