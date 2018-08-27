@@ -1,0 +1,28 @@
+.cover {
+  height: 64px;
+  width: 64px;
+  background-size: cover;
+  background-image: url(asset-path('default-cat.png'))
+}
+
+.cat-image {
+  height: 64px;
+  width: 64px;
+  background-size: cover;
+  background-position: center;
+}
+
+#cats {
+  text-align: right;
+  padding: 25px;
+}
+
+#cats {
+  select {
+    min-width: 240px;
+  }
+}
+
+tbody td {
+  vertical-align: middle!important;
+}
