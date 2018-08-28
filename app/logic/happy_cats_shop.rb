@@ -1,6 +1,5 @@
 class HappyCatsShop
-
-  ENDPOINT = 'https://nh7b1g9g23.execute-api.us-west-2.amazonaws.com/dev/cats/xml'
+  ENDPOINT = 'https://nh7b1g9g23.execute-api.us-west-2.amazonaws.com/dev/cats/xml'.freeze
 
   def fetch
     return if response.blank?
@@ -8,8 +7,6 @@ class HappyCatsShop
   end
 
   private
-
-  attr_reader :response
 
   def response
     @response ||= RestClient.get(ENDPOINT)

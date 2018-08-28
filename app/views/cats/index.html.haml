@@ -1,10 +1,5 @@
 .container
-  %p
-    = form_tag(cats_path, method: :get, class: 'form-inline', id: 'cats') do
-      = select_tag(:name, options_for_select(available_names, params[:name]), {class: 'form-control'})
-      = select_tag(:location, options_for_select(available_cities, params[:location]), {class: 'form-control'})
-      = submit_tag 'Search', name: nil, class: 'btn btn-primary'
-      = link_to 'Reset', cats_path, class: 'btn btn-default'
+  = render partial: 'filter_form'
   .row
     - if @cats.empty?
       %center
@@ -18,11 +13,4 @@
             %th Location
             %th Image
         %tbody
-          - @cats.each do |cat|
-            %tr
-              %td= cat.name
-              %td= cat.price
-              %td= cat.location
-              %td
-                .cover
-                  .cat-image{style: "background-image: url(#{cat.image_url});"}
+          = render partial: 'cat', collection: @cats

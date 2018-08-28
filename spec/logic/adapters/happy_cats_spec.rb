@@ -7,15 +7,15 @@ describe Adapters::HappyCats do
   let(:cat_img) { 'http://google.com/cat.jpg' }
   let(:input_cats) do
     [
-      {"title" => cat_title, "cost" => cat_cost, "location" => cat_location, "img" => cat_img},
-      {"title" => 'Some Other Cat', "cost" => 200, "location" => 'Kyiv', "img" => 'http://google.com/kitty.jpg'}
+      {'title' => cat_title, 'cost' => cat_cost, 'location' => cat_location, 'img' => cat_img},
+      {'title' => 'Some Other Cat', 'cost' => 200, 'location' => 'Kyiv', 'img' => 'http://google.com/kitty.jpg'}
     ]
   end
   let(:instances) { described_class.instantiate(input_cats) }
   let(:instance) { instances.first }
 
   it 'creates 2 instances of HappyCats class' do
-    expect(instances.map(&:class)).to eq Array.new(2){ Adapters::HappyCats }
+    expect(instances.map(&:class)).to eq Array.new(2) { described_class }
   end
 
   it "returns cat's name" do

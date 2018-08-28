@@ -7,15 +7,25 @@ describe Adapters::CatsUnlimited do
   let(:cat_image) { 'http://google.com/cat.jpg' }
   let(:input_cats) do
     [
-      {"name" => cat_name, "price" => cat_price, "location" => cat_location, "image" => cat_image},
-      {"name" => 'Some Other Cat', "price" => 200, "location" => 'Kyiv', "image" => 'http://google.com/kitty.jpg'}
+      {
+        'name' => cat_name,
+        'price' => cat_price,
+        'location' => cat_location,
+        'image' => cat_image
+      },
+      {
+        'name' => 'Some Other Cat',
+        'price' => 200,
+        'location' => 'Kyiv',
+        'image' => 'http://google.com/kitty.jpg'
+      }
     ]
   end
   let(:instances) { described_class.instantiate(input_cats) }
   let(:instance) { instances.first }
 
   it 'creates 2 instances of CatsUnlimited class' do
-    expect(instances.map(&:class)).to eq Array.new(2){ Adapters::CatsUnlimited }
+    expect(instances.map(&:class)).to eq Array.new(2) { described_class }
   end
 
   it "returns cat's name" do

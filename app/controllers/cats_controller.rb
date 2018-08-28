@@ -1,6 +1,6 @@
 class CatsController < ApplicationController
   def index
-    @cats = Cat.filter(cat_params)
+    @cats = Cat.filter(cat_params, Constants::SKIP_FILTER_VALUE)
   end
 
   private

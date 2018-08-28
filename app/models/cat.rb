@@ -1,7 +1,6 @@
 class Cat < ApplicationRecord
-  ALL_RECORDS = 'All'
-
-  def self.filter(options)
-    where(options.reject! { |_, value| value.nil? || value == ALL_RECORDS}).order(:price)
+  def self.filter(options, skip_filter_value)
+    where(options.reject! { |_, value| value.nil? || value == skip_filter_value })
+      .order(:price)
   end
 end

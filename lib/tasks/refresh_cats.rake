@@ -1,5 +1,4 @@
-task :refresh_cats => :environment do
-
+task refresh_cats: :environment do
   cats_unlimited_data = CatsUnlimitedShop.new.fetch
   cats_unlimited = Adapters::CatsUnlimited.instantiate(cats_unlimited_data)
   happy_cats_data = HappyCatsShop.new.fetch
