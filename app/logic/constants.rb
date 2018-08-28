@@ -1,3 +1,3 @@
 module Constants
-  SKIP_FILTER_VALUE = 'all'.freeze
+  SKIP_FILTER_VALUE = 'All'.freeze
 end
