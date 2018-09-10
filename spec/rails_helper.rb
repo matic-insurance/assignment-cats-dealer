@@ -25,7 +25,10 @@ require 'rspec/rails'
 # Checks for pending migration and applies them before tests are run.
 # If you are not using ActiveRecord, you can remove this line.
 ActiveRecord::Migration.maintain_test_schema!
-
+require 'capybara/rspec'
+require 'webmock/rspec'
+WebMock.disable_net_connect!(allow_localhost: true)
+Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
@@ -54,4 +57,17 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+  config.include Capybara::DSL
+end
+
+
+Capybara.register_driver :selenium do |app|
+  Capybara::Selenium::Driver.new(app, browser: :chrome)
+end
+
+Capybara.javascript_driver = :chrome
+
+Capybara.configure do |config|
+  config.default_max_wait_time = 10 # seconds
+  config.default_driver        = :selenium
 end

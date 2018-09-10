@@ -1,0 +1,19 @@
+catStore1:
+  url: 'https://nh7b1g9g23.execute-api.us-west-2.amazonaws.com/dev/cats/json'
+  keys:
+    image: 'image'
+    location: 'location'
+    name: 'name'
+    price: 'price'
+  format: 'json'
+catStore2:
+  url: 'https://nh7b1g9g23.execute-api.us-west-2.amazonaws.com/dev/cats/xml'
+  path:
+    - cats
+    - cat
+  keys:
+    img: 'image'
+    location: 'location'
+    title: 'name'
+    cost: 'price'
+  format: 'xml'
