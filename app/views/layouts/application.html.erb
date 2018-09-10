@@ -9,6 +9,16 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class='navbar navbar-default navbar-static-top'>
+      <div class='container'><a class='navbar-brand' href="#">Cats</a></div>
+    </div>
+
+    <div class='container'>
+      <div class='row'><%= yield %></div>
+
+      <footer>
+        <p><a href='https://github.com/madundead' target='_blank'>madundead @ github</a></p>
+      </footer>
+    </div>
   </body>
 </html>

@@ -1,0 +1,7 @@
+<div class='col-lg-6'><%= datagrid_form_for @grid, method: :get, url: cats_path %></div>
+
+<div class='col-lg-12'>
+  <%= paginate(@grid.assets) %>
+  <%= datagrid_table @grid, html: { class: 'table table-striped' } %>
+  <%= paginate(@grid.assets) %>
+</div>
