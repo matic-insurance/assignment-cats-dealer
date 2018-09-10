@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cats>
+  <cat>
+    <title>American Curl</title><cost>650</cost><location>Odessa</location><img>https://olxua-ring07.akamaized.net/images_slandocomua/113528769_3_1000x700_amerikanskie-kerly-koshki-s-chelovecheskim-litsom-koshka-kompanon-koti_rev022.jpg</img>
+  </cat>
+  <cat>
+    <title>Bengal</title><cost>800</cost><location>Odessa</location><img>https://olxua-ring01.akamaized.net/images_slandocomua/351717184_8_1000x700_bengalskie-kotyata-_rev029.jpg</img>
+  </cat>
+</cats>
