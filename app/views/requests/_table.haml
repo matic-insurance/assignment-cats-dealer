@@ -1,0 +1,18 @@
+%p Best price for your location:
+= kitties_list.sort_by { |list| list[:price] }.first['price']
+
+%h4 All kitties for your location:
+%table.table.table-striped
+  %thead
+    %tr
+      %th Type
+      %th Price
+      %th Location
+      %th Image
+  %tbody
+  - kitties_list.each do |kitty|
+    %tr
+      %td= kitty['name']
+      %td= kitty['price']
+      %td= kitty['location']
+      %td= image_tag(kitty['image'], width: '150px')

@@ -1,11 +1,15 @@
 class RequestsController < ApplicationController
-  def create
-    response = RestClient.get('https://nh7b1g9g23.execute-api.us-west-2.amazonaws.com/dev/cats/json')
-    result = JSON.parse(response.body)
-    redirect_to result_request_path(cats_list: result, cat_type: params[:cats_type], location: params[:user_location])
-  end
+  def get_kitties
+    cat_breed = params[:cat_breed]
+    location = params[:location]
 
-  def result
-    @cats_list = params[:cats_list].select { |list| list['location'] == params[:location] && list['name'] ==  params[:cat_type]}
+    get_data_from_api = RestClient::Request.execute(
+      method: :get,
+      url: 'https://nh7b1g9g23.execute-api.us-west-2.amazonaws.com/dev/cats/json',
+    )
+
+    @kitties_list = JSON.parse(get_data_from_api)
+                       .select { |list| list['location'] == location && list['name'] == cat_breed }
+    redirect_to root_path(kitties_list: @kitties_list)
   end
 end

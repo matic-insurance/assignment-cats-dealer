@@ -1,0 +1,6 @@
+= render 'form'
+
+- if params[:kitties_list].present?
+  = render partial: 'table', locals: { kitties_list: params[:kitties_list] }
+- else
+  %p Please, at first select cats breed and location
