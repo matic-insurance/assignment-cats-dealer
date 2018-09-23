@@ -12,6 +12,7 @@ gem 'rest-client'
 gem 'rubocop'
 gem 'haml-rails', '~> 1.0'
 gem 'pry'
+gem 'rails-controller-testing'
 
 group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
@@ -21,4 +22,6 @@ end
 gem 'listen', '>= 3.0.5', '< 3.2'
 group :test do
   gem 'rspec-rails', '~> 3.6.0'
+  gem 'capybara'
+  gem 'selenium-webdriver'
 end

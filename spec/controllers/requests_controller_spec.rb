@@ -1,15 +1,15 @@
 require 'rails_helper'
 
-describe RequestsController do
-  describe 'GET #new' do
-    before { get 'new' }
+describe RequestsController, type: :controller do
+  describe "GET #index" do
+    subject { get :index }
 
-    it 'renders templates' do
-      expect(response).to render_template(:new)
+    it 'return 200 status' do
+      expect(subject.status).to eq(200)
     end
 
-    it 'returns status code 200' do
-      expect(response).to have_http_status(200)
+    it 'renders the index template' do
+      expect(subject).to render_template(:index)
     end
   end
 end
