@@ -17,7 +17,7 @@ gem 'listen', '>= 3.0.5', '< 3.2'
 group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'web-console', '>= 3.3.0'
-  gem 'sqlite3'
+  gem 'sqlite3', '1.3.13'
 end
 
 group :test do
