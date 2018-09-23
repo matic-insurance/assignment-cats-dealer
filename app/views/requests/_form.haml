@@ -2,11 +2,11 @@
   .col-md-2.col-md-offset-5
     = form_tag(get_kitties_path, method: :get, class: 'form-horizontal center') do
       %p Select cat breed:
-      = select_tag('cat_breed', options_for_select(%w(Bengal Abyssin Persian)))
+      = select_tag('cat_breed', options_for_select(CAT_BREED))
       %br
       %br
       %p Select your location:
-      = select_tag('location', options_for_select(%w(Lviv Kiev Odessa)))
+      = select_tag('location', options_for_select(LOCATION))
       %br
       %br
       = submit_tag 'Send request', class: 'btn btn-default'
