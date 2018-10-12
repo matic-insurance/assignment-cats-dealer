@@ -1,14 +1,27 @@
 language: ruby
+before_install:
+  - gem update --system
 rvm:
  - 2.4.0
 sudo: false
-cache: bundler
+cache:
+  bundler: true
+  directories:
+    - node_modules
+  yarn: true
+before_install:
 install:
   - bundle install --path vendor/bundle
   - bundle exec rake db:schema:load
   - bundle exec rake db:test:prepare
+  - nvm install node
+  - node -v
+  - npm i -g yarn
+  - yarn install
 matrix:
   fast_finish: true
 script:
   - bundle exec rubocop
   - bundle exec rspec
+  - yarn lint
+  - yarn test

@@ -1,0 +1,11 @@
+doctype 5
+html lang="en"
+  head
+    meta charset="UTF-8"
+    title= yield(:title)
+
+    = stylesheet_pack_tag 'application'
+    = yield(:head)
+  body
+    = yield
+    = yield(:tail)

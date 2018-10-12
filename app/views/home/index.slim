@@ -1,0 +1,13 @@
+= content_for :title, "Cats"
+
+= content_for :head do
+  = stylesheet_pack_tag 'cats'
+
+#root
+  .spinner
+    .spinner-unit-1
+    .spinner-unit-2
+    .spinner-unit-3
+
+= content_for :tail do
+  = javascript_pack_tag 'cats'

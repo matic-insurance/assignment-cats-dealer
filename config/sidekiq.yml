@@ -1,0 +1,4 @@
+:schedule:
+  fetch_cats:
+    every: '30m'
+    class: Content::FetchCatsWorker
