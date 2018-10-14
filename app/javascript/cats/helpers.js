@@ -1,9 +1,15 @@
 import { route } from 'preact-router';
 
 export function getThings(url) {
-  return fetch(url)
-    .then(response => response.json())
-    .catch(error => console.error(error));
+  return fetch(url).then(response => new Promise((resolve, reject) => {
+    if (response.status >= 200 && response.status < 300) {
+      response.json()
+        .then(json => resolve(json))
+        .catch(error => reject(error));
+    } else {
+      reject(new Error(`${response.status} ${response.statusText}`));
+    }
+  }));
 }
 
 export function generateUrlParams(url, params = {}) {
@@ -15,5 +21,5 @@ export function generateUrlParams(url, params = {}) {
 }
 
 export function redirectToResult(location, name) {
-  route(`/result${location ? `/${location}` : ''}${name ? `/${name}` : ''}`);
+  route(`/result/${location || ''}${name ? `/${name}` : ''}`);
 }

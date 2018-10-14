@@ -1,6 +1,7 @@
 import { h, render, Component } from 'preact';
 import { Router } from 'preact-router';
 
+import ErrorHandler from './ErrorHandler';
 import WelcomeForm from './WelcomeForm';
 import Result from './Result';
 
@@ -10,12 +11,16 @@ import Result from './Result';
 export default class App extends Component {
   render() {
     return (
-      <div style={{ margin: '0 auto', maxWidth: 1000 }}>
-        <Router>
-          <WelcomeForm path="/" />
-          <Result path="/result/:location?/:name?" />
-        </Router>
-      </div>
+      <ErrorHandler>
+        {({ onError }) => (
+          <div style={{ margin: '0 auto', maxWidth: 1000 }}>
+            <Router>
+              <WelcomeForm path="/" onError={onError} />
+              <Result path="/result/:location?/:name?" onError={onError} />
+            </Router>
+          </div>
+        )}
+      </ErrorHandler>
     );
   }
 }

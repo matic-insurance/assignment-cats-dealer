@@ -8,12 +8,12 @@ import { catImage, mainTitle } from './styles.module.scss';
 /** @jsx h */
 
 export default class WelcomeForm extends Component {
-  render() {
+  render({ onError }) {
     return (
       <div>
         <img className={catImage} src="images/cat-logo.png" />
         <h1 className={mainTitle}>Please choose expected breed and location</h1>
-        <Form onSubmit={(data) => redirectToResult(data.location, data.name) }/>
+        <Form onSubmit={(data) => redirectToResult(data.location, data.name)} onError={onError} />
       </div>
     );
   }

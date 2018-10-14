@@ -2,6 +2,7 @@ import { h, render, Component } from 'preact';
 import classNames from 'classnames';
 
 import { getThings } from '../helpers';
+import Loading from '../Loading';
 import { compactForm } from './styles.module.scss';
 
 // Tell Babel to transform JSX into h() calls:
@@ -21,6 +22,7 @@ export default class Form extends Component {
     this.state = {
       names: [],
       locations: [],
+      loading: true,
       form: {
         ...initialFormState,
         ...props.formState,
@@ -51,14 +53,17 @@ export default class Form extends Component {
       this.setState({
         names,
         locations,
+        loading: false,
       });
-    });
+    }).catch(error => {
+      this.props.onError(error);
+    })
   }
 
   handleSubmit(e) {
     e.preventDefault();
 
-    this.props.onSubmit(this.state.form);
+    this.props.onSubmit && this.props.onSubmit(this.state.form);
 
     if (!this.props.noReset) {
       this.setState({
@@ -80,23 +85,25 @@ export default class Form extends Component {
     }));
   }
 
-  render({ compact } = { compact: false }, { form: { name, location } }) {
+  render({ compact } = { compact: false }, { form: { name, location }, loading }) {
     return (
-      <form onSubmit={this.handleSubmit} className={classNames({
-        [compactForm]: compact,
-      })}>
-        <select name="name" value={name} onChange={this.handleChange} required>
-          <option value="" disabled selected>Select breed name</option>
-          {this.state.names.map(name => <option key={name} value={name}>{name}</option>)}
-        </select>
+      <Loading active={loading}>
+        <form onSubmit={this.handleSubmit} className={classNames({
+          [compactForm]: compact,
+        })}>
+          <select name="name" value={name} onChange={this.handleChange} required>
+            <option value="" disabled selected>Select breed name</option>
+            {this.state.names.map(name => <option key={name} value={name}>{name}</option>)}
+          </select>
 
-        <select name="location" value={location} onChange={this.handleChange} required>
-          <option value="" disabled selected>Select your location</option>
-          {this.state.locations.map(location => <option key={location} value={location}>{location}</option>)}
-        </select>
+          <select name="location" value={location} onChange={this.handleChange} required>
+            <option value="" disabled selected>Select your location</option>
+            {this.state.locations.map(location => <option key={location} value={location}>{location}</option>)}
+          </select>
 
-        <button type="submit">Submit</button>
-      </form>
+          <button type="submit">Submit</button>
+        </form>
+      </Loading>
     );
   }
 }

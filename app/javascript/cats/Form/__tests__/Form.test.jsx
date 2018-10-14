@@ -103,4 +103,52 @@ describe('<Form />', () => {
       });
     });
   });
+
+  describe('with noReset prop', () => {
+    describe('false', () => {
+      it('resets form after submit', (done) => {
+        const wrapper = shallow(<Form noReset={false} />);
+        wrapper.find(<select name="name" />).simulate('change', ({ target: {
+          name: 'name',
+          value: 'name1',
+        } }));
+
+        wrapper.find(<select name="location" />).simulate('change', ({ target: {
+          name: 'location',
+          value: 'location2',
+        } }));
+
+        wrapper.find('form').simulate('submit', { preventDefault: () => {} });
+
+        setTimeout(() => {
+          expect(wrapper.find(<select name="name" />).attr('value')).toEqual('');
+          expect(wrapper.find(<select name="location" />).attr('value')).toEqual('');
+          done();
+        }, 0);
+      })
+    })
+
+    describe('true', () => {
+      it('does not reset form after submit', (done) => {
+        const wrapper = shallow(<Form noReset />);
+        wrapper.find(<select name="name" />).simulate('change', ({ target: {
+          name: 'name',
+          value: 'name1',
+        } }));
+
+        wrapper.find(<select name="location" />).simulate('change', ({ target: {
+          name: 'location',
+          value: 'location2',
+        } }));
+
+        wrapper.find('form').simulate('submit', { preventDefault: () => {} });
+
+        setTimeout(() => {
+          expect(wrapper.find(<select name="name" />).attr('value')).toEqual('name1');
+          expect(wrapper.find(<select name="location" />).attr('value')).toEqual('location2');
+          done();
+        }, 0);
+      })
+    })
+  });
 });

@@ -3,6 +3,7 @@ import { h, render, Component } from 'preact';
 import { getThings, generateUrlParams, redirectToResult } from './helpers';
 
 import Form from './Form';
+import Loading from './Loading';
 
 // Tell Babel to transform JSX into h() calls:
 /** @jsx h */
@@ -18,6 +19,7 @@ const CatImage = ({ url }) => (url ? (
 export default class Result extends Component {
   state = {
     cats: [],
+    loading: true,
   }
 
   constructor(props) {
@@ -31,7 +33,9 @@ export default class Result extends Component {
   }
 
   componentWillReceiveProps(nextProps, nextState) {
-    this.getCats(nextProps);
+    if ((nextProps.location !== this.props.location) || (nextProps.name !== this.props.name)) {
+      this.getCats(nextProps);
+    }
   }
 
   getCats({ location, name }) {
@@ -45,14 +49,21 @@ export default class Result extends Component {
       queryParams.name = name;
     }
 
+    this.setState({
+      loading: true,
+    })
+
     getThings(generateUrlParams('/api/cats', queryParams)).then((data) => {
       this.setState({
         cats: data,
+        loading: false,
       });
+    }).catch(error => {
+      this.props.onError(error);
     });
   }
 
-  render({ location, name }, { cats }) {
+  render({ location, name }, { cats, loading }) {
     return (
       <div>
         <h1>List of pussycats</h1>
@@ -65,38 +76,40 @@ export default class Result extends Component {
           }}
           onSubmit={(data) => redirectToResult(data.location, data.name) }
         />
-        {(cats.length > 0) ? (
-          <div>
-            <h2>Best price {
-              (location || name) ?
-                `by your ${location ? 'location' : ''}
-                ${(location && name) ? 'and' : ''}
-                ${name ? 'name' : ''}` : ''
-            } is <b>{cats[0].price}</b></h2>
-            <table>
-              <thead>
-                <tr>
-                  <th style={{width: '20%'}}>image</th>
-                  <th>name</th>
-                  <th>price</th>
-                  <th>location</th>
-                </tr>
-              </thead>
-              <tbody>
-                {cats.map(cat => (
+        <Loading active={loading}>
+          {(cats.length > 0) ? (
+            <div>
+              <h2>Best price {
+                (location || name) ?
+                  `by your ${location ? 'location' : ''}
+                  ${(location && name) ? 'and' : ''}
+                  ${name ? 'name' : ''}` : ''
+              } is <b>{cats[0].price}</b></h2>
+              <table>
+                <thead>
                   <tr>
-                    <td style={{width: '20%'}}>
-                      <CatImage url={cat.image} />
-                    </td>
-                    <td>{cat.name}</td>
-                    <td>{cat.price}</td>
-                    <td>{cat.location}</td>
+                    <th style={{width: '20%'}}>image</th>
+                    <th>name</th>
+                    <th>price</th>
+                    <th>location</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        ) : <div>Cats not found</div>}
+                </thead>
+                <tbody>
+                  {cats.map(cat => (
+                    <tr>
+                      <td style={{width: '20%'}}>
+                        <CatImage url={cat.image} />
+                      </td>
+                      <td>{cat.name}</td>
+                      <td>{cat.price}</td>
+                      <td>{cat.location}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          ) : <div>Cats not found</div>}
+        </Loading>
       </div>
     )
   }
