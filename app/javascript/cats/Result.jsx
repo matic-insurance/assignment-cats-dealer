@@ -79,12 +79,8 @@ export default class Result extends Component {
         <Loading active={loading}>
           {(cats.length > 0) ? (
             <div>
-              <h2>Best price {
-                (location || name) ?
-                  `by your ${location ? 'location' : ''}
-                  ${(location && name) ? 'and' : ''}
-                  ${name ? 'name' : ''}` : ''
-              } is <b>{cats[0].price}</b></h2>
+              <h2>Best price {(location || name) ?
+                `by your${location ? ' location' : ''}${(location && name) ? ' and' : ''}${name ? ' name' : ''} ` : ''}is <b>{cats[0].price}</b></h2>
               <table>
                 <thead>
                   <tr>
