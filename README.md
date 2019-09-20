@@ -1,5 +1,5 @@
 ## Cats Dealer 
-### Hi, dude!
+### Hi, there!
 You are going to create simple service that allows finding the best pussycat - best price for customer location.
 
 The are pussycat shops that have pricelists accessible via REST API. What your service will do is just get prices from each shop, compare them and suggest the best deal for a customer!
