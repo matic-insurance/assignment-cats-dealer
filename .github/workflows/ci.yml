@@ -22,3 +22,16 @@ jobs:
         run: bundle exec rake db:setup
       - name: Run Tests
         run: bundle exec rspec
+  rubocop:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-ruby@v1
+        with:
+          ruby-version: 2.6.x
+      - name: Install rubocop
+        run: gem install rubocop -v 0.74.0
+      - name: Install rubocop-rspec
+        run: gem install rubocop-rspec -v 1.36.0
+      - name: Run rubocop
+        run: rubocop
