@@ -1,5 +1,5 @@
 RSpec.configure do |config|
-  config.around(:each) do |example|
+  config.around do |example|
     DatabaseCleaner.cleaning(&example)
   end
 end
