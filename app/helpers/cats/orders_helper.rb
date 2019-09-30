@@ -1,2 +1,4 @@
-module Cats::OrdersHelper
+module Cats
+  module OrdersHelper
+  end
 end
