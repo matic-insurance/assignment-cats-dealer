@@ -39,7 +39,11 @@ module Comparing
 
     def create_product(product, index)
       # creating new product
-      p = @product_name.constantize.send('new')
+      begin
+        p = @product_name.constantize.send('new')
+      rescue NameError => e
+        raise "Product #{@product_name} is not supported! Create a model for this product."
+      end
       product.each do |attr, val|
         # checking if attr exists
         if p.respond_to? attr

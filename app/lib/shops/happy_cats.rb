@@ -1,7 +1,6 @@
 module Shops
   # this shop has 3 different keys, so we need to store them in different format
-  module ShopTwo
-
+  module HappyCats
     def attribute_image(item)
       item['img']
     end
