@@ -19,7 +19,6 @@ module Comparing
     def include?(item)
       @filter.each do |attribute, value|
         return false if item[attribute] != value
-
       end
       true
     end
@@ -49,11 +48,10 @@ module Comparing
         end
       end
       # assigning request id for tracking purposes
-      p.send("request_id=", @request_id)
+      p.send('request_id=', @request_id)
       # storing product position for tracking purposes
-      p.send("show_position=", index)
+      p.send('show_position=', index)
       p.save!
     end
-
   end
 end

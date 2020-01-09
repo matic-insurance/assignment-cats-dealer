@@ -1,8 +1,8 @@
 class RequestsController < ApplicationController
   def create
     @request = Request.new(
-        request_params: request_params,
-        product: 'Cat'
+      request_params: request_params,
+      product: 'Cat'
     )
     @request.save!
     populate_products
@@ -22,9 +22,8 @@ class RequestsController < ApplicationController
       all_items += Parsing::ProductParser.new(shop).call
     end
     # filtering all items by location, type & sorting cats by price
-    Comparing::ProductComparator.new(all_items, @request.product, @request.id,{
-        location: request_params[:user_location],
-        name: request_params[:cats_type]
-    }).call
+    Comparing::ProductComparator.new(all_items, @request.product, @request.id,
+                                     location: request_params[:user_location],
+                                     name: request_params[:cats_type]).call
   end
 end

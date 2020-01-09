@@ -2,7 +2,7 @@ require 'rest-client'
 
 module Parsing
   class ProductParser
-    def initialize(shop, query_params={})
+    def initialize(shop, query_params = {})
       @shop = shop
       # if we can add query params to url
       # add implementation to shop_url method
@@ -20,14 +20,14 @@ module Parsing
 
     def process_items
       # if any conventions or attribute names mapping needed - define in "attribute_#{name}" methods
-      attribute_methods = self.methods.select { |m| m.to_s.start_with? 'attribute_' }
+      attribute_methods = methods.select { |m| m.to_s.start_with? 'attribute_' }
       @items.map do |item|
         attribute_methods.each do |method|
           attribute = method.to_s.split('_')[1]
-          item[attribute] = self.send(method, item)
+          item[attribute] = send(method, item)
         end
         # storing shop id to track from which shop this product
-        item["shop_id"] = @shop.id
+        item['shop_id'] = @shop.id
         item.with_indifferent_access
       end
     end
@@ -70,24 +70,23 @@ module Parsing
       begin
         # require file
         require_relative "formats/#{@shop.format}"
-          # no file if format is not supoorted
+      # no file if format is not supoorted
       rescue LoadError
         raise "Format #{@shop.format} is not supported!"
       end
       # add methods from module to created object
-      self.extend "Parsing::Formats::#{@shop.format.camelize}".constantize
+      extend "Parsing::Formats::#{@shop.format.camelize}".constantize
     end
 
     # if any customizations on product or shop levels needed
     def setup_product_and_shop
       # checking if customizations file for product exists
-      { products: @shop.product, shops: shop_name }.each do |type, name|
+      {products: @shop.product, shops: shop_name}.each do |type, name|
         if File.exist?("app/lib/#{type}/#{name}.rb")
           require_relative "../#{type}/#{name}"
-          self.extend "#{type.to_s.camelize}::#{name.camelize}".constantize
+          extend "#{type.to_s.camelize}::#{name.camelize}".constantize
         end
       end
-
     end
   end
 end
