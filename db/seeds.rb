@@ -1,0 +1,2 @@
+Shop.create(name: 'Cats Unlimited', format: 'json', product: 'cat', url: 'https://nh7b1g9g23.execute-api.us-west-2.amazonaws.com/dev/cats/json', active: true)
+Shop.create(name: 'Happy Cats', format: 'xml', product: 'cat', url: 'https://nh7b1g9g23.execute-api.us-west-2.amazonaws.com/dev/cats/xml', active: true)

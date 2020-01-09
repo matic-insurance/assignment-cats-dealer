@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-md-2 col-md-offset-5">
-    <%= form_tag(request_path, method: 'post', class: 'form-horizontal center') do %>
+    <%= form_tag(requests_path, method: 'post', class: 'form-horizontal center') do %>
         <p>
           Select cat type:<br/>
           <%= select_tag('cats_type', options_for_select(%w(Bengal Abyssin Persian))) %>
