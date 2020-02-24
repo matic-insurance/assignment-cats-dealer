@@ -1,0 +1,10 @@
+<table class="table table-striped">
+  <thead>
+    <%= render partial: 'search/result/table/header' %>
+  </thead>
+  <tbody>
+    <% cats_list.each do |cat| %>
+      <%= render partial: 'search/result/table/row_item', locals: { cat: cat } %>
+    <% end %>
+  </tbody>
+</table>

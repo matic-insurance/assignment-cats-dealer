@@ -9,7 +9,7 @@ AllCops:
     - bin/**/*
     - tmp/**/*
 
-Metrics/LineLength:
+Layout:
   Max: 95
 
 Style/Documentation:
@@ -22,11 +22,11 @@ Metrics/BlockLength:
 Style/MultilineBlockChain:
   Enabled: false
 
-Style/PredicateName:
+Naming:
   NamePrefix:
     - is_
     - have_
-  NamePrefixBlacklist:
+  ForbiddenPrefixes:
     - is_
     - have_
 
@@ -48,4 +48,13 @@ RSpec/DescribeClass:
     - 'spec/features/**/*'
 
 RSpec/DescribeMethod:
+  Enabled: false
+
+Style/HashEachMethods:
+  Enabled: false
+
+Style/HashTransformKeys:
+  Enabled: false
+
+Style/HashTransformValues:
   Enabled: false

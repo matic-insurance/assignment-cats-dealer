@@ -1,0 +1,22 @@
+default: &default
+  shops:
+    cats_unlimited:
+      url: https://nh7b1g9g23.execute-api.us-west-2.amazonaws.com/dev/cats/json
+    happy_cats:
+      url: https://nh7b1g9g23.execute-api.us-west-2.amazonaws.com/dev/cats/xml
+
+  search_cache:
+    ttl: 5.minutes
+    key_prefix: search_cache_key_
+
+development:
+  <<: *default
+
+
+test:
+  <<: *default
+
+
+production:
+  <<: *default
+

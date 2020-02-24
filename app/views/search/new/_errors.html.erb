@@ -1,0 +1,9 @@
+<% if search_form.errors.any? %>
+  <div id="error_explanation">
+    <ul>
+      <% search_form.errors.full_messages.each do |msg| %>
+        <li><%= h msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

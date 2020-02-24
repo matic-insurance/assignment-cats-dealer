@@ -1,0 +1,13 @@
+<%= form_for(search_form, as: :search, url: search_index_path, method: :post) do |f| %>
+  <div class="form-group">
+    <%= f.label :cats_type %>
+    <%= f.select :cats_type, cats_type_options, {} %>
+  </div>
+  <div class="form-group">
+    <%= f.label :user_location %>
+    <%= f.select :user_location, user_location_options %>
+  </div>
+  <div class="form-group">
+    <%= f.submit I18n.t('forms.search.elements.submit'), class: 'btn btn-default' %>
+  </div>
+<% end %>
