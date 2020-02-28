@@ -14,11 +14,10 @@ module Cats
 
         cats = fetched_cats.map(&method(:build_cat))
 
-        Cat.import(cats,
-                   on_duplicate_key_update: {
-                     conflict_target: %i[breed location price image_url],
-                     columns:         [:price]
-                   })
+        ApplicationRecord.transaction do
+          Cat.destroy_all
+          Cat.import(cats)
+        end
       end
 
       private
@@ -26,7 +25,7 @@ module Cats
       def need_sync?
         return true if Cat.count.zero?
 
-        Cat.maximum(:updated_at) < (Time.current - SYNC_PERIOD)
+        Cat.maximum(:updated_at) < SYNC_PERIOD.ago
       end
 
       def build_cat(cat)
@@ -39,11 +38,11 @@ module Cats
       end
 
       def fetched_cats
-        @fetched_cats ||= shops.map { |shop| shop.new.cats }.flatten
+        shops.map { |shop| shop.new.cats }.flatten.compact
       end
 
       def shops
-        ::Cats::Dealer.shops
+        @shops ||= ::Cats::Dealer.shops
       end
     end
   end

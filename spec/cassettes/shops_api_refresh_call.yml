@@ -1,0 +1,211 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://nh7b1g9g23.execute-api.us-west-2.amazonaws.com/dev/cats/xml
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      User-Agent:
+      - rest-client/2.1.0 (darwin19.2.0 x86_64) ruby/2.6.5p114
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Host:
+      - nh7b1g9g23.execute-api.us-west-2.amazonaws.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '2131'
+      Connection:
+      - keep-alive
+      Date:
+      - Fri, 28 Feb 2020 20:05:23 GMT
+      X-Amzn-Requestid:
+      - 3531ac88-8356-4a56-aeb2-8a09bf611b46
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Amz-Apigw-Id:
+      - In7UiGhpvHcFqQg=
+      X-Amzn-Trace-Id:
+      - Root=1-5e597283-25e4e5b07bba77f0d05de7a8;Sampled=0
+      X-Cache:
+      - Miss from cloudfront
+      Via:
+      - 1.1 8791078fc4adbfd0d41a1431725b690e.cloudfront.net (CloudFront)
+      X-Amz-Cf-Pop:
+      - WAW50-C1
+      X-Amz-Cf-Id:
+      - B1KXam29bkBcxG8upA46N7WpjVYIS8p7dsp0-vkSL9S11j9aGFaNSQ==
+    body:
+      encoding: UTF-8
+      string: <?xml version="1.0" encoding="UTF-8"?><cats><cat><title>American Curl</title><cost>650</cost><location>Odessa</location><img>https://olxua-ring07.akamaized.net/images_slandocomua/113528769_3_1000x700_amerikanskie-kerly-koshki-s-chelovecheskim-litsom-koshka-kompanon-koti_rev022.jpg</img></cat><cat><title>Bengal</title><cost>800</cost><location>Odessa</location><img>https://olxua-ring01.akamaized.net/images_slandocomua/351717184_8_1000x700_bengalskie-kotyata-_rev029.jpg</img></cat><cat><title>Bengal</title><cost>600</cost><location>Kyiv</location><img>https://olxua-ring10.akamaized.net/images_slandocomua/496811712_5_1000x700_bengalyata-kievskaya-oblast.jpg</img></cat><cat><title>Bobtail</title><cost>369</cost><location>Kyiv</location><img>https://olxua-ring09.akamaized.net/images_slandocomua/313223928_1_1000x700_prodam-kotyat-kurilskogo-bobteyla-nikopol.jpg</img></cat><cat><title>Devon
+        Rex</title><cost>120</cost><location>Kharkiv</location><img>https://olxua-ring02.akamaized.net/images_slandocomua/408892502_8_1000x700_malchiki-devon-reksa-drx-a-24-blue-tabby-_rev004.jpg</img></cat><cat><title>Grumpy</title><cost>500</cost><location>Lviv</location><img>https://images-production.global.ssl.fastly.net/uploads/posts/image/47360/grumpy-cat.jpg</img></cat><cat><title>Maine
+        Coon</title><cost>650</cost><location>Lviv</location><img>https://olxua-ring08.akamaized.net/images_slandocomua/273255938_8_1000x700_kotyata-meyn-kun-ot-chempiona-mira-iz-elitnogo-pitomnika-_rev032.jpg</img></cat><cat><title>Sphynx</title><cost>250</cost><location>Odessa</location><img>https://olxua-ring11.akamaized.net/images_slandocomua/478774802_2_1000x700_predlagayu-malchikov-porody-donskih-sfinksov-fotografii.jpg</img></cat><cat><title>Persian</title><cost>100</cost><location>Kharkiv</location><img>https://olxua-ring02.akamaized.net/images_slandocomua/499773040_3_1000x700_persidskiy-dlinnosherstnyy-malchik-radik-koshki.jpg</img></cat><cat><title>Siamese</title><cost>40</cost><location>Kharkiv</location><img>https://olxua-ring05.akamaized.net/images_slandocomua/500276292_1_1000x700_kot-po-imeni-tom-borispol.jpg</img></cat></cats>
+    http_version: 
+  recorded_at: Fri, 28 Feb 2020 19:59:22 GMT
+- request:
+    method: get
+    uri: https://nh7b1g9g23.execute-api.us-west-2.amazonaws.com/dev/cats/json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      User-Agent:
+      - rest-client/2.1.0 (darwin19.2.0 x86_64) ruby/2.6.5p114
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Host:
+      - nh7b1g9g23.execute-api.us-west-2.amazonaws.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '2018'
+      Connection:
+      - keep-alive
+      Date:
+      - Fri, 28 Feb 2020 20:05:24 GMT
+      X-Amzn-Requestid:
+      - 4a86a04c-12b7-4a52-a45e-47c33d65ebb2
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Amz-Apigw-Id:
+      - In7UrF9HvHcF4RA=
+      X-Amzn-Trace-Id:
+      - Root=1-5e597284-dd3e7e7c1651df79ee0d5ae8;Sampled=0
+      X-Cache:
+      - Miss from cloudfront
+      Via:
+      - 1.1 4c7664383840971890a08804c2d41e86.cloudfront.net (CloudFront)
+      X-Amz-Cf-Pop:
+      - WAW50-C1
+      X-Amz-Cf-Id:
+      - 66FcvIbsmLqdDoGTQXmk8MsAS3Aw5pidxZS4lxUPdnjc3xDLz3F62g==
+    body:
+      encoding: UTF-8
+      string: '[{"name":"Abyssin","price":500,"location":"Lviv","image":"https://olxua-ring02.akamaized.net/images_slandocomua/476948786_2_1000x700_abissenysh-chempion-fotografii.jpg"},{"name":"Abyssin","price":"550","location":"Lviv","image":"https://olxua-ring10.akamaized.net/images_slandocomua/342850976_3_1000x700_abidetki-koti_rev006.jpg"},{"name":"American
+        Curl","price":450,"location":"Odessa","image":"https://olxua-ring07.akamaized.net/images_slandocomua/113528769_3_1000x700_amerikanskie-kerly-koshki-s-chelovecheskim-litsom-koshka-kompanon-koti_rev022.jpg"},{"name":"Bengal","price":700,"location":"Kyiv","image":"https://olxua-ring10.akamaized.net/images_slandocomua/496811712_5_1000x700_bengalyata-kievskaya-oblast.jpg"},{"name":"Bobtail","price":349,"location":"Kyiv","image":"https://olxua-ring09.akamaized.net/images_slandocomua/313223928_1_1000x700_prodam-kotyat-kurilskogo-bobteyla-nikopol.jpg"},{"name":"British
+        Shorthair","price":350,"location":"Kyiv","image":"https://olxua-ring09.akamaized.net/images_slandocomua/502753684_1_1000x700_shotladskie-kotyata-kiev.jpg"},{"name":"Devon
+        Rex","price":100,"location":"Kharkiv","image":"https://olxua-ring02.akamaized.net/images_slandocomua/408892502_8_1000x700_malchiki-devon-reksa-drx-a-24-blue-tabby-_rev004.jpg"},{"name":"Maine
+        Coon","price":650,"location":"Lviv","image":"https://olxua-ring08.akamaized.net/images_slandocomua/273255938_8_1000x700_kotyata-meyn-kun-ot-chempiona-mira-iz-elitnogo-pitomnika-_rev032.jpg"},{"name":"Sphynx","price":230,"location":"Odessa","image":"https://olxua-ring11.akamaized.net/images_slandocomua/478774802_2_1000x700_predlagayu-malchikov-porody-donskih-sfinksov-fotografii.jpg"},{"name":"Persian","price":120,"location":"Odessa","image":"https://olxua-ring05.akamaized.net/images_slandocomua/501982388_1_1000x700_devochka-serebristaya-shinshila-harkov_rev002.jpg"},{"name":"Siamese","price":20,"location":"Kharkiv","image":"https://olxua-ring05.akamaized.net/images_slandocomua/500276292_1_1000x700_kot-po-imeni-tom-borispol.jpg"}]'
+    http_version: 
+  recorded_at: Fri, 28 Feb 2020 19:59:22 GMT
+- request:
+    method: get
+    uri: https://nh7b1g9g23.execute-api.us-west-2.amazonaws.com/dev/cats/xml
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      User-Agent:
+      - rest-client/2.1.0 (darwin19.2.0 x86_64) ruby/2.6.5p114
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Host:
+      - nh7b1g9g23.execute-api.us-west-2.amazonaws.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '2131'
+      Connection:
+      - keep-alive
+      Date:
+      - Fri, 28 Feb 2020 20:05:24 GMT
+      X-Amzn-Requestid:
+      - a65951a5-89b2-4191-9b28-11fec62d78cc
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Amz-Apigw-Id:
+      - In7UyGtPvHcFsNQ=
+      X-Amzn-Trace-Id:
+      - Root=1-5e597284-3f17822a225c69461a603962;Sampled=0
+      X-Cache:
+      - Miss from cloudfront
+      Via:
+      - 1.1 1f7753fcca5feaf6f5b544926db150c1.cloudfront.net (CloudFront)
+      X-Amz-Cf-Pop:
+      - WAW50-C1
+      X-Amz-Cf-Id:
+      - JxK7Rv-Pu7XnMPyeQW5F818vh1rj7IXrPe-pjDz8IYN3y5ObYtJNLg==
+    body:
+      encoding: UTF-8
+      string: <?xml version="1.0" encoding="UTF-8"?><cats><cat><title>American Curl</title><cost>650</cost><location>Odessa</location><img>https://olxua-ring07.akamaized.net/images_slandocomua/113528769_3_1000x700_amerikanskie-kerly-koshki-s-chelovecheskim-litsom-koshka-kompanon-koti_rev022.jpg</img></cat><cat><title>Bengal</title><cost>800</cost><location>Odessa</location><img>https://olxua-ring01.akamaized.net/images_slandocomua/351717184_8_1000x700_bengalskie-kotyata-_rev029.jpg</img></cat><cat><title>Bengal</title><cost>600</cost><location>Kyiv</location><img>https://olxua-ring10.akamaized.net/images_slandocomua/496811712_5_1000x700_bengalyata-kievskaya-oblast.jpg</img></cat><cat><title>Bobtail</title><cost>369</cost><location>Kyiv</location><img>https://olxua-ring09.akamaized.net/images_slandocomua/313223928_1_1000x700_prodam-kotyat-kurilskogo-bobteyla-nikopol.jpg</img></cat><cat><title>Devon
+        Rex</title><cost>120</cost><location>Kharkiv</location><img>https://olxua-ring02.akamaized.net/images_slandocomua/408892502_8_1000x700_malchiki-devon-reksa-drx-a-24-blue-tabby-_rev004.jpg</img></cat><cat><title>Grumpy</title><cost>500</cost><location>Lviv</location><img>https://images-production.global.ssl.fastly.net/uploads/posts/image/47360/grumpy-cat.jpg</img></cat><cat><title>Maine
+        Coon</title><cost>650</cost><location>Lviv</location><img>https://olxua-ring08.akamaized.net/images_slandocomua/273255938_8_1000x700_kotyata-meyn-kun-ot-chempiona-mira-iz-elitnogo-pitomnika-_rev032.jpg</img></cat><cat><title>Sphynx</title><cost>250</cost><location>Odessa</location><img>https://olxua-ring11.akamaized.net/images_slandocomua/478774802_2_1000x700_predlagayu-malchikov-porody-donskih-sfinksov-fotografii.jpg</img></cat><cat><title>Persian</title><cost>100</cost><location>Kharkiv</location><img>https://olxua-ring02.akamaized.net/images_slandocomua/499773040_3_1000x700_persidskiy-dlinnosherstnyy-malchik-radik-koshki.jpg</img></cat><cat><title>Siamese</title><cost>40</cost><location>Kharkiv</location><img>https://olxua-ring05.akamaized.net/images_slandocomua/500276292_1_1000x700_kot-po-imeni-tom-borispol.jpg</img></cat></cats>
+    http_version: 
+  recorded_at: Fri, 28 Feb 2020 20:05:25 GMT
+- request:
+    method: get
+    uri: https://nh7b1g9g23.execute-api.us-west-2.amazonaws.com/dev/cats/json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      User-Agent:
+      - rest-client/2.1.0 (darwin19.2.0 x86_64) ruby/2.6.5p114
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Host:
+      - nh7b1g9g23.execute-api.us-west-2.amazonaws.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '2018'
+      Connection:
+      - keep-alive
+      Date:
+      - Fri, 28 Feb 2020 20:05:25 GMT
+      X-Amzn-Requestid:
+      - d5b6dec7-35da-4b2c-ac11-144a90f06e35
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Amz-Apigw-Id:
+      - In7U5ErmvHcFRzQ=
+      X-Amzn-Trace-Id:
+      - Root=1-5e597285-150f224a3776807a4d8d2438;Sampled=0
+      X-Cache:
+      - Miss from cloudfront
+      Via:
+      - 1.1 61d4c4ba7d3bc1067f389623d19aae8c.cloudfront.net (CloudFront)
+      X-Amz-Cf-Pop:
+      - WAW50-C1
+      X-Amz-Cf-Id:
+      - j1c7bNfwudGuV0Blx7qjx1wOrFGGlZsITPvmyOF-EtzOrAEsE8jkbg==
+    body:
+      encoding: UTF-8
+      string: '[{"name":"Abyssin","price":500,"location":"Lviv","image":"https://olxua-ring02.akamaized.net/images_slandocomua/476948786_2_1000x700_abissenysh-chempion-fotografii.jpg"},{"name":"Abyssin","price":"550","location":"Lviv","image":"https://olxua-ring10.akamaized.net/images_slandocomua/342850976_3_1000x700_abidetki-koti_rev006.jpg"},{"name":"American
+        Curl","price":450,"location":"Odessa","image":"https://olxua-ring07.akamaized.net/images_slandocomua/113528769_3_1000x700_amerikanskie-kerly-koshki-s-chelovecheskim-litsom-koshka-kompanon-koti_rev022.jpg"},{"name":"Bengal","price":700,"location":"Kyiv","image":"https://olxua-ring10.akamaized.net/images_slandocomua/496811712_5_1000x700_bengalyata-kievskaya-oblast.jpg"},{"name":"Bobtail","price":349,"location":"Kyiv","image":"https://olxua-ring09.akamaized.net/images_slandocomua/313223928_1_1000x700_prodam-kotyat-kurilskogo-bobteyla-nikopol.jpg"},{"name":"British
+        Shorthair","price":350,"location":"Kyiv","image":"https://olxua-ring09.akamaized.net/images_slandocomua/502753684_1_1000x700_shotladskie-kotyata-kiev.jpg"},{"name":"Devon
+        Rex","price":100,"location":"Kharkiv","image":"https://olxua-ring02.akamaized.net/images_slandocomua/408892502_8_1000x700_malchiki-devon-reksa-drx-a-24-blue-tabby-_rev004.jpg"},{"name":"Maine
+        Coon","price":650,"location":"Lviv","image":"https://olxua-ring08.akamaized.net/images_slandocomua/273255938_8_1000x700_kotyata-meyn-kun-ot-chempiona-mira-iz-elitnogo-pitomnika-_rev032.jpg"},{"name":"Sphynx","price":230,"location":"Odessa","image":"https://olxua-ring11.akamaized.net/images_slandocomua/478774802_2_1000x700_predlagayu-malchikov-porody-donskih-sfinksov-fotografii.jpg"},{"name":"Persian","price":120,"location":"Odessa","image":"https://olxua-ring05.akamaized.net/images_slandocomua/501982388_1_1000x700_devochka-serebristaya-shinshila-harkov_rev002.jpg"},{"name":"Siamese","price":20,"location":"Kharkiv","image":"https://olxua-ring05.akamaized.net/images_slandocomua/500276292_1_1000x700_kot-po-imeni-tom-borispol.jpg"}]'
+    http_version: 
+  recorded_at: Fri, 28 Feb 2020 20:05:25 GMT
+recorded_with: VCR 3.0.3
