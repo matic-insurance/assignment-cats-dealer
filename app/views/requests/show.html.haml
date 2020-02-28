@@ -1,12 +1,12 @@
 %h2.text-center
-  - if @cats_list.empty?
+  - if @cats.empty?
     Sorry, no cats for your location :(
   - if @best_price.present?
     Best price for your location - #{@best_price}
 
 %br
 
-- if @cats_list.present?
+- if @cats.present?
   %table.table.table-striped
     %thead.thead-dark
       %tr
@@ -15,11 +15,11 @@
         %th Location
         %th Image
     %tbody
-      - @cats_list.each do |cat|
+      - @cats.each do |cat|
         %tr
-          %td= cat['name']
-          %td= cat['price']
-          %td= cat['location']
-          %td= image_tag(cat['image'], width: '150px')
+          %td= cat.breed
+          %td= cat.price
+          %td= cat.location
+          %td= image_tag(cat.image_url, width: '150px')
 
 

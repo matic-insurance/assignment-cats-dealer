@@ -1,23 +1,18 @@
 class RequestsController < ApplicationController
   def new
+    @breeds    = ::Cats::Dealer::BREEDS
+    @locations = ::Cats::Dealer::LOCATIONS
   end
 
   def create
-    response = RestClient.get('https://nh7b1g9g23.execute-api.us-west-2.amazonaws.com/dev/cats/json')
-    result = JSON.parse(response.body)
-    result_params = {
-      cats_list: result,
-      cat_type: params[:breed],
-      location: params[:location]
-    }
-    redirect_to request_path(result_params)
+    ::Cats::Dealer.sync_cats
+
+    redirect_to request_path(location: params[:location], breed: params[:breed])
   end
 
   def show
-    @cats_list = params[:cats_list].select do |list|
-      list['location'] == params[:location] && list['name'] == params[:cat_type]
-    end
+    @cats = ::Cats::Dealer.find_cats(location: params[:location], breed: params[:breed])
 
-    @best_price = @cats_list.sort_by { |list| list[:price] }.first['price'] if @cats_list.present?
+    @best_price = @cats.min_by(&:price).price if @cats.present?
   end
 end
