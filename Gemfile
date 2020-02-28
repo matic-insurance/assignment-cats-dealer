@@ -14,6 +14,8 @@ gem 'uglifier', '>= 1.3.0'
 
 group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'rubocop-rails'
+  gem 'rubocop-rspec'
   gem 'web-console', '>= 3.3.0'
 end
 

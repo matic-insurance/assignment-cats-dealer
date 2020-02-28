@@ -1,4 +1,6 @@
-require: rubocop-rspec
+require:
+  - rubocop-rails
+  - rubocop-rspec
 
 AllCops:
   TargetRubyVersion: 2.6
@@ -26,7 +28,7 @@ Style/PredicateName:
   NamePrefix:
     - is_
     - have_
-  NamePrefixBlacklist:
+  ForbiddenPrefixes:
     - is_
     - have_
 
