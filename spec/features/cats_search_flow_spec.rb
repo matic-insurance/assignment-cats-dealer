@@ -4,7 +4,7 @@ require 'rails_helper'
 
 RSpec.feature 'Cats search flow' do
   subject        { page }
-  let(:cassette) { 'shops_sync' }
+  let(:cassette) { 'shops_api' }
 
   around(:each) do |example|
     VCR.use_cassette(cassette, &example)
