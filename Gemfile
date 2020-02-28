@@ -3,9 +3,10 @@ source 'https://rubygems.org'
 gem 'rails', '~> 5.1.1'
 gem 'sqlite3'
 
+gem 'activerecord-import'
+gem 'hamlit'
 gem 'puma'
 gem 'rest-client'
-gem 'hamlit'
 
 gem 'bootstrap-sass', '~> 3.4.1'
 gem 'coffee-rails', '~> 4.2'

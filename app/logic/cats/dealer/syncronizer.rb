@@ -1,23 +1,47 @@
+# frozen_string_literal: true
 
 module Cats
   module Dealer
     class Syncronizer
-      def self.sync_cats
-        result = ::Cats::Dealer.shops.map do |shop|
-          shop.new.cats
-        end.flatten
+      SYNC_PERIOD = 5.minutes
 
-        result.map do |res|
-          ::Cat.find_or_create_by!(
-            breed:     res.breed,
-            price:     res.price,
-            location:  res.location,
-            image_url: res.image_url
-          )
-        end
+      def self.sync_cats
+        new.call
       end
 
-      def initialize
+      def call
+        return unless need_sync?
+
+        cats = fetched_cats.map(&method(:build_cat))
+
+        Cat.import(cats,
+                   on_duplicate_key_update: {
+                     conflict_target: %i[breed location price image_url],
+                     columns:         [:price]
+                   })
+      end
+
+      private
+
+      def need_sync?
+        Cat.maximum(:updated_at) < (Time.current - SYNC_PERIOD)
+      end
+
+      def build_cat(cat)
+        {
+          breed:     cat.breed,
+          price:     cat.price,
+          location:  cat.location,
+          image_url: cat.image_url
+        }
+      end
+
+      def fetched_cats
+        @fetched_cats ||= shops.map { |shop| shop.new.cats }.flatten
+      end
+
+      def shops
+        ::Cats::Dealer.shops
       end
     end
   end

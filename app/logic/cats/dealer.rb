@@ -1,10 +1,13 @@
+# frozen_string_literal: true
 
 module Cats
   module Dealer
-    BREEDS    = %w(Bengal Abyssin Persian).freeze
-    LOCATIONS = %w(Lviv Kiev Odessa).freeze
+    BREEDS    = %w[Bengal Abyssin Persian].freeze
+    LOCATIONS = %w[Lviv Kiev Odessa].freeze
 
+    # rubocop:disable all
     extend self
+    # rubocop:enable all
 
     delegate :sync_cats, to: Syncronizer
     delegate :shops,     to: ShopsManager

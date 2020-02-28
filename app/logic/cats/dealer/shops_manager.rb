@@ -1,8 +1,9 @@
+# frozen_string_literal: true
 
 module Cats
   module Dealer
     class ShopsManager
-      BASE_REGEX = /base_/
+      BASE_REGEX = %r{base_}.freeze
 
       def self.shops
         new.call
@@ -18,12 +19,12 @@ module Cats
 
       def adapters_names
         Dir.glob(adapters_path)
-           .map     { |file| File.basename(file, '.*') }
-           .keep_if { |file| file !~ BASE_REGEX }
+          .map     { |file| File.basename(file, '.*') }
+          .keep_if { |file| file !~ BASE_REGEX }
       end
 
       def adapters_path
-        Rails.root.join('app', 'adapters', '*.rb')
+        Rails.root.join('app/adapters/*.rb')
       end
     end
   end

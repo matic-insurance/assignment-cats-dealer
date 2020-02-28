@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class BaseAdapter
   REQUEST_TIMEOUT = 10
 
@@ -8,6 +10,8 @@ class BaseAdapter
     raise NotImplementedError, "Method `#{name}` must be implemented!"
   end
 
+  private
+
   def request(url, method: :get, params: {})
     RestClient::Request.execute(
       method:  method,
@@ -15,7 +19,16 @@ class BaseAdapter
       params:  params,
       timeout: REQUEST_TIMEOUT
     )
-  rescue => e
+  rescue StandardError => e
     raise RequestError, e.message
+  end
+
+  def build_cat(breed, price, location, image_url)
+    RemoteCat.new(
+      breed:     breed,
+      price:     price.to_i,
+      location:  location,
+      image_url: image_url
+    )
   end
 end

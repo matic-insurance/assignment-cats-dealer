@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class HappyCatsAdapter < BaseAdapter
   URL = 'https://nh7b1g9g23.execute-api.us-west-2.amazonaws.com/dev/cats/xml'
 
@@ -6,12 +8,7 @@ class HappyCatsAdapter < BaseAdapter
     result   = Hash.from_xml(response.body)['cats']['cat']
 
     result.map do |res|
-      RemoteCat.new(
-        breed:     res['title'],
-        price:     res['cost'].to_i,
-        location:  res['location'],
-        image_url: res['img']
-      )
+      build_cat(res['title'], res['cost'], res['location'], res['img'])
     end
   end
 end
