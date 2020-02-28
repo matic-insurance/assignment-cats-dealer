@@ -24,6 +24,8 @@ module Cats
       private
 
       def need_sync?
+        return true if Cat.count.zero?
+
         Cat.maximum(:updated_at) < (Time.current - SYNC_PERIOD)
       end
 
