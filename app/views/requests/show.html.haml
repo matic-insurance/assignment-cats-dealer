@@ -1,0 +1,25 @@
+%h2.text-center
+  - if @cats_list.empty?
+    Sorry, no cats for your location :(
+  - if @best_price.present?
+    Best price for your location - #{@best_price}
+
+%br
+
+- if @cats_list.present?
+  %table.table.table-striped
+    %thead.thead-dark
+      %tr
+        %th Type
+        %th Price
+        %th Location
+        %th Image
+    %tbody
+      - @cats_list.each do |cat|
+        %tr
+          %td= cat['name']
+          %td= cat['price']
+          %td= cat['location']
+          %td= image_tag(cat['image'], width: '150px')
+
+

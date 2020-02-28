@@ -7,8 +7,8 @@ class RequestsController < ApplicationController
     result = JSON.parse(response.body)
     result_params = {
       cats_list: result,
-      cat_type: params[:cats_type],
-      location: params[:user_location]
+      cat_type: params[:breed],
+      location: params[:location]
     }
     redirect_to request_path(result_params)
   end
@@ -17,5 +17,7 @@ class RequestsController < ApplicationController
     @cats_list = params[:cats_list].select do |list|
       list['location'] == params[:location] && list['name'] == params[:cat_type]
     end
+
+    @best_price = @cats_list.sort_by { |list| list[:price] }.first['price'] if @cats_list.present?
   end
 end

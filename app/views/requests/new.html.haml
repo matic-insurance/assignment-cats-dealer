@@ -1,0 +1,13 @@
+.row
+  .col-md-2.col-md-offset-5
+    = form_tag(request_path, method: :post) do
+      .form-group
+        Select cat type:
+        = select_tag(:breed, options_for_select(Cat::BREEDS), class: 'form-control')
+
+      .form-group
+        Select your location:
+        = select_tag(:location, options_for_select(Cat::LOCATIONS), class: 'form-control')
+
+      .form-group
+        = submit_tag 'Send request', class: 'btn btn-default btn-block'
