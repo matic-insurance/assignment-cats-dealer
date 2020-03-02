@@ -7,7 +7,7 @@ class RequestsController < ApplicationController
   end
 
   def create
-    ::Cats::Dealer.sync_cats
+    ::AsyncJob.perform_later(klass: ::Cats::Dealer.to_s, method: :sync_cats.to_s)
 
     redirect_to request_path(location: params[:location], breed: params[:breed])
   end

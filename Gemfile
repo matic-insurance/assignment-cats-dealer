@@ -7,6 +7,7 @@ gem 'activerecord-import'
 gem 'hamlit'
 gem 'puma'
 gem 'rest-client'
+gem 'sidekiq'
 
 gem 'bootstrap-sass', '~> 3.4.1'
 gem 'coffee-rails', '~> 4.2'
@@ -26,6 +27,7 @@ group :development, :test do
 end
 
 group :test do
+  gem 'fakeredis'
   gem 'rspec-rails', '~> 3.6.0'
   gem 'vcr', '~> 3.0', '>= 3.0.1'
   gem 'capybara'

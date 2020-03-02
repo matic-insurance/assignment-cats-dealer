@@ -11,6 +11,8 @@ RSpec.feature 'Cats search flow' do
   end
 
   before do
+    ::Cats::Dealer.sync_cats
+
     visit root_path
 
     expect(page).to have_select(:breed)
