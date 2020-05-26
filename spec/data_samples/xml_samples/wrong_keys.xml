@@ -1,0 +1,14 @@
+<pussies>
+  <pussy>
+    <title>American Curl</title>
+    <cost>650</cost>
+    <location>Odessa</location>
+    <img>https://some.url</img>
+  </pussy>
+  <pussy>
+    <title>Grumpy Cat</title>
+    <cost>650</cost>
+    <location>Odessa</location>
+    <img>https://some.url</img>
+  </pussy>
+</pussies>

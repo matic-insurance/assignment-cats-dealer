@@ -1,11 +1,13 @@
 require 'rails_helper'
 
-describe RequestsController do
-  describe 'GET #new' do
-    before { get 'new' }
+describe ItemsController do
+  describe 'GET #index' do
+    let(:params) { {id: 'some'} }
 
     it 'returns status code 200' do
       expect(response).to have_http_status(:ok)
+
+      get 'index'
     end
   end
 end

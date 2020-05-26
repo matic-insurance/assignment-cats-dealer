@@ -1,3 +1,8 @@
-db/*.sqlite3
+db/*.
 log/
 tmp/
+.history
+.env.development
+.env.test
+coverage
+.keep

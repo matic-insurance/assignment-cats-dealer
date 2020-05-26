@@ -1,0 +1,45 @@
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <%= form_tag('/', method: :get, class: 'form-horizontal center best-deal-form') do %>
+        <div class="col-md-2">
+          <div class="form-group">
+            <label> Select cat type:</label>
+            <%= select_tag('breed', options_from_collection_for_select(@breeds, :id, :name), class: 'form-control') %>
+          </div>
+          <div class="form-group">
+            <label> City:</label>
+            <%= select_tag('city', options_from_collection_for_select(@cities, :id, :name), class: 'form-control') %>
+          </div>
+          <div class="form-group">
+            <%= submit_tag 'Filter', id: "filters_submit", class: 'btn btn-primary' %>
+          </div>
+          <div class="form-group">
+            <%= submit_tag 'reset', class: 'btn btn-default' %>
+          </div>
+        </div>
+
+    <% end %>
+  </div>
+  <div class="col-md-8 col-md-offset-2">
+    <table class="table table-striped items table-dark">
+      <thead>
+      <tr>
+        <th>Breed</th>
+        <th>Price</th>
+        <th>City</th>
+        <th>Image</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @items.each do |cat| %>
+        <tr class='item'>
+          <td><%= cat.breed.name %></td>
+          <td><%= Money.new(cat['price_cents'], 'UAH').format %></td>
+          <td><%= cat.city.name %></td>
+          <td><%= image_tag('https://ireland.apollo.olxcdn.com/v1/files/hi56ncq8marf2-UA/image;s=644x461', width: '120px') %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
