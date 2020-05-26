@@ -35,3 +35,5 @@ jobs:
         run: gem install rubocop-rspec -v 1.36.0
       - name: Run rubocop
         run: rubocop
+      - name: Bundle audit
+        command: bundle exec bundle-audit check --update

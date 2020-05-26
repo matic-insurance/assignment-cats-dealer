@@ -1,0 +1,10 @@
+PreCommit:
+  RuboCop:
+    enabled: true
+    on_warn: fail # Treat all warnings as failures
+    flags: ['--force-exclusion']
+BundleAudit:
+  enabled: false
+  description: 'Check for vulnerable versions of gems'
+  required_executable: 'bundle-audit'
+  install_command: 'gem install bundler-audit'
