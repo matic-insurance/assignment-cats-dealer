@@ -1,0 +1,17 @@
+<div class="row">
+  <h1>Pussy dealer</h1>
+  <div class="col-md-2 col-md-offset-5">
+    <%= form_tag(cats_path, method: 'post', class: 'form-horizontal center') do %>
+        <p>
+          Select cat type:<br/>
+          <%= select_tag('cat_type', options_for_select(%w(Bengal Abyssin Persian))) %>
+        </p>
+        <p>
+          Select your location:<br/>
+          <%= select_tag('user_location', options_for_select(%w(Lviv Kiev Odessa))) %>
+        </p>
+        <div><%= submit_tag 'Search', class: 'btn btn-default' %></div>
+    <% end %>
+  </div>
+</div>
+<br>
