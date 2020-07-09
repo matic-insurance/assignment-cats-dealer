@@ -6,7 +6,6 @@ gem 'sqlite3'
 gem 'puma'
 gem 'rest-client'
 
-gem 'bootstrap-sass', '~> 3.4.1'
 gem 'coffee-rails', '~> 4.2'
 gem 'sass-rails', '~> 5.0'
 gem 'turbolinks', '~> 5'
@@ -24,3 +23,11 @@ group :test do
 end
 
 gem "parallel", "~> 1.19"
+
+gem "bootstrap", "~> 4.5"
+
+gem "sprockets-rails", "~> 3.2"
+
+gem "bootstrap_form", "~> 4.4"
+
+gem "jquery-rails", "~> 4.4"

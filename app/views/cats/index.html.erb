@@ -1,0 +1,8 @@
+<div class="container-fluid">
+  <h1>Pussy dealer</h1>
+  <%= bootstrap_form_tag url: '/cats' do |f| %>
+    <%= f.select :cat_type, [['Bengal', 'Bengal'], ['Abyssin', 'Abyssin'], ['Persian', 'Persian']], { label: "Choose your favorite cat type:", wrapper: { class: 'col col-md-2' } } %>
+    <%= f.select :user_location, [['Lviv', 'Lviv'], ['Kiev', 'Kiev'], ['Odessa', 'Odessa']], { label: "Choose your favorite cat type:", wrapper: { class: 'col col-md-2' } } %>
+    <%= f.primary 'Search', class: "btn btn-primary" %>
+  <% end %>
+</div>
