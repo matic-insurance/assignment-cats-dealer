@@ -7,8 +7,6 @@ class SearchRequest
   end
 
   def self.search(params)
-    best_deal = CatsDealer.best_deal(SearchRequest.new(params))
-    p "best_deal: #{best_deal}"
-    best_deal
+    CatsDealer.get_deals(SearchRequest.new(params))
   end
 end
