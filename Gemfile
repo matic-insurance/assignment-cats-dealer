@@ -22,3 +22,5 @@ end
 group :test do
   gem 'rspec-rails', '~> 3.6.0'
 end
+
+gem "parallel", "~> 1.19"

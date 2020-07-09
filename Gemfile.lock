@@ -210,6 +210,7 @@ DEPENDENCIES
   bootstrap-sass (~> 3.4.1)
   coffee-rails (~> 4.2)
   listen (>= 3.0.5, < 3.2)
+  parallel (~> 1.19)
   puma
   rails (~> 5.1.1)
   rest-client

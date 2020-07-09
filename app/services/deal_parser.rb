@@ -1,5 +1,5 @@
 module DealParser
-  def self.parse(response, parser)
-    parser.parse(response)
+  def self.parse(response, parser, options = {})
+    parser.parse(response, options)
   end
 end

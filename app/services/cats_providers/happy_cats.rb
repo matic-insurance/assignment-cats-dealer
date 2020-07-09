@@ -1,14 +1,19 @@
 module CatsProviders
-  class CatsUnlimited
+  class HappyCats
     def self.get_deals(search_request)
+      parser_options = {
+        root_emelent: 'cats',
+        child_element: 'cat'
+      }
+
       deals = DealParser.parse(
                 RestClient.get(CatsDealerConfig.provider_endpoints[self.name.split('::').last.underscore.to_sym]), 
-                DealParsers::JsonParser
+                DealParsers::XmlParser,
+                parser_options
               )
 
       deals = self.filter_by_location(deals, search_request.location)
       deals = self.filter_by_cat_type(deals, search_request.cat_type)
-      
     end
 
     def self.filter_by_location(deals, location)
@@ -16,7 +21,7 @@ module CatsProviders
     end
 
     def self.filter_by_cat_type(deals, cat_type)
-      deals.select { |deal| deal['name'] == cat_type }
+      deals.select { |deal| deal['title'] == cat_type }
     end
   end
 end

@@ -1,3 +1,3 @@
 module CatsProviders
-  DEFAULT_PROVIDERS = [CatsProviders::CatsUnlimited]
+  DEFAULT_PROVIDERS = [CatsProviders::CatsUnlimited, CatsProviders::HappyCats]
 end

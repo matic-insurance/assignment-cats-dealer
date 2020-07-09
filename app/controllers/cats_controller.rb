@@ -2,8 +2,8 @@ class CatsController < ApplicationController
   def new; end
 
   def best_deal
-    search = SearchRequest.search(search_params)
-    search.response
+    response = SearchRequest.search(search_params)
+    
   end
 
   private
