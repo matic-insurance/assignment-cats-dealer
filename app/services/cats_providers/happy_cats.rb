@@ -16,7 +16,7 @@ module CatsProviders
     end
 
     def self.filter_deals(deals, search_request)
-      deals = filter_by_location(deals, search_request.location)
+      deals = filter_by_location(deals, search_request.user_location)
       filter_by_cat_type(deals, search_request.cat_type)
     end
 

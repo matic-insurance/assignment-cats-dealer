@@ -1,9 +1,9 @@
 class SearchRequest
-  attr_reader :cat_type, :location
+  attr_reader :cat_type, :user_location
 
   def initialize(params)
     @cat_type = params[:cat_type]
-    @location = params[:user_location]
+    @user_location = params[:user_location]
   end
 
   def self.search(params)
