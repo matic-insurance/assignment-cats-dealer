@@ -14,10 +14,10 @@
   <tbody>
   <% @cats.each do |cat| %>
       <tr>
-        <td><%= cat['name'] %></td>
-        <td><%= cat['price'] %></td>
+        <td><%= name(cat['name']) %></td>
+        <td><%= price(cat['price']) %></td>
         <td><%= cat['location'] %></td>
-        <td><%= image_tag(cat['image'], width: '150px') %></td>
+        <td><%= image_tag(cat.fetch('image', 'no_cat_icon.png'), width: '30px', alt:'no icon') %></td>
       </tr>
   <% end %>
   </tbody>
