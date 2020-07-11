@@ -7,8 +7,8 @@ module CatsProviders
 
     private
 
-    def filter_by_cat_type(deals, cat_type)
-      deals.select { |deal| deal['name'] == cat_type }
+    def title_field_name
+      'name'
     end
   end
 end

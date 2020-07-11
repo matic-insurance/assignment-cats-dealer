@@ -12,8 +12,8 @@ module CatsProviders
 
     private
 
-    def filter_by_cat_type(deals, cat_type)
-      deals.select { |deal| deal['title'] == cat_type }
+    def title_field_name
+      'title'
     end
   end
 end

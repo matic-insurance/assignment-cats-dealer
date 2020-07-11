@@ -21,8 +21,8 @@ module CatsProviders
       deals.select { |deal| deal['location'] == location }
     end
 
-    def filter_by_cat_type(_deals, _cat_type)
-      raise NotImplementedError, "#{__method__} should be implemented"
+    def filter_by_cat_type(deals, cat_type)
+      deals.select { |deal| deal[title_field_name] == cat_type }
     end
   end
 end
