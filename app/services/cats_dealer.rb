@@ -2,7 +2,7 @@ module CatsDealer
   def self.search(search_request)
     deals = Parallel.map(CatsProviders::DEFAULT_PROVIDERS,
                          in_processes: CatsDealerConfig.parallel_processes) do |provider|
-                           provider.get_deals(search_request)
+                           provider.new(search_request).fetch_deals
                          end
                     .flatten
 
