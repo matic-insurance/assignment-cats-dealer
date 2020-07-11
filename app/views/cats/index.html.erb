@@ -2,7 +2,7 @@
   <h1>Pussy dealer</h1>
   <%= bootstrap_form_tag url: '/cats', remote: true do |f| %>
     <%= f.select :cat_type, options_for_select([['Bengal', 'Bengal'], ['Abyssin', 'Abyssin'], ['Persian', 'Persian']], @cat_type), { label: "Choose your favorite cat type:", wrapper: { class: 'col col-md-2' } } %>
-    <%= f.select :user_location, options_for_select([['Lviv', 'Lviv'], ['Kiev', 'Kiev'], ['Odessa', 'Odessa']], @user_location), { label: "Choose your favorite cat type:", wrapper: { class: 'col col-md-2' } } %>
+    <%= f.select :user_location, options_for_select([['Lviv', 'Lviv'], ['Kyiv', 'Kyiv'], ['Odessa', 'Odessa']], @user_location), { label: "Choose your favorite cat type:", wrapper: { class: 'col col-md-2' } } %>
     <%= f.primary 'Search', class: "btn btn-primary" %>
   <% end %>
 
