@@ -3,6 +3,6 @@ Rails.application.routes.draw do
   root 'cats#index'
 
   post :cats, to: 'cats#search'
-  resources :cats, only: %i[new index]
+  resources :cats, only: %i[index]
   
 end
