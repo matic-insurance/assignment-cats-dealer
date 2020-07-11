@@ -3,11 +3,7 @@ class CatsController < ApplicationController
 
   def search
     cats = SearchRequest.search(search_params)
-    redirect_to cats_path({cats: cats})
-  end
-
-  def ajax_refresh
-    return render(:file => 'reports/create.js.erb')
+    redirect_to cats_path(cats: cats)
   end
 
   def index
@@ -19,5 +15,4 @@ class CatsController < ApplicationController
   def search_params
     params.permit(:cat_type, :user_location)
   end
-
 end

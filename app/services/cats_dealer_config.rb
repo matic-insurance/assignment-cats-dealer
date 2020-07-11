@@ -14,5 +14,4 @@ class CatsDealerConfig
   def self.parallel_processes
     @parallel_processes
   end
-
 end

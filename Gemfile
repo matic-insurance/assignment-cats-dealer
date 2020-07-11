@@ -22,12 +22,12 @@ group :test do
   gem 'rspec-rails', '~> 3.6.0'
 end
 
-gem "parallel", "~> 1.19"
+gem 'parallel', '~> 1.19'
 
-gem "bootstrap", "~> 4.5"
+gem 'bootstrap', '~> 4.5'
 
-gem "sprockets-rails", "~> 3.2"
+gem 'sprockets-rails', '~> 3.2'
 
-gem "bootstrap_form", "~> 4.4"
+gem 'bootstrap_form', '~> 4.4'
 
-gem "jquery-rails", "~> 4.4"
+gem 'jquery-rails', '~> 4.4'

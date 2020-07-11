@@ -1,3 +1,3 @@
 module CatsProviders
-  DEFAULT_PROVIDERS = [CatsProviders::CatsUnlimited, CatsProviders::HappyCats]
+  DEFAULT_PROVIDERS = [CatsProviders::CatsUnlimited, CatsProviders::HappyCats].freeze
 end
