@@ -2,21 +2,16 @@ class CatsController < ApplicationController
   def new; end
 
   def search
-    @cats = SearchRequest.search(search_params)
-
-    result_params = {
-      cats_list: @cats,
-      cat_type: params[:cats_type],
-      location: params[:user_location]
-    }
-
-    redirect_to cats_path({cats: @cats}) #TODO fix this.
+    cats = SearchRequest.search(search_params)
+    redirect_to cats_path({cats: cats})
   end
 
-  def index; end
+  def ajax_refresh
+    return render(:file => 'reports/create.js.erb')
+  end
 
-  def result
-
+  def index
+    @cats = params['cats'].present? ? params['cats'] : []
   end
 
   private

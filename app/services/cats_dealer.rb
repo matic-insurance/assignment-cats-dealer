@@ -3,7 +3,7 @@ module CatsDealer
     deals = Parallel.map(CatsProviders::DEFAULT_PROVIDERS, in_processes: CatsDealerConfig.parallel_processes) { |provider| provider.get_deals(search_request) }
             .flatten
 
-    deals.size == 1 ? deals : self.best_deal(deals)
+    deals.size == 1 ? deals : Array.wrap(self.best_deal(deals))
   end
 
   private

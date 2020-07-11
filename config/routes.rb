@@ -8,8 +8,6 @@ Rails.application.routes.draw do
 
 
   post :cats, to: 'cats#search'
-  resources :cats, only: %i[new index] do
-    get :result
-  end
+  resources :cats, only: %i[new index]
   
 end

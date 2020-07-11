@@ -1,8 +1,5 @@
+
 <% if @cats.size > 0 %>
-<p>
-Best price for your location
-- <%= @cats.first %>
-</p>
 
 <table class=" table table-striped">
   <thead>
@@ -15,7 +12,7 @@ Best price for your location
   </thead>
 
   <tbody>
-  <% @cats_list.each do |cat| %>
+  <% @cats.each do |cat| %>
       <tr>
         <td><%= cat['name'] %></td>
         <td><%= cat['price'] %></td>
