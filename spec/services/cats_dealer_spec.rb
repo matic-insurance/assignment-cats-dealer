@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe CatsDealer do
-  it 'respond to get_deals method' do
-    expect(described_class).to respond_to(:get_deals)
+  it 'respond to search method' do
+    expect(described_class).to respond_to(:search)
   end
 end

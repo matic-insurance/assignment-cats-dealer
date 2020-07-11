@@ -1,5 +1,5 @@
 module CatsDealer
-  def self.get_deals(search_request)
+  def self.search(search_request)
     deals = Parallel.map(CatsProviders::DEFAULT_PROVIDERS,
                          in_processes: CatsDealerConfig.parallel_processes) do |provider|
                            provider.get_deals(search_request)
