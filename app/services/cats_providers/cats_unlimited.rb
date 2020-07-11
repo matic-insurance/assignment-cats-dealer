@@ -1,11 +1,7 @@
 module CatsProviders
   class CatsUnlimited
     def self.get_deals(search_request)
-      deals = DealParser.parse(
-                RestClient.get(endpoint),
-                DealParsers::JsonParser
-              )
-
+      deals = DealParser.parse(RestClient.get(endpoint), DealParsers::JsonParser)
       filter_deals(deals, search_request)
     end
 

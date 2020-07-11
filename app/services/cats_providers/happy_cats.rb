@@ -1,16 +1,12 @@
 module CatsProviders
   class HappyCats
     def self.get_deals(search_request)
-      parser_options = {
+      parse_options = {
         root_emelent: 'cats',
         child_element: 'cat'
       }
 
-      deals = DealParser.parse(
-                RestClient.get(endpoint),
-                DealParsers::XmlParser,
-                parser_options
-              )
+      deals = DealParser.parse(RestClient.get(endpoint), DealParsers::XmlParser, parse_options)
 
       filter_deals(deals, search_request)
     end
