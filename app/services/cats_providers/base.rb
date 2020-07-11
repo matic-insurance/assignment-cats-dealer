@@ -18,7 +18,7 @@ module CatsProviders
     end
 
     def filter_by_location(deals, location)
-      deals.select { |deal| deal['location'] == location }
+      deals.select { |deal| deal[location_field_name] == location }
     end
 
     def filter_by_cat_type(deals, cat_type)

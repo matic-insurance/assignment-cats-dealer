@@ -15,5 +15,9 @@ module CatsProviders
     def title_field_name
       'title'
     end
+
+    def location_field_name
+      'location'
+    end
   end
 end
