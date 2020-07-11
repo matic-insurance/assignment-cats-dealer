@@ -6,7 +6,7 @@ module CatsDealer
                          end
                     .flatten
 
-    deals.size == 1 ? deals : Array.wrap(best_deal(deals))
+    Array.wrap(best_deal(deals))
   end
 
   def self.best_deal(deals)
