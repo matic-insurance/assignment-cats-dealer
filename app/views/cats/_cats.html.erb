@@ -1,5 +1,5 @@
 
-<% if @cats.size > 0 %>
+<% if @cats.present? %>
 
 <table class=" table table-striped">
   <thead>
@@ -22,8 +22,8 @@
   <% end %>
   </tbody>
 </table>
-<% else %>
-  <p>
+<% elsif @searched && @cats.empty? %>
+  <div class="alert alert-info" role="alert">
     Sorry, no cats for your location
-  </p>
+  </div>
 <% end %>
