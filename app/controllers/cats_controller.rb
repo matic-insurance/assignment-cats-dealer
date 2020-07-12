@@ -1,6 +1,4 @@
 class CatsController < ApplicationController
-  def new; end
-
   def search
     cats = CatsDealer.search(SearchRequest.new(search_params))
     redirect_to cats_path(
