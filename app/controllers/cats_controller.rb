@@ -3,7 +3,7 @@ class CatsController < ApplicationController
     cats = CatsDealer.search(SearchRequest.new(search_params))
     redirect_to cats_path(
       cats: cats,
-      cat_type: search_params[:cat_type],
+      breed: search_params[:breed],
       user_location: search_params[:user_location],
       searched: true
     )
@@ -11,7 +11,7 @@ class CatsController < ApplicationController
 
   def index
     @cats = params.fetch('cats', [])
-    @cat_type = params.fetch('cat_type', nil)
+    @breed = params.fetch('breed', nil)
     @user_location = params.fetch('user_location', nil)
     @searched = params.fetch('searched', nil)
   end
@@ -19,6 +19,6 @@ class CatsController < ApplicationController
   private
 
   def search_params
-    params.permit(:cat_type, :user_location)
+    params.permit(:breed, :user_location)
   end
 end

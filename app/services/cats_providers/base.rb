@@ -33,7 +33,7 @@ module CatsProviders
     end
 
     def filter_by_breed!
-      deals.select! { |deal| deal[title_field_name] == search_request.cat_type }
+      deals.select! { |deal| deal[title_field_name] == search_request.breed }
     end
 
     def filter_by_lowest_price!
