@@ -11,6 +11,10 @@ module CatsProviders
       @deals = []
     end
 
+    def fetch_deals
+      raise NoMethodError, "#{__method__} method should be implemented"
+    end
+
     private
 
     def endpoint
