@@ -6,8 +6,13 @@ module CatsProviders
         child_element: 'cat'
       }
 
-      deals = DealParser.parse(RestClient.get(endpoint), DealParsers::XmlParser, parse_options)
-      filter_deals(deals)
+      @deals = DealParser.parse(
+        RestClient.get(endpoint),
+        DealParsers::XmlParser,
+        parse_options
+      )
+
+      filter_deals
     end
 
     private
@@ -18,6 +23,14 @@ module CatsProviders
 
     def location_field_name
       'location'
+    end
+
+    def price_field_name
+      'cost'
+    end
+
+    def image_field_name
+      'img'
     end
   end
 end

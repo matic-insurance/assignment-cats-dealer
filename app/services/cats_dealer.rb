@@ -10,6 +10,6 @@ module CatsDealer
   end
 
   def self.best_deal(deals)
-    deals.min_by { |deal| deal['price'].to_i }
+    Array.wrap(deals.min_by { |deal| deal['price'].to_i }).compact
   end
 end

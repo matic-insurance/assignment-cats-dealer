@@ -3,7 +3,11 @@ class CatsController < ApplicationController
 
   def search
     cats = CatsDealer.search(SearchRequest.new(search_params))
-    redirect_to cats_path(cats: cats, cat_type: search_params[:cat_type], user_location: search_params[:user_location])
+    redirect_to cats_path(
+      cats: cats,
+      cat_type: search_params[:cat_type],
+      user_location: search_params[:user_location]
+    )
   end
 
   def index

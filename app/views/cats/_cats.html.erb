@@ -4,7 +4,7 @@
 <table class=" table table-striped">
   <thead>
   <tr>
-    <th>Type</th>
+    <th>Breed</th>
     <th>Price</th>
     <th>Location</th>
     <th>Image</th>
@@ -14,10 +14,10 @@
   <tbody>
   <% @cats.each do |cat| %>
       <tr>
-        <td><%= name(cat['name']) %></td>
-        <td><%= price(cat['price']) %></td>
+        <td><%= cat['breed'] %></td>
+        <td><%= cat['price'] %></td>
         <td><%= cat['location'] %></td>
-        <td><%= image_tag(cat.fetch('image', 'no_cat_icon.png'), width: '30px', alt:'no icon') %></td>
+        <td><%= image_tag(cat.fetch('image_src', 'no_cat_icon.png'), width: '30px', alt:'no icon') %></td>
       </tr>
   <% end %>
   </tbody>
