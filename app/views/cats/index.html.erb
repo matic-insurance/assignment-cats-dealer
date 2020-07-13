@@ -3,10 +3,10 @@
   <%= bootstrap_form_tag url: '/search', local: true, method: :get do |f| %>
     <%= f.select :breed, options_for_select(cat_breeds, @breed), { label: "Choose your favorite cat breed:", wrapper: { class: 'col col-md-2' } } %>
     <%= f.select :user_location, options_for_select(cities, @user_location), { label: "Choose your location:", wrapper: { class: 'col col-md-2' } } %>
-    <button type="submit" class="btn btn-primary">Search</button>
+    <button type="submit" class="btn btn-primary mx-3">Search</button>
   <% end %>
 
-  <div class="row px-3 mt-1">
+  <div class="row px-3 mt-1 mx-1">
     <%= render partial: "cats", locals: {cats: @cats} %>
   </div>
 </div>
