@@ -33,3 +33,5 @@ gem 'bootstrap_form', '~> 4.4'
 gem 'jquery-rails', '~> 4.4'
 
 gem "sidekiq", "~> 6.1"
+
+gem 'tzinfo-data', '1.2020.1'
