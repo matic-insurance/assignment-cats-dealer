@@ -6,7 +6,7 @@ module CatsProviders
 
     extend FieldMapings
 
-    def initialize(search_request)
+    def initialize(search_request = nil)
       @search_request = search_request
       @deals = []
     end
