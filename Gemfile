@@ -31,3 +31,5 @@ gem 'sprockets-rails', '~> 3.2'
 gem 'bootstrap_form', '~> 4.4'
 
 gem 'jquery-rails', '~> 4.4'
+
+gem "sidekiq", "~> 6.1"
