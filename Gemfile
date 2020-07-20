@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '~> 5.1.1'
-gem 'sqlite3'
+# gem 'sqlite3'
 
 gem 'puma'
 gem 'rest-client'
@@ -35,3 +35,5 @@ gem 'jquery-rails', '~> 4.4'
 gem "sidekiq", "~> 6.1"
 
 gem 'tzinfo-data', '1.2020.1'
+
+gem 'pg', '1.2.3'

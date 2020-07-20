@@ -1,22 +1,48 @@
-FROM ruby:2.6-alpine3.12
+FROM ruby:2.6-alpine
 
-RUN apk add --no-cache --update build-base \
-                                linux-headers \
-                                libxml2-dev \
-                                libxslt-dev \
-                                sqlite-dev \
-                                nodejs \
-                                bash
+ENV BUNDLER_VERSION=2.1.4
+ENV CLOUDSDK_PYTHON=python
 
-ENV APP_HOME /cats_dealer
+RUN apk add --update --no-cache \
+      binutils-gold \
+      build-base \
+      curl \
+      file \
+      g++ \
+      gcc \
+      git \
+      less \
+      libstdc++ \
+      libffi-dev \
+      libc-dev \
+      linux-headers \
+      libxml2-dev \
+      libxslt-dev \
+      libgcrypt-dev \
+      make \
+      netcat-openbsd \
+      nodejs \
+      openssl \
+      pkgconfig \
+      postgresql-dev \
+      python3 \
+      python3-dev \
+      tzdata \
+      yarn
 
-RUN mkdir $APP_HOME
+RUN gem install bundler -v 2.1.4
 
-WORKDIR $APP_HOME
+WORKDIR /cats_dealer
 
-ADD Gemfile* $APP_HOME/
-RUN bundle install
+COPY Gemfile Gemfile.lock ./
 
-ADD . $APP_HOME
+RUN bundle config build.nokogiri --use-system-libraries
 
-CMD bundle exec puma -C config/puma.rb
+RUN bundle check || bundle install
+
+#COPY package.json yarn.lock ./
+#RUN yarn install --check-files
+
+COPY . ./
+
+ENTRYPOINT ["./entrypoints/docker-entrypoint.sh"]
