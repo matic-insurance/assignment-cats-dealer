@@ -1,7 +1,7 @@
 FROM ruby:2.6-alpine
 
 ENV BUNDLER_VERSION=2.1.4
-ENV CLOUDSDK_PYTHON=python
+ENV CLOUDSDK_PYTHON=python3
 
 RUN apk add --update --no-cache \
       binutils-gold \

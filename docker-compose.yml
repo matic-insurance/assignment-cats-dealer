@@ -2,9 +2,7 @@ version: '3.4'
 
 services:
   app:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: cats_dealer:dev
     depends_on:
       - database
       - redis
