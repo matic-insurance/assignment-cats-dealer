@@ -26,4 +26,16 @@ class Filters
   def filter_by_lowest_price!
     Array.wrap(deals.min_by { |deal| deal[price_field_name].to_i })
   end
+
+  def location_field_name
+    :location
+  end
+
+  def title_field_name
+    :breed
+  end
+
+  def price_field_name
+    :price
+  end
 end
