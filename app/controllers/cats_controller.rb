@@ -4,6 +4,7 @@ class CatsController < ApplicationController
 
     @user_location = params.fetch('user_location', nil)
     @breed = params.fetch('breed', nil)
+    @searched = true
 
     render 'index'
   end
