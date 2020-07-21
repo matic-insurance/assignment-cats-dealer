@@ -1,5 +1,6 @@
 FROM ruby:2.6-alpine
 
+ENV APP_HOME=/cats_dealer
 ENV BUNDLER_VERSION=2.1.4
 ENV CLOUDSDK_PYTHON=python3
 
@@ -32,7 +33,7 @@ RUN apk add --update --no-cache \
 
 RUN gem install bundler -v 2.1.4
 
-WORKDIR /cats_dealer
+WORKDIR $APP_HOME
 
 COPY Gemfile Gemfile.lock ./
 

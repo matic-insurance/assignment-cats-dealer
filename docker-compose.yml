@@ -9,7 +9,7 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      - .:/app
+      - .:/cats_dealer
       - gem_cache:/usr/local/bundle/gems
     env_file: .env
     environment:
@@ -35,7 +35,7 @@ services:
       - database
       - redis
     volumes:
-      - .:/app
+      - .:/cats_dealer
       - gem_cache:/usr/local/bundle/gems
       - node_modules:/node_modules
     env_file: .env
