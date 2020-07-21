@@ -6,6 +6,7 @@ class CreateLocations < ActiveRecord::Migration[5.1]
       t.string :district
       t.string :country
       t.string :postal_code
+      t.string :provider_name
     end
   end
 end

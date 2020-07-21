@@ -10,13 +10,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200717084159) do
+ActiveRecord::Schema.define(version: 20200721120507) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "cats", force: :cascade do |t|
     t.string "breed"
     t.integer "price"
     t.string "location"
     t.string "image_src"
+    t.bigint "provider_id"
+    t.index ["provider_id"], name: "index_cats_on_provider_id"
   end
 
+  create_table "locations", force: :cascade do |t|
+    t.string "street"
+    t.string "city"
+    t.string "district"
+    t.string "country"
+    t.string "postal_code"
+    t.string "provider_name"
+  end
+
+  create_table "locations_providers", id: false, force: :cascade do |t|
+    t.bigint "provider_id"
+    t.bigint "location_id"
+    t.index ["location_id"], name: "index_locations_providers_on_location_id"
+    t.index ["provider_id"], name: "index_locations_providers_on_provider_id"
+  end
+
+  create_table "providers", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+  end
+
+  add_foreign_key "cats", "providers"
 end

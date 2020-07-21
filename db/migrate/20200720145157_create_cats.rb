@@ -5,6 +5,7 @@ class CreateCats < ActiveRecord::Migration[5.1]
       t.integer :price
       t.string :location
       t.string :image_src
+      t.belongs_to :provider, foreign_key: true
     end
   end
 end
