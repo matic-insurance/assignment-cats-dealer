@@ -2,13 +2,14 @@ require 'field_mappings'
 
 module CatsProviders
   class Base
-    attr_reader :search_request, :deals
+    attr_reader :search_request, :deals, :filters
 
     extend FieldMapings
 
     def initialize(search_request = nil)
       @search_request = search_request
       @deals = []
+      # @filters = Filters.new(deals, search_request)
     end
 
     def fetch_deals
@@ -22,9 +23,7 @@ module CatsProviders
     end
 
     def filter_deals
-      filter_by_location!
-      filter_by_breed!
-      filter_by_lowest_price!
+      filters.execute
       apply_field_mappings!
     end
 
