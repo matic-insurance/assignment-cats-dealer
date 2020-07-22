@@ -1,17 +1,17 @@
-### Setup development environment
-commands to run:
+## Setup development environment
+*Spin up the container fleet:*
 ```
 docker-compose up -d
 docker-compose exec app bundle exec rake db:create db:migrate db:seed
 ```
 
-### Setup test environment
-to setup the test database simply run:
+## Setup test environment
+*Setup the database:*
 ```
 docker-compose exec app bundle exec rake db:migrate RAILS_ENV=test
 ```
 
-to run tests:
+*Running specs:*
 ```
 docker-compose exec app rspec
 ```
