@@ -1,8 +1,7 @@
 class Filters
-  
   attr_accessor :deals, :search_request
 
-  def initialize(deals, search_request=nil)
+  def initialize(deals, search_request = nil)
     @deals = deals
     @search_request = search_request
   end
