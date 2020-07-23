@@ -6,7 +6,6 @@ CatsProviders::DEFAULT_PROVIDERS.each do |provider|
   cats = provider.new.fetch_raw_deals
 
   mapped_cats = FieldMapings.apply_field_mappings!(cats)
-  p "mapped cats: #{mapped_cats}"
 
   # seed locations
   cities = mapped_cats.map { |cat| cat[:location] }.uniq
