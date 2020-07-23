@@ -3,8 +3,10 @@ CatsProviders::DEFAULT_PROVIDERS.each do |provider|
   # seed providers
   cat_provider = Provider.create(name: provider.to_s.demodulize)
 
-  cats = provider.new.fetch_deals
+  cats = provider.new.fetch_raw_deals
+
   mapped_cats = FieldMapings.apply_field_mappings!(cats)
+  p "mapped cats: #{mapped_cats}"
 
   # seed locations
   cities = mapped_cats.map { |cat| cat[:location] }.uniq
