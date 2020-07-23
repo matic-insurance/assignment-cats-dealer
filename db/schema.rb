@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200721120507) do
+ActiveRecord::Schema.define(version: 20200723134301) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 20200721120507) do
   create_table "providers", force: :cascade do |t|
     t.string "name"
     t.string "address"
+    t.index ["name"], name: "index_providers_on_name", unique: true
   end
 
   add_foreign_key "cats", "providers"
