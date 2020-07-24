@@ -14,5 +14,9 @@ module CatsProviders
     def fetch_deals
       raise NoMethodError, "#{__method__} method should be implemented"
     end
+
+    def parse_options
+      {}
+    end
   end
 end

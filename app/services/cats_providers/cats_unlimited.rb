@@ -4,8 +4,8 @@ module CatsProviders
       @deals = Provider.provider_deals(self.class.name.demodulize)
     end
 
-    def fetch_raw_deals
-      DealParser.parse(RestClient.get(endpoint), DealParsers::JsonParser)
+    def parser
+      DealParsers::JsonParser
     end
   end
 end
