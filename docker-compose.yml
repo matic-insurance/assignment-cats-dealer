@@ -27,9 +27,7 @@ services:
     image: redis:6.0.5
 
   sidekiq:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: cats_dealer:dev
     depends_on:
       - app
       - database

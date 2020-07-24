@@ -10,7 +10,7 @@ default: &default
   database: <%= ENV['DATABASE_NAME'] %>
   username: <%= ENV['DATABASE_USER'] %>
   password: <%= ENV['DATABASE_PASSWORD'] %>
-  port: <%= ENV['DATABASE_PORT'] || '5432' %>
+  port: <%= ENV['DATABASE_PORT'] || '54333' %>
   host: <%= ENV['DATABASE_HOST'] %>
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
@@ -24,7 +24,6 @@ development:
 test:
   <<: *default
   database: cats_dealer_test
-  port: <%= ENV['DATABASE_PORT'] || '54333' %>
 
 
 production:
