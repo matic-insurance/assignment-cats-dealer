@@ -1,5 +1,5 @@
 ## Setup development environment
-*Spin up the container fleet:*
+*launch containers:*
 ```
 docker-compose up -d
 docker-compose exec app bundle exec rake db:create db:migrate db:seed
