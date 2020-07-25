@@ -1,0 +1,18 @@
+default: &default
+  providers:
+    cats_unlimited:
+      enabled: true
+      url: https://nh7b1g9g23.execute-api.us-west-2.amazonaws.com/dev/cats/json
+    happy_cats:
+      enabled: true
+      url: https://nh7b1g9g23.execute-api.us-west-2.amazonaws.com/dev/cats/xml
+
+development:
+  <<: *default
+
+test:
+  <<: *default
+
+production:
+  <<: *default
+

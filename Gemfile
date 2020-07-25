@@ -1,10 +1,18 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 5.1.1'
+ruby '2.7.1'
+
+gem 'rails', '~>  6.0.3.2'
 gem 'sqlite3'
 
 gem 'puma'
 gem 'rest-client'
+
+# validation
+gem 'dry-validation'
+
+# xml processing
+gem 'ox'
 
 gem 'bootstrap-sass', '~> 3.4.1'
 gem 'coffee-rails', '~> 4.2'
@@ -19,4 +27,8 @@ end
 
 group :test do
   gem 'rspec-rails', '~> 3.6.0'
+end
+
+group :development, :test do
+  gem 'pry'
 end

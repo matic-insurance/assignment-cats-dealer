@@ -1,15 +1,21 @@
+<% data = @result.data %>
+
+<% data[:errors].each do |key, error| %>
+  <%= [key, error.first].join(' ') %><br/>
+<% end %>
+
 <div class="row">
   <div class="col-md-2 col-md-offset-5">
-    <%= form_tag(request_path, method: 'post', class: 'form-horizontal center') do %>
+    <%= form_tag(cats_path, method: 'get', class: 'form-horizontal center') do %>
         <p>
-          Select cat type:<br/>
-          <%= select_tag('cats_type', options_for_select(%w(Bengal Abyssin Persian))) %>
+          <%= I18n.t('request.select_cat_type') %>:<br/>
+          <%= select_tag('cats_type', options_for_select(data[:cat_types])) %>
         </p>
         <p>
-          Select your location:<br/>
-          <%= select_tag('user_location', options_for_select(%w(Lviv Kiev Odessa))) %>
+          <%= I18n.t('request.select_your_location') %>:<br/>
+          <%= select_tag('user_location', options_for_select(data[:locations])) %>
         </p>
-        <div><%= submit_tag 'Send request', class: 'btn btn-default' %></div>
+        <div><%= submit_tag I18n.t('request.send_request'), class: 'btn btn-default' %></div>
     <% end %>
   </div>
 </div>

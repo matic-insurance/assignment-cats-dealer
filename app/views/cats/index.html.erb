@@ -1,0 +1,33 @@
+<% cats_list = @result.data %>
+<% if cats_list.size.positive? %>
+<p>
+<%= I18n.t('cats.best_price') %>
+- <%= cats_list.first.price %>
+</p>
+
+<table class=" table table-striped">
+  <thead>
+  <tr>
+    <th><%= I18n.t('cats.type') %></th>
+    <th><%= I18n.t('cats.price') %></th>
+    <th><%= I18n.t('cats.location') %></th>
+    <th><%= I18n.t('cats.image') %></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% cats_list.each do |cat| %>
+      <tr>
+        <td><%= cat.title %></td>
+        <td><%= cat.price %></td>
+        <td><%= cat.location %></td>
+        <td><%= image_tag(cat.image, width: '150px') %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+<% else %>
+  <p>
+    <%= I18n.t('cats.sorry_no_cats') %>
+  </p>
+<% end %>
