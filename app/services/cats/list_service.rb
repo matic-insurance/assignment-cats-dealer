@@ -22,7 +22,7 @@ module Cats
                 :cats_list
 
     def initialize_contract
-      @contract = Cats::ListContract.new.(params)
+      Cats::ListContract.new.(params)
     end
 
     def prepare_cats_list

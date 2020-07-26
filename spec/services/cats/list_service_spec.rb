@@ -31,8 +31,3 @@ describe Cats::ListService do
     end
   end
 end
-
-
-
-
-

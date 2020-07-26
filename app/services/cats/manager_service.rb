@@ -21,7 +21,7 @@ module Cats
     end
 
     def filter_cats
-      Cats::FilterService.call(params.merge(cats_list: cats_list))
+      Cats::FilterService.(params.merge(cats_list: cats_list))
     end
   end
 end

@@ -2,14 +2,10 @@ require 'rails_helper'
 
 describe Cats::FilterService do
   context 'cats list from store' do
-    [
-      Faker::Address.city,
-      Faker::Address.city,
-      Faker::Address.city
-    ].each_with_index do |city, index|
+    3.times do |index|
       let("cat#{index}") do
         double(
-          location: city,
+          location: Faker::Address.city,
           title: Faker::String.random(length: 4),
           price: Faker::Number.number(digits: 3)
         )
