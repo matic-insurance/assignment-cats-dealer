@@ -21,7 +21,7 @@ module Cats
     def filter_cats
       filtered_cats = cats_list.select do |cat|
         cat.title == cats_type && cat.location == user_location
-      end.sort_by {|obj| obj.price }
+      end.sort_by { |obj| obj.price }
     end
   end
 end

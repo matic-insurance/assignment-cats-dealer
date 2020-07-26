@@ -26,7 +26,8 @@ group :development do
 end
 
 group :test do
-  gem 'rspec-rails', '~> 3.6.0'
+  gem 'rspec-rails'
+  gem 'faker'
 end
 
 group :development, :test do
