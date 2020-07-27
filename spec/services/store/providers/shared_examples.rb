@@ -7,15 +7,13 @@ shared_examples :providers_logic do
   let(:location) { Faker::Address.city }
   let(:image) { Faker::Internet.url }
 
-  it 'returns result struct' do
+  it 'parse and call decorator' do
     expect(RestClient)
       .to receive(:get).with(url).and_return(double(body: provider_response))
 
-    result = described_class.(configuration: configuration).first
+    expect(decorator)
+      .to receive(:new).with(parsed_response).and_return(double(decorate: true))
 
-    expect(result.title).to eq(title)
-    expect(result.price).to eq(price)
-    expect(result.location).to eq(location)
-    expect(result.image).to eq(image)
+    described_class.(configuration: configuration)
   end
 end

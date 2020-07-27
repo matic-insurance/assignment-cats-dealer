@@ -24,6 +24,10 @@ describe Store::Providers::HappyCat do
       result.to_xml(skip_types: true, skip_instruct: true, root: :cats)
     end
 
+    let(:parsed_response) { Ox.load(provider_response, mode: :hash_no_attrs) }
+
+    let(:decorator) { Store::Providers::Decorators::HappyCatDecorator }
+
     include_examples :providers_logic
   end
 end

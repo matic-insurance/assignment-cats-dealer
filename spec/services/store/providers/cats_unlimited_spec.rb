@@ -14,6 +14,10 @@ describe Store::Providers::CatsUnlimited do
       ].to_json
     end
 
+    let(:parsed_response) { JSON.parse(provider_response) }
+
+    let(:decorator) { Store::Providers::Decorators::CatsUnlimitedDecorator }
+
     include_examples :providers_logic
   end
 end

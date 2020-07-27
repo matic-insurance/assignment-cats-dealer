@@ -1,8 +1,6 @@
 module Store
   module Providers
     class BaseProvider
-      ResultStruct = Struct.new(:title, :price, :location, :image)
-
       def initialize(params)
         @configuration = params.fetch(:configuration)
       end
@@ -27,4 +25,3 @@ module Store
     end
   end
 end
-

@@ -5,15 +5,12 @@ module Store
 
       private
 
+      def parsed_response
+        Ox.load(response.body, mode: :hash_no_attrs)
+      end
+
       def prepare_result
-        Ox.load(response.body, mode: :hash_no_attrs)[:cats][:cat].map do |item|
-          ResultStruct.new(
-            item[:title],
-            item[:cost].to_i,
-            item[:location],
-            item[:img]
-          )
-        end
+        Store::Providers::Decorators::HappyCatDecorator.new(parsed_response).decorate
       end
     end
   end

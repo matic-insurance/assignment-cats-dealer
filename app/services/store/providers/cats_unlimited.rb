@@ -5,15 +5,12 @@ module Store
 
       private
 
+      def parsed_response
+        JSON.parse(response.body)
+      end
+
       def prepare_result
-        JSON.parse(response.body).map do |item|
-          ResultStruct.new(
-            item['name'],
-            item['price'].to_i,
-            item['location'],
-            item['image']
-          )
-        end
+        Store::Providers::Decorators::CatsUnlimitedDecorator.new(parsed_response).decorate
       end
     end
   end
