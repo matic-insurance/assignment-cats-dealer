@@ -1,0 +1,32 @@
+<% if @cats_list.size > 0 %>
+  <p>
+    Best price for your location
+    - <%= @cats_list.first[:price] %>
+  </p>
+
+  <table class=" table table-striped">
+    <thead>
+    <tr>
+      <th>Breed</th>
+      <th>Price</th>
+      <th>Location</th>
+      <th>Image</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @cats_list.each do |cat| %>
+      <tr>
+        <td><%= cat[:breed] %></td>
+        <td><%= cat[:price] %></td>
+        <td><%= cat[:location] %></td>
+        <td><%= image_tag(cat[:image], width: '150px', alt: cat[:breed]) %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>
+    Sorry, no cats for your location
+  </p>
+<% end %>

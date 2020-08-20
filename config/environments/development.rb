@@ -33,6 +33,7 @@ Rails.application.configure do
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
+  config.log_level = :debug
 
   # Raise an error on page load if there are pending migrations.
   config.active_record.migration_error = :page_load
@@ -42,7 +43,7 @@ Rails.application.configure do
   # number of complex assets.
   config.assets.debug = true
 
-  # Suppress logger output for asset requests.
+  # Suppress logger output for asset best_prices.
   config.assets.quiet = true
 
   # Raises error for missing translations
