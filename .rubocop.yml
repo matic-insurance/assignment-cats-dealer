@@ -24,3 +24,6 @@ Style/FrozenStringLiteralComment:
 
 Layout/HashAlignment:
   EnforcedColonStyle: table
+
+Metrics/BlockLength:
+  IgnoredMethods: ['describe']

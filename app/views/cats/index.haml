@@ -1,0 +1,35 @@
+.row
+  .col-md-2.col-md-offset-5
+    = form_tag(root_path, method: 'get', class: 'form-horizontal center') do
+      %p
+        Select cat type:
+        = select_tag('name', options_for_select(cats_names, selected: params[:name]))
+      %p
+        Select your location:
+        = select_tag('location', options_for_select(locations, selected: params[:location]))
+      %div= submit_tag 'Send request', class: 'btn btn-default'
+%br
+
+- if @result
+  - if @result.best_price
+    %p#best_price
+      Best price for your location:
+      = @result.best_price
+
+    %table.table.table-striped#filtered_cats
+      %thead
+        %tr
+          %th Type
+          %th Price
+          %th Location
+          %th Image
+      %tbody
+        - @result.cats_list.each do |cat|
+          %tr
+            %td= cat.name
+            %td= cat.price
+            %td= cat.location
+            %td= image_tag(cat.image, width: '150px')
+  - else
+    %p#error_message
+      Sorry, no cats for your location

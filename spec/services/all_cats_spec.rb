@@ -3,11 +3,13 @@ require 'rails_helper'
 describe AllCats do
   subject(:cats) { described_class.new.call }
 
-  it 'returns array of Cat objects', :vcr do
+  vcr_options = { cassette_name: 'data/all_cats' }
+
+  it 'returns array of Cat objects', vcr: vcr_options do
     expect(cats).to all be_a Cat
   end
 
-  it 'returns correct array size', :vcr do
+  it 'returns correct array size', vcr: vcr_options do
     expect(cats.size).to eq 21
   end
 
