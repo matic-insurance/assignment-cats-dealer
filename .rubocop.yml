@@ -1,7 +1,11 @@
-require: rubocop-rspec
+require:
+  - rubocop-performance
+  - rubocop-rails
+  - rubocop-rspec
 
 AllCops:
-  TargetRubyVersion: 2.6
+  TargetRubyVersion: 3.0
+  NewCops: enable
   Exclude:
     - vendor/**/*
     - config/**/*
@@ -10,42 +14,13 @@ AllCops:
     - tmp/**/*
 
 Metrics/LineLength:
-  Max: 95
+  Max: 120
 
 Style/Documentation:
   Enabled: false
 
-Metrics/BlockLength:
-  Enabled: true
-  Max: 200
-
-Style/MultilineBlockChain:
-  Enabled: false
-
-Style/PredicateName:
-  NamePrefix:
-    - is_
-    - have_
-  NamePrefixBlacklist:
-    - is_
-    - have_
-
-Layout/SpaceInsideHashLiteralBraces:
-  EnforcedStyle: no_space
-
 Style/FrozenStringLiteralComment:
   Enabled: false
 
-# Disabled because of fact that interfaces are implicit in Ruby
-# It's bad to use `instance_double` for some implementation from separate module
-# Because it couples tested code with that module
-RSpec/VerifiedDoubles:
-  Enabled: false
-
-RSpec/DescribeClass:
-  Exclude:
-    - 'spec/dependencies_spec.rb'
-    - 'spec/features/**/*'
-
-RSpec/DescribeMethod:
-  Enabled: false
+Layout/HashAlignment:
+  EnforcedColonStyle: table
