@@ -1,8 +1,8 @@
 ## Cats Dealer 
 ### Hi, there!
-You are going to create simple service that allows finding the best pussycat - best price for customer location.
+You are going to create simple service that allows finding the best cat - best price for customer location.
 
-The are pussycat shops that have pricelists accessible via REST API. What your service will do is just get prices from each shop, compare them and suggest the best deal for a customer!
+The are cat shops that have pricelists accessible via REST API. What your service will do is just get prices from each shop, compare them and suggest the best deal for a customer!
 
 We created 2 fake test shops for you.
 One - "Cats Unlimited" - can be accessed by this URL: 
@@ -21,7 +21,7 @@ You may notice that both URLs point the same server, but in this task, please, c
 
 To help you understand the task, we asked our Trainee Ruby developer to create an MVP of "cats-dealer" - the project you have!
 
-There is only one integration - with "JSON" pussycat shop.
+There is only one integration - with "JSON" cat shop.
 Please run the project, see how it works, and explore the code.
 
 You know, Trainee not always writes a good code. You probably agree if I say that the code is terrible! You definitely can do it better!
