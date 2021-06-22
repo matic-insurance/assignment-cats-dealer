@@ -1,34 +1,31 @@
-## Cats Dealer 
-### Hi, there!
-You are going to create simple service that allows finding the best cat - best price for customer location.
+Cats Dealer 
+==================
 
-The are cat shops that have pricelists accessible via REST API. What your service will do is just get prices from each shop, compare them and suggest the best deal for a customer!
+### Hi, there!
+You are going to create a simple service that allows finding the best cat with the best price for customer location.
+
+There are cat shops that have pricelists accessible via REST API. What your service will do is just get prices from each shop, compare them and suggest the best deal for a customer!
 
 We created 2 fake test shops for you.
-One - "Cats Unlimited" - can be accessed by this URL: 
+1. "Cats Unlimited" - can be accessed by this URL: 
+    <https://nh7b1g9g23.execute-api.us-west-2.amazonaws.com/dev/cats/json>   
+    Returns JSON
+2.  "Happy Cats" - one is here:
+    <https://nh7b1g9g23.execute-api.us-west-2.amazonaws.com/dev/cats/xml>    
+    Returns XML   
 
-https://nh7b1g9g23.execute-api.us-west-2.amazonaws.com/dev/cats/json
+_You may notice that both URLs point to the same server, but for this task consider them as absolutely different._  
 
-It returns JSON data.
+To help you understand the task, we asked our Trainee Ruby developer to create an MVP of "cats-dealer" - the project you have.
+There is only one integration - with "JSON" cat shop. Please run the project, see how it works, and explore the code.
 
-Another - "Happy Cats" - one is here:
+You know, Trainee not always writes a good code. You probably agree if I say that the code is can be improved and you definitely can do it better!
 
-https://nh7b1g9g23.execute-api.us-west-2.amazonaws.com/dev/cats/xml
+### The task is the following:
+**1. Refactor or rewrite the existing code. We wanna see a clean design, readable code and good test coverage.**            
+**2. Implement "XML" integration, and improve business logic to find the best deal amongst two shops.**
 
-and returns XML
 
-You may notice that both URLs point the same server, but in this task, please, consider them as absolutely different.
+### Good luck and looking forward to seeing a finished project.
 
-To help you understand the task, we asked our Trainee Ruby developer to create an MVP of "cats-dealer" - the project you have!
-
-There is only one integration - with "JSON" cat shop.
-Please run the project, see how it works, and explore the code.
-
-You know, Trainee not always writes a good code. You probably agree if I say that the code is terrible! You definitely can do it better!
-
-### So the task is:
-#### 1. Refactor or rewrite the existing code. We wanna see a clean OO design, readable code, good test coverage.
-#### 2. Implement "XML" integration, and improve business logic to find the best deal amongst two shops.
-
-## Be strong and good luck!
 
