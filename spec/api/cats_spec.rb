@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-describe 'API Request' do
-  describe 'POST /request' do
-    let(:endpoint) { '/request' }
+describe 'API Cats' do
+  describe 'POST /cats' do
+    let(:endpoint) { '/cats' }
 
     let(:cats_type) { nil }
     let(:user_location) { nil }
@@ -18,8 +18,8 @@ describe 'API Request' do
 
     before do
       VCR.use_cassette('/cats_unlimited/all') do
-        post endpoint,
-             params: { cats_type: cats_type, user_location: user_location }
+        get endpoint,
+            params: { cats_type: cats_type, user_location: user_location }
       end
     end
 

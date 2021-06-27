@@ -1,5 +1,5 @@
-class RequestsController < ApplicationController
-  def create
+class CatsController < ApplicationController
+  def index
     response = RestClient.get('https://nh7b1g9g23.execute-api.us-west-2.amazonaws.com/dev/cats/json')
     result = JSON.parse(response.body)
     result_params = {
@@ -7,7 +7,7 @@ class RequestsController < ApplicationController
       cat_type: params[:cats_type],
       location: params[:user_location]
     }
-    redirect_to result_request_path(result_params)
+    redirect_to result_cats_path(result_params)
   end
 
   def result
