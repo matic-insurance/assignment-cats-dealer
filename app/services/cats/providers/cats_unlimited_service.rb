@@ -3,14 +3,14 @@
 module Cats
   module Providers
     class CatsUnlimitedService < ::Cats::Providers::BaseService
-      MAPPINGS = {
+      KEYS_MAPPING = {
         'name' => 'cat_type'
       }.freeze
 
       private
 
-      def loader
-        ::Oj
+      def load_raw_data(data)
+        ::Oj.load(data)
       end
 
       def url

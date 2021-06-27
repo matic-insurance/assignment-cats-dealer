@@ -13,7 +13,11 @@ describe Cats::Fetch do
           price: 700,
           location: 'Kyiv',
           image: 'https://olxua-ring10.akamaized.net/images_slandocomua/496811712_5_1000x700_bengalyata-kievskaya-oblast.jpg'
-        },
+        }
+      ].map(&:stringify_keys)
+    end
+    let(:happy_cats_list) do
+      [
         {
           cat_type: 'Abyssin',
           price: 500,
@@ -26,11 +30,13 @@ describe Cats::Fetch do
     before do
       allow_any_instance_of(::Cats::Providers::CatsUnlimitedService)
         .to receive(:data).and_return(cats_unlimited_list)
+      allow_any_instance_of(::Cats::Providers::HappyCatsService)
+        .to receive(:data).and_return(happy_cats_list)
     end
 
     it 'succeeds with cats list' do
       expect(fetching.success?).to eq true
-      expect(fetching.list).to eq cats_unlimited_list
+      expect(fetching.list).to eq cats_unlimited_list + happy_cats_list
     end
 
     context 'when filters present' do
@@ -48,7 +54,7 @@ describe Cats::Fetch do
 
         it 'succeeds with filtered cats list' do
           expect(fetching.success?).to eq true
-          expect(fetching.list).to contain_exactly(cats_unlimited_list[1])
+          expect(fetching.list).to contain_exactly(happy_cats_list[0])
         end
       end
 
@@ -57,7 +63,7 @@ describe Cats::Fetch do
 
         it 'succeeds with filtered cats list' do
           expect(fetching.success?).to eq true
-          expect(fetching.list).to contain_exactly(cats_unlimited_list[1])
+          expect(fetching.list).to contain_exactly(happy_cats_list[0])
         end
       end
     end

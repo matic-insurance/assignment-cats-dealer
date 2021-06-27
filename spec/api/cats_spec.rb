@@ -19,8 +19,10 @@ describe 'API Cats' do
     context 'when success' do
       before do
         VCR.use_cassette('/cats_unlimited/all') do
-          get endpoint,
-              params: { cat_type: cat_type, location: location }
+          VCR.use_cassette('/happy_cats/all') do
+            get endpoint,
+                params: { cat_type: cat_type, location: location }
+          end
         end
       end
 
@@ -29,7 +31,7 @@ describe 'API Cats' do
           expect(response.response_code).to eq 200
 
           cats = json(response.body)
-          expect(cats.size).to eq 11
+          expect(cats.size).to eq 21
           expect(cats).to include expected_cat
         end
       end

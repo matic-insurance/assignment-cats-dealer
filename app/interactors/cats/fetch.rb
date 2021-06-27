@@ -3,7 +3,8 @@ module Cats
     include Interactor
 
     PROVIDERS = [
-      ::Cats::Providers::CatsUnlimitedService
+      ::Cats::Providers::CatsUnlimitedService,
+      ::Cats::Providers::HappyCatsService
     ].freeze
 
     delegate :filters, to: :context
