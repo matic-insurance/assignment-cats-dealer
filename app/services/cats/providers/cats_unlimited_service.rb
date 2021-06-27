@@ -3,6 +3,10 @@
 module Cats
   module Providers
     class CatsUnlimitedService < ::Cats::Providers::BaseService
+      MAPPINGS = {
+        'name' => 'cat_type'
+      }.freeze
+
       private
 
       def loader

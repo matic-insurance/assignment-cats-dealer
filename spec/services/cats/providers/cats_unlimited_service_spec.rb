@@ -6,7 +6,7 @@ describe Cats::Providers::CatsUnlimitedService do
   context 'when service responds ok' do
     let(:expected_cat) do
       {
-        name: 'Siamese',
+        cat_type: 'Siamese',
         price: 20,
         location: 'Kharkiv',
         image: 'https://olxua-ring05.akamaized.net/images_slandocomua/500276292_1_1000x700_kot-po-imeni-tom-borispol.jpg'
