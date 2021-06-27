@@ -19,4 +19,6 @@ end
 
 group :test do
   gem 'rspec-rails', '~> 3.6.0'
+  gem 'vcr', '~> 6.0'
+  gem 'webmock', '~> 3.13'
 end
