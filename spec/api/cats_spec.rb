@@ -28,7 +28,7 @@ describe 'API Cats' do
         it 'responds with whole cats list' do
           expect(response.response_code).to eq 200
 
-          cats = ::Oj.load(response.body)
+          cats = json(response.body)
           expect(cats.size).to eq 11
           expect(cats).to include expected_cat
         end
@@ -41,7 +41,7 @@ describe 'API Cats' do
         it 'responds with cats list that matched' do
           expect(response.response_code).to eq 200
 
-          cats = ::Oj.load(response.body)
+          cats = json(response.body)
           expect(cats.size).to eq 1
           expect(cats).to contain_exactly(expected_cat)
         end
@@ -60,7 +60,7 @@ describe 'API Cats' do
 
       it 'responds with expected 503 message' do
         expect(response.response_code).to eq 503
-        expect(::Oj.load(response.body)['error']).to eq expected_error
+        expect(json(response.body)['error']).to eq expected_error
       end
     end
   end
