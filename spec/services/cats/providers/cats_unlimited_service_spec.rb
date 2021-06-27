@@ -10,7 +10,7 @@ describe Cats::Providers::CatsUnlimitedService do
         price: 20,
         location: 'Kharkiv',
         image: 'https://olxua-ring05.akamaized.net/images_slandocomua/500276292_1_1000x700_kot-po-imeni-tom-borispol.jpg'
-      }.stringify_keys
+      }
     end
 
     it 'returns list of cats' do

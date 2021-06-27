@@ -10,6 +10,8 @@ class CatsController < ApplicationController
 
   def filter_params
     params.permit(:cat_type, :location)
+          .to_h
           .select { |_key, value| value.present? }
+          .symbolize_keys
   end
 end

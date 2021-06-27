@@ -7,10 +7,18 @@ describe 'API Cats' do
     let(:cat_type) { nil }
     let(:location) { nil }
 
-    let(:expected_cat) do
+    let(:expected_unlimited_cat) do
       {
         cat_type: 'Bengal',
         price: 700,
+        location: 'Kyiv',
+        image: 'https://olxua-ring10.akamaized.net/images_slandocomua/496811712_5_1000x700_bengalyata-kievskaya-oblast.jpg'
+      }.stringify_keys
+    end
+    let(:expected_happy_cat) do
+      {
+        cat_type: 'Bengal',
+        price: 600,
         location: 'Kyiv',
         image: 'https://olxua-ring10.akamaized.net/images_slandocomua/496811712_5_1000x700_bengalyata-kievskaya-oblast.jpg'
       }.stringify_keys
@@ -32,7 +40,7 @@ describe 'API Cats' do
 
           cats = json(response.body)
           expect(cats.size).to eq 21
-          expect(cats).to include expected_cat
+          expect(cats).to include expected_unlimited_cat
         end
       end
 
@@ -44,8 +52,9 @@ describe 'API Cats' do
           expect(response.response_code).to eq 200
 
           cats = json(response.body)
-          expect(cats.size).to eq 1
-          expect(cats).to contain_exactly(expected_cat)
+          expect(cats.size).to eq 2
+          expect(cats)
+            .to contain_exactly(expected_unlimited_cat, expected_happy_cat)
         end
       end
     end

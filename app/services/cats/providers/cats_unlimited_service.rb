@@ -4,13 +4,13 @@ module Cats
   module Providers
     class CatsUnlimitedService < ::Cats::Providers::BaseService
       KEYS_MAPPING = {
-        'name' => 'cat_type'
+        name: :cat_type
       }.freeze
 
       private
 
       def load_raw_data(data)
-        ::Oj.load(data)
+        ::Oj.load(data).map(&:symbolize_keys)
       end
 
       def url
