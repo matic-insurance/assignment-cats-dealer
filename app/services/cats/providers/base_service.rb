@@ -9,7 +9,7 @@ module Cats
         rows = load_raw_data ::RestClient.get(url)
         map_rows!(rows)
         rows
-      rescue RestClient::ExceptionWithResponse => e
+      rescue RestClient::ExceptionWithResponse => _e
         raise ProviderUnavailableError, name
       end
 

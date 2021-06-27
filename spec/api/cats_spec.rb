@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe 'API Cats' do
@@ -34,7 +36,7 @@ describe 'API Cats' do
         end
       end
 
-      context 'and no filters' do
+      context 'without filters' do
         it 'responds with whole cats list' do
           expect(response.response_code).to eq 200
 
@@ -44,7 +46,7 @@ describe 'API Cats' do
         end
       end
 
-      context 'and filters present' do
+      context 'with filters' do
         let(:cat_type) { 'Bengal' }
         let(:location) { 'Kyiv' }
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe Cats::Fetch do
@@ -28,9 +30,9 @@ describe Cats::Fetch do
     end
 
     before do
-      allow_any_instance_of(::Cats::Providers::CatsUnlimitedService)
+      allow(::Cats::Providers::CatsUnlimitedService.instance)
         .to receive(:data).and_return(cats_unlimited_list)
-      allow_any_instance_of(::Cats::Providers::HappyCatsService)
+      allow(::Cats::Providers::HappyCatsService.instance)
         .to receive(:data).and_return(happy_cats_list)
     end
 
@@ -40,7 +42,7 @@ describe Cats::Fetch do
     end
 
     context 'when filters present' do
-      context 'by cat_type' do
+      context 'with cat_type' do
         let(:filters) { { 'cat_type' => 'Bengal' } }
 
         it 'succeeds with filtered cats list' do
@@ -49,7 +51,7 @@ describe Cats::Fetch do
         end
       end
 
-      context 'by location' do
+      context 'with location' do
         let(:filters) { { 'location' => 'Lviv' } }
 
         it 'succeeds with filtered cats list' do
@@ -58,7 +60,7 @@ describe Cats::Fetch do
         end
       end
 
-      context 'by cat_type and location' do
+      context 'with cat_type and location' do
         let(:filters) { { 'cat_type' => 'Abyssin', 'location' => 'Lviv' } }
 
         it 'succeeds with filtered cats list' do
@@ -71,7 +73,7 @@ describe Cats::Fetch do
 
   context 'when one of providers failure' do
     before do
-      allow_any_instance_of(::Cats::Providers::CatsUnlimitedService)
+      allow(::Cats::Providers::CatsUnlimitedService.instance)
         .to receive(:data).and_raise(ProviderUnavailableError, 'Provider stub')
     end
 

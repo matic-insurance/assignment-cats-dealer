@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module JsonHelper
   def json(string, *path)
     parsed = Oj.load(string)
