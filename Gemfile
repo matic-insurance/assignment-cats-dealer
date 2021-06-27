@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 5.2'
+gem 'rails', '~> 6.0'
 gem 'sqlite3'
 
 gem 'puma'
@@ -18,7 +18,7 @@ group :development do
 end
 
 group :test do
-  gem 'rspec-rails', '~> 3.6.0'
+  gem 'rspec-rails', '~> 5.0.1'
   gem 'vcr', '~> 6.0'
   gem 'webmock', '~> 3.13'
 end
