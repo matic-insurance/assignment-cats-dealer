@@ -6,6 +6,7 @@ gem 'puma'
 gem 'rest-client'
 gem 'ox', '~> 2.14'
 gem 'oj', '~> 3.11'
+gem 'interactor', '~> 3.1'
 
 gem 'dotenv-rails', '~> 2.7'
 

@@ -1,7 +1,9 @@
 class CatsController < ApplicationController
   def index
-    result = ::Cats::FetchingService.call
-    render json: result
+    fetching = ::Cats::Fetch.call
+    return render(json: fetching.list) if fetching.success?
+
+    render json: { error: fetching.error }, status: 503
   end
 
   # def result

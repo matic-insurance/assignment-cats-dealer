@@ -12,6 +12,10 @@ module Cats
       def url
         ::ENV.fetch('CATS_UNLIMITED_URL')
       end
+
+      def name
+        'Cats Unlimited'
+      end
     end
   end
 end
