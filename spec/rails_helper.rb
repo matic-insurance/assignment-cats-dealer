@@ -6,7 +6,7 @@ require 'spec_helper'
 require File.expand_path('../config/environment', __dir__)
 require 'rspec/rails'
 
-Dir["#{::Rails.root}/spec/support/**/*.rb"].sort.each { |helper| require helper }
+Dir["#{::Rails.root}/spec/support/**/*.rb"].each { |helper| require helper }
 
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
