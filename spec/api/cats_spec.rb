@@ -10,7 +10,7 @@ describe 'API Cats' do
     let(:expected_cat) do
       {
         name: 'Abyssin',
-        price: '500',
+        price: 500,
         location: 'Lviv',
         image: 'https://olxua-ring02.akamaized.net/images_slandocomua/476948786_2_1000x700_abissenysh-chempion-fotografii.jpg'
       }.stringify_keys
@@ -25,30 +25,24 @@ describe 'API Cats' do
 
     context 'when no filters' do
       it 'responds with whole cats list' do
-        expect(response.redirect?).to eq true
-        redirected_uri = URI.parse(response.location)
-        redirected_params = Rack::Utils.parse_nested_query(redirected_uri.query)
+        expect(response.response_code).to eq 200
 
-        expect(redirected_params['cats_list'].size).to eq 11
-        expect(redirected_params['cats_list'][0]).to eq expected_cat
-        expect(redirected_params['cat_type']).to eq nil
-        expect(redirected_params['location']).to eq nil
+        cats = ::Oj.load(response.body)
+        expect(cats.size).to eq 11
+        expect(cats[0]).to eq expected_cat
       end
     end
 
-    context 'when filters present' do
+    xcontext 'when filters present' do
       let(:cats_type) { 'Bengal' }
       let(:user_location) { 'Kyiv' }
 
       it 'responds with whole cats list and filters' do
-        expect(response.redirect?).to eq true
-        redirected_uri = URI.parse(response.location)
-        redirected_params = Rack::Utils.parse_nested_query(redirected_uri.query)
+        expect(response.response_code).to eq 200
 
-        expect(redirected_params['cats_list'].size).to eq 11
-        expect(redirected_params['cats_list'][0]).to eq expected_cat
-        expect(redirected_params['cat_type']).to eq 'Bengal'
-        expect(redirected_params['location']).to eq 'Kyiv'
+        cats = ::Oj.load(response.body)
+        expect(cats.size).to eq 11
+        expect(cats[0]).to eq expected_cat
       end
     end
   end
