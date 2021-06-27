@@ -1,10 +1,27 @@
 require 'rails_helper'
 
 describe Cats::Fetch do
-  subject(:fetching) { Cats::Fetch.call }
+  subject(:fetching) { Cats::Fetch.call(filters: filters) }
+
+  let(:filters) { {} }
 
   context 'when all providers responds normally' do
-    let(:cats_unlimited_list) { ['stub_cats_unlimited'] }
+    let(:cats_unlimited_list) do
+      [
+        {
+          cat_type: 'Bengal',
+          price: 700,
+          location: 'Kyiv',
+          image: 'https://olxua-ring10.akamaized.net/images_slandocomua/496811712_5_1000x700_bengalyata-kievskaya-oblast.jpg'
+        },
+        {
+          cat_type: 'Abyssin',
+          price: 500,
+          location: 'Lviv',
+          image: 'https://olxua-ring02.akamaized.net/images_slandocomua/476948786_2_1000x700_abissenysh-chempion-fotografii.jpg'
+        }
+      ].map(&:stringify_keys)
+    end
 
     before do
       allow_any_instance_of(::Cats::Providers::CatsUnlimitedService)
@@ -14,6 +31,35 @@ describe Cats::Fetch do
     it 'succeeds with cats list' do
       expect(fetching.success?).to eq true
       expect(fetching.list).to eq cats_unlimited_list
+    end
+
+    context 'when filters present' do
+      context 'by cat_type' do
+        let(:filters) { { 'cat_type' => 'Bengal' } }
+
+        it 'succeeds with filtered cats list' do
+          expect(fetching.success?).to eq true
+          expect(fetching.list).to contain_exactly(cats_unlimited_list[0])
+        end
+      end
+
+      context 'by location' do
+        let(:filters) { { 'location' => 'Lviv' } }
+
+        it 'succeeds with filtered cats list' do
+          expect(fetching.success?).to eq true
+          expect(fetching.list).to contain_exactly(cats_unlimited_list[1])
+        end
+      end
+
+      context 'by cat_type and location' do
+        let(:filters) { { 'cat_type' => 'Abyssin', 'location' => 'Lviv' } }
+
+        it 'succeeds with filtered cats list' do
+          expect(fetching.success?).to eq true
+          expect(fetching.list).to contain_exactly(cats_unlimited_list[1])
+        end
+      end
     end
   end
 

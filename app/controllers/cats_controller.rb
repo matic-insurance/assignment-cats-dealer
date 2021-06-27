@@ -1,14 +1,15 @@
 class CatsController < ApplicationController
   def index
-    fetching = ::Cats::Fetch.call
+    fetching = ::Cats::Fetch.call(filters: filter_params)
     return render(json: fetching.list) if fetching.success?
 
     render json: { error: fetching.error }, status: 503
   end
 
-  # def result
-  #   @cats_list = params[:cats_list].select do |list|
-  #     list['location'] == params[:location] && list['name'] == params[:cat_type]
-  #   end
-  # end
+  private
+
+  def filter_params
+    params.permit(:cat_type, :location)
+          .select { |_key, value| value.present? }
+  end
 end

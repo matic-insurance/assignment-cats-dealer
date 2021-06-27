@@ -6,10 +6,21 @@ module Cats
       ::Cats::Providers::CatsUnlimitedService
     ].freeze
 
+    delegate :filters, to: :context
+
     def call
-      context.list = PROVIDERS.map { |provider| provider.instance.data }.flatten
+      all = PROVIDERS.map { |provider| provider.instance.data }.flatten
+      context.list = filter_cats(all)
     rescue ProviderUnavailableError => e
       context.fail!(error: e.message)
+    end
+
+    private
+
+    def filter_cats(list)
+      return list if filters.blank?
+
+      list.select { |cat| cat.values_at(*filters.keys) == filters.values }
     end
   end
 end

@@ -4,15 +4,15 @@ describe 'API Cats' do
   describe 'GET /cats' do
     let(:endpoint) { '/cats' }
 
-    let(:cats_type) { nil }
-    let(:user_location) { nil }
+    let(:cat_type) { nil }
+    let(:location) { nil }
 
     let(:expected_cat) do
       {
-        cat_type: 'Abyssin',
-        price: 500,
-        location: 'Lviv',
-        image: 'https://olxua-ring02.akamaized.net/images_slandocomua/476948786_2_1000x700_abissenysh-chempion-fotografii.jpg'
+        cat_type: 'Bengal',
+        price: 700,
+        location: 'Kyiv',
+        image: 'https://olxua-ring10.akamaized.net/images_slandocomua/496811712_5_1000x700_bengalyata-kievskaya-oblast.jpg'
       }.stringify_keys
     end
 
@@ -20,7 +20,7 @@ describe 'API Cats' do
       before do
         VCR.use_cassette('/cats_unlimited/all') do
           get endpoint,
-              params: { cats_type: cats_type, user_location: user_location }
+              params: { cat_type: cat_type, location: location }
         end
       end
 
@@ -30,20 +30,20 @@ describe 'API Cats' do
 
           cats = ::Oj.load(response.body)
           expect(cats.size).to eq 11
-          expect(cats[0]).to eq expected_cat
+          expect(cats).to include expected_cat
         end
       end
 
-      xcontext 'and filters present' do
-        let(:cats_type) { 'Bengal' }
-        let(:user_location) { 'Kyiv' }
+      context 'and filters present' do
+        let(:cat_type) { 'Bengal' }
+        let(:location) { 'Kyiv' }
 
-        it 'responds with whole cats list and filters' do
+        it 'responds with cats list that matched' do
           expect(response.response_code).to eq 200
 
           cats = ::Oj.load(response.body)
-          expect(cats.size).to eq 11
-          expect(cats[0]).to eq expected_cat
+          expect(cats.size).to eq 1
+          expect(cats).to contain_exactly(expected_cat)
         end
       end
     end
@@ -54,7 +54,7 @@ describe 'API Cats' do
       before do
         VCR.use_cassette('/cats_unlimited/failed') do
           get endpoint,
-              params: { cats_type: cats_type, user_location: user_location }
+              params: { cat_type: cat_type, location: location }
         end
       end
 
