@@ -1,13 +1,13 @@
 class RequestsController < ApplicationController
-  def create
-    response = RestClient.get('https://nh7b1g9g23.execute-api.us-west-2.amazonaws.com/dev/cats/json')
+  def show
     result = JSON.parse(response.body)
     result_params = {
       cats_list: result,
       cat_type: params[:cats_type],
       location: params[:user_location]
-    }
-    redirect_to result_request_path(result_params)
+    }.to_json
+
+    render json: result_params
   end
 
   def result
