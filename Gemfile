@@ -15,7 +15,6 @@ group :development do
 end
 
 group :test do
-  gem 'webmock'
   gem 'vcr'
   gem 'rspec-rails', '~> 3.6.0'
 end
