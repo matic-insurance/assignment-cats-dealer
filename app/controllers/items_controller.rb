@@ -1,8 +1,8 @@
 class ItemsController < ApplicationController
   def index
     items = Cats::Filter.new(
-      breed: params["breed"],
-      location: params["location"],
+      breed: params['breed'],
+      location: params['location'],
     ).call
 
     render json: items.to_json

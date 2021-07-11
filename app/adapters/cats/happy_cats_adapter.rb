@@ -11,16 +11,16 @@ module Cats
 
       raise ServerError if (500..599).include?(api_response.status)
 
-      parsed = Hash.from_xml(api_response.body)["cats"]
+      parsed = Hash.from_xml(api_response.body)['cats']
 
       return [] if parsed.blank?
 
-      parsed["cat"].map do |item|
+      parsed['cat'].map do |item|
         {
-          breed: item["title"],
-          price: item["price"].to_i,
-          location: item["location"],
-          image: item["image"],
+          breed: item['title'],
+          price: item['cost'].to_i,
+          location: item['location'],
+          image: item['img'],
         }
       end
     end

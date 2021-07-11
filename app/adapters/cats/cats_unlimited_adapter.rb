@@ -17,10 +17,10 @@ module Cats
 
       parsed.map do |item|
         {
-          breed: item["name"],
-          price: item["price"].to_i,
-          location: item["location"],
-          image: item["image"],
+          breed: item['name'],
+          price: item['price'].to_i,
+          location: item['location'],
+          image: item['image'],
         }
       end
     end
