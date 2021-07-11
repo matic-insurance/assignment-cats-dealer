@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Cats
   class HappyCatsAdapter
     API_URL = 'https://nh7b1g9g23.execute-api.us-west-2.amazonaws.com/dev/cats/xml'
