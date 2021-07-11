@@ -2,12 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '~> 5.2'
 gem 'sqlite3'
-
 gem 'puma'
-
-# TODO: remove rest-client
-gem 'rest-client'
-
 gem 'faraday'
 
 group :development, :test do
