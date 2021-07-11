@@ -2,11 +2,14 @@
 
 class ItemsController < ApplicationController
   def index
-    items = Cats::Filter.new(
-      breed: params['breed'],
-      location: params['location'],
-    ).call
+    result = Cats::Find.call(request_params)
 
-    render json: items.to_json
+    render json: result.items.to_json
+  end
+
+  private
+
+  def request_params
+    params.permit(:breed, :location)
   end
 end

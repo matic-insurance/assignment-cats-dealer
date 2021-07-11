@@ -4,6 +4,7 @@ gem 'rails', '~> 5.2'
 gem 'sqlite3'
 gem 'puma'
 gem 'faraday'
+gem 'interactor-rails'
 
 group :development, :test do
   gem 'pry-rails'

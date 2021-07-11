@@ -1,21 +1,11 @@
 require "rails_helper"
 
 RSpec.describe Cats::Filter do
-  it "calls Cats::Fetch" do
-    fetch_instance = stub_fetch_service
-
-    described_class.new.call
-
-    expect(fetch_instance).to have_received(:call)
-  end
-
-  context "when Cats::Fetch returns empty response" do
+  context "when no items to filter" do
     it "returns empty array" do
-      stub_fetch_service
+      result = described_class.call(items: [])
 
-      result = described_class.new.call
-
-      expect(result).to eq([])
+      expect(result.items).to eq([])
     end
   end
 
@@ -34,11 +24,9 @@ RSpec.describe Cats::Filter do
         },
       ]
 
-      stub_fetch_service(result: expected_result)
+      result = described_class.call(items: expected_result)
 
-      result = described_class.new.call
-
-      expect(result).to eq(expected_result)
+      expect(result.items).to eq(expected_result)
     end
   end
 
@@ -60,13 +48,11 @@ RSpec.describe Cats::Filter do
         price: 550,
       }
       expected_result = [first_result, third_result]
-      fetch_service_result = [first_result, second_result, third_result]
+      all_items = [first_result, second_result, third_result]
 
-      stub_fetch_service(result: fetch_service_result)
+      result = described_class.call(breed: "Grumpy", items: all_items)
 
-      result = described_class.new(breed: "Grumpy").call
-
-      expect(result).to eq(expected_result)
+      expect(result.items).to eq(expected_result)
     end
   end
 
@@ -89,13 +75,11 @@ RSpec.describe Cats::Filter do
       }
       expected_result = [first_result, third_result]
 
-      fetch_service_result = [first_result, second_result, third_result]
+      all_items = [first_result, second_result, third_result]
 
-      stub_fetch_service(result: fetch_service_result)
+      result = described_class.call(location: "Kyiv", items: all_items)
 
-      result = described_class.new(location: "Kyiv").call
-
-      expect(result).to eq(expected_result)
+      expect(result.items).to eq(expected_result)
     end
   end
 
@@ -118,13 +102,11 @@ RSpec.describe Cats::Filter do
       }
       expected_result = [second_result]
 
-      fetch_service_result = [first_result, second_result, third_result]
+      all_items = [first_result, second_result, third_result]
 
-      stub_fetch_service(result: fetch_service_result)
+      result = described_class.call(breed: "Cutie", location: "Lviv", items: all_items)
 
-      result = described_class.new(breed: "Cutie", location: "Lviv").call
-
-      expect(result).to eq(expected_result)
+      expect(result.items).to eq(expected_result)
     end
 
     it "sorts results by price" do
@@ -145,13 +127,11 @@ RSpec.describe Cats::Filter do
       }
       expected_result = [third_result, second_result, first_result]
 
-      fetch_service_result = [first_result, second_result, third_result]
+      all_items = [first_result, second_result, third_result]
 
-      stub_fetch_service(result: fetch_service_result)
+      result = described_class.call(breed: "Cutie", location: "Lviv", items: all_items)
 
-      result = described_class.new(breed: "Cutie", location: "Lviv").call
-
-      expect(result).to eq(expected_result)
+      expect(result.items).to eq(expected_result)
     end
   end
 
@@ -174,13 +154,11 @@ RSpec.describe Cats::Filter do
       }
       expected_result = [second_result]
 
-      fetch_service_result = [first_result, second_result, third_result]
+      all_items = [first_result, second_result, third_result]
 
-      stub_fetch_service(result: fetch_service_result)
+      result = described_class.call(breed: "cutie", location: "lviv", items: all_items)
 
-      result = described_class.new(breed: "cutie", location: "lviv").call
-
-      expect(result).to eq(expected_result)
+      expect(result.items).to eq(expected_result)
     end
   end
 
@@ -203,22 +181,11 @@ RSpec.describe Cats::Filter do
       }
       expected_result = [second_result]
 
-      fetch_service_result = [first_result, second_result, third_result]
+      all_items = [first_result, second_result, third_result]
 
-      stub_fetch_service(result: fetch_service_result)
+      result = described_class.call(breed: "Cutie", location: "Lviv", items: all_items)
 
-
-      result = described_class.new(breed: "Cutie", location: "Lviv").call
-
-      expect(result).to eq(expected_result)
+      expect(result.items).to eq(expected_result)
     end
-  end
-
-  def stub_fetch_service(result: [])
-    fetch_instance = instance_double("Cats::Fetch", call: result)
-    allow(Cats::Fetch).
-      to receive(:new).
-      and_return(fetch_instance)
-    fetch_instance
   end
 end

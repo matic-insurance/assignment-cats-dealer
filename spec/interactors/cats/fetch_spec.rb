@@ -9,7 +9,7 @@ RSpec.describe Cats::Fetch do
       to receive(:fetch_items).
       and_return([])
 
-    described_class.new.call
+    described_class.call
 
     expect(Cats::CatsUnlimitedAdapter).to have_received(:fetch_items)
   end
@@ -22,7 +22,7 @@ RSpec.describe Cats::Fetch do
       to receive(:fetch_items).
       and_return([])
 
-    described_class.new.call
+    described_class.call
 
     expect(Cats::HappyCatsAdapter).to have_received(:fetch_items)
   end
@@ -36,9 +36,9 @@ RSpec.describe Cats::Fetch do
         to receive(:fetch_items).
         and_return([])
 
-      result = described_class.new.call
+      result = described_class.call
 
-      expect(result).to eq([])
+      expect(result.items).to eq([])
     end
   end
 
@@ -62,8 +62,8 @@ RSpec.describe Cats::Fetch do
       to receive(:fetch_items).
       and_return([second_result])
 
-    result = described_class.new.call
+    result = described_class.call
 
-    expect(result).to eq(expected_result)
+    expect(result.items).to eq(expected_result)
   end
 end
