@@ -44,14 +44,14 @@ RSpec.describe Cats::Fetch do
 
   it "returns merged results from all adapters" do
     first_result = {
-      "location" => "Kyiv",
-      "breed" => "Grumpy",
-      "price" => 500,
+      location: "Kyiv",
+      breed: "Grumpy",
+      price: 500,
     }
     second_result = {
-      "location" => "Lviv",
-      "breed" => "Cutie",
-      "price" => 650,
+      location: "Lviv",
+      breed: "Cutie",
+      price: 650,
     }
     expected_result = [first_result, second_result]
 

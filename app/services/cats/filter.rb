@@ -10,7 +10,7 @@ module Cats
       @result = filter_by_breed if @breed
       @result = filter_by_location if @location
 
-      @result
+      @result.sort_by { |item| item[:price] }
     end
 
     private

@@ -2,3 +2,5 @@ db/*.sqlite3
 log/
 tmp/
 tags*
+.DS_Store
+*.swp*

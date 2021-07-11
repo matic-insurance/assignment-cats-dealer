@@ -126,6 +126,33 @@ RSpec.describe Cats::Filter do
 
       expect(result).to eq(expected_result)
     end
+
+    it "sorts results by price" do
+      first_result = {
+        location: "Lviv",
+        breed: "Cutie",
+        price: 700,
+      }
+      second_result = {
+        location: "Lviv",
+        breed: "Cutie",
+        price: 650,
+      }
+      third_result = {
+        location: "Lviv",
+        breed: "Cutie",
+        price: 550,
+      }
+      expected_result = [third_result, second_result, first_result]
+
+      fetch_service_result = [first_result, second_result, third_result]
+
+      stub_fetch_service(result: fetch_service_result)
+
+      result = described_class.new(breed: "Cutie", location: "Lviv").call
+
+      expect(result).to eq(expected_result)
+    end
   end
 
   context "when location and breed params provided in downcase" do
