@@ -9,10 +9,13 @@ gem 'rest-client'
 
 group :development do
   gem 'listen', '~> 3.6'
+  gem 'pry'
 end
 
 group :test do
+  gem 'rspec'
   gem 'rspec-rails', '~> 5.0'
+  gem 'rspec-json_expectations'
   gem 'vcr'
   gem 'webmock'
 end

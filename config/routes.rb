@@ -1,5 +1,3 @@
 Rails.application.routes.draw do
-  resource :request, only: %i[create] do
-    get :result
-  end
+  resources :cats, only: [:index]
 end

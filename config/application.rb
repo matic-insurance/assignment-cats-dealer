@@ -22,5 +22,9 @@ module Cats
     config.load_defaults 6.1
 
     config.api_only = true
+
+    config.generators do |g|
+      g.test_framework :rspec, fixture: true
+    end
   end
 end
