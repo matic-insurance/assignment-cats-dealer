@@ -1,4 +1,4 @@
-class HappyCatsAdapter
+class HappyCatsAdapter < ApplicationAdapter
   API_URL = 'https://nh7b1g9g23.execute-api.us-west-2.amazonaws.com/dev/cats/xml'.freeze
 
   def fetch_all
@@ -13,5 +13,7 @@ class HappyCatsAdapter
         image: cat['img'],
       }
     end
+  rescue RestClient::ExceptionWithResponse => e
+    raise ServiceError, e.http_body
   end
 end

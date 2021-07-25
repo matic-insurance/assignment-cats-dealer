@@ -20,5 +20,16 @@ RSpec.describe CatsUnlimitedAdapter, vcr: { cassette_name: 'all_cats_unlimited' 
     it 'convers price into float' do
       expect(subject.first[:price]).to eq 500.0
     end
+
+    context 'when service responded with error' do
+      before do
+        stub_request(:get, described_class::API_URL)
+          .and_return(status: 500, body: 'Internal Server Error')
+      end
+
+      it 'raises ServiceError' do
+        expect { subject }.to raise_exception(ApplicationAdapter::ServiceError, 'Internal Server Error')
+      end
+    end
   end
 end

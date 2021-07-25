@@ -4,12 +4,12 @@ class CatsController < ApplicationController
     if location == 'undefined'
       render json: [], status: :ok
     else
-      result = CatsUnlimitedAdapter.new.fetch_all
+      result = CatsFinder.new.call
       render json: result, status: :ok
     end
   end
 
   def cat_params
-    params.permit(:name, :location, :price)
+    params.permit(:breed, :location, :price)
   end
 end

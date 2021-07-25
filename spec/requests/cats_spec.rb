@@ -5,12 +5,12 @@ RSpec.describe 'Cats' do
     subject { get '/cats' }
 
     it 'returns all cats' do
-      VCR.use_cassette('all_cats_unlimited') do
+      VCR.use_cassettes([{ name: 'all_cats_unlimited' }, { name: 'all_happy_cats' }]) do
         subject
 
         body = JSON.parse(response.body)
 
-        expect(body.size).to eq 11
+        expect(body.size).to eq 21
         expect(response.body).to include_json(
           [{
             breed: 'Abyssin',

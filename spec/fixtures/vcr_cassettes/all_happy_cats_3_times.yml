@@ -1,0 +1,101 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://nh7b1g9g23.execute-api.us-west-2.amazonaws.com/dev/cats/xml
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      User-Agent:
+      - rest-client/2.1.0 (darwin20 x86_64) ruby/3.0.1p64
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Host:
+      - nh7b1g9g23.execute-api.us-west-2.amazonaws.com
+  response:
+    status:
+      code: 500
+      message: Internal Server Error
+    headers:
+    body:
+      encoding: UTF-8
+      string: 'Internal Server Error'
+  recorded_at: Sun, 25 Jul 2021 17:34:19 GMT
+- request:
+    method: get
+    uri: https://nh7b1g9g23.execute-api.us-west-2.amazonaws.com/dev/cats/xml
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      User-Agent:
+      - rest-client/2.1.0 (darwin20 x86_64) ruby/3.0.1p64
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Host:
+      - nh7b1g9g23.execute-api.us-west-2.amazonaws.com
+  response:
+    status:
+      code: 500
+      message: Internal Server Error
+    headers:
+    body:
+      encoding: UTF-8
+      string: 'Internal Server Error'
+  recorded_at: Sun, 25 Jul 2021 17:34:19 GMT
+- request:
+    method: get
+    uri: https://nh7b1g9g23.execute-api.us-west-2.amazonaws.com/dev/cats/xml
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      User-Agent:
+      - rest-client/2.1.0 (darwin20 x86_64) ruby/3.0.1p64
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Host:
+      - nh7b1g9g23.execute-api.us-west-2.amazonaws.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '2131'
+      Connection:
+      - keep-alive
+      Date:
+      - Sun, 25 Jul 2021 17:34:19 GMT
+      X-Amzn-Requestid:
+      - d6c955c3-5b80-480b-9a85-fd456f5a8fac
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Amz-Apigw-Id:
+      - DCYIRE6OPHcFRKg=
+      X-Amzn-Trace-Id:
+      - Root=1-60fda09b-19912a971c9a730d55a87a1b;Sampled=0
+      X-Cache:
+      - Miss from cloudfront
+      Via:
+      - 1.1 12b8fffb374df4eb1fcd64097a74f3f8.cloudfront.net (CloudFront)
+      X-Amz-Cf-Pop:
+      - WAW50-C1
+      X-Amz-Cf-Id:
+      - HIZXFvAOjN3HTL2hPp66XFJ9IZFx1VHg_Y4XSL0e-no1BTjO_XWL-A==
+    body:
+      encoding: UTF-8
+      string: <?xml version="1.0" encoding="UTF-8"?><cats><cat><title>American Curl</title><cost>650</cost><location>Odessa</location><img>https://olxua-ring07.akamaized.net/images_slandocomua/113528769_3_1000x700_amerikanskie-kerly-koshki-s-chelovecheskim-litsom-koshka-kompanon-koti_rev022.jpg</img></cat><cat><title>Bengal</title><cost>800</cost><location>Odessa</location><img>https://olxua-ring01.akamaized.net/images_slandocomua/351717184_8_1000x700_bengalskie-kotyata-_rev029.jpg</img></cat><cat><title>Bengal</title><cost>600</cost><location>Kyiv</location><img>https://olxua-ring10.akamaized.net/images_slandocomua/496811712_5_1000x700_bengalyata-kievskaya-oblast.jpg</img></cat><cat><title>Bobtail</title><cost>369</cost><location>Kyiv</location><img>https://olxua-ring09.akamaized.net/images_slandocomua/313223928_1_1000x700_prodam-kotyat-kurilskogo-bobteyla-nikopol.jpg</img></cat><cat><title>Devon
+        Rex</title><cost>120</cost><location>Kharkiv</location><img>https://olxua-ring02.akamaized.net/images_slandocomua/408892502_8_1000x700_malchiki-devon-reksa-drx-a-24-blue-tabby-_rev004.jpg</img></cat><cat><title>Grumpy</title><cost>500</cost><location>Lviv</location><img>https://images-production.global.ssl.fastly.net/uploads/posts/image/47360/grumpy-cat.jpg</img></cat><cat><title>Maine
+        Coon</title><cost>650</cost><location>Lviv</location><img>https://olxua-ring08.akamaized.net/images_slandocomua/273255938_8_1000x700_kotyata-meyn-kun-ot-chempiona-mira-iz-elitnogo-pitomnika-_rev032.jpg</img></cat><cat><title>Sphynx</title><cost>250</cost><location>Odessa</location><img>https://olxua-ring11.akamaized.net/images_slandocomua/478774802_2_1000x700_predlagayu-malchikov-porody-donskih-sfinksov-fotografii.jpg</img></cat><cat><title>Persian</title><cost>100</cost><location>Kharkiv</location><img>https://olxua-ring02.akamaized.net/images_slandocomua/499773040_3_1000x700_persidskiy-dlinnosherstnyy-malchik-radik-koshki.jpg</img></cat><cat><title>Siamese</title><cost>40</cost><location>Kharkiv</location><img>https://olxua-ring05.akamaized.net/images_slandocomua/500276292_1_1000x700_kot-po-imeni-tom-borispol.jpg</img></cat></cats>
+  recorded_at: Sun, 25 Jul 2021 17:34:19 GMT
+recorded_with: VCR 6.0.0
