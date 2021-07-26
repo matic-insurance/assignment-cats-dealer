@@ -1,4 +1,4 @@
-class CatsFinder
+class CatsFetcher
   SERVICES = [
     CatsUnlimitedAdapter,
     HappyCatsAdapter
@@ -6,7 +6,7 @@ class CatsFinder
 
   def call
     SERVICES.flat_map do |service|
-      retryable(on: ApplicationAdapter::ServiceError) { service.new.fetch_all }
+      retryable(on: ApplicationAdapter::ServiceError) { service.new.call }
     end
   end
 

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe CatsFinder do
+RSpec.describe CatsFetcher do
   describe '#call' do
     subject(:cats) { described_class.new.call }
 

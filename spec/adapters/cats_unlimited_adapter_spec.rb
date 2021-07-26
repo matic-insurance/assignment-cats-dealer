@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe CatsUnlimitedAdapter, vcr: { cassette_name: 'all_cats_unlimited' } do
-  describe '#fetch_all' do
-    subject { described_class.new.fetch_all }
+  describe '#call' do
+    subject { described_class.new.call }
 
     it 'returns all cats' do
       expect(subject.size).to eq 11

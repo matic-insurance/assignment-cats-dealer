@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe HappyCatsAdapter, vcr: { cassette_name: 'all_happy_cats' } do
-  describe '#fetch_all' do
-    subject { described_class.new.fetch_all }
+  describe '#call' do
+    subject { described_class.new.call }
 
     it 'returns all cats' do
       expect(subject.size).to eq 10
