@@ -1,15 +1,15 @@
 class CatsController < ApplicationController
   def index
     location = cat_params[:location]
-    if location == 'undefined'
-      render json: [], status: :ok
-    else
-      result = CatsFinder.new.call
-      render json: result, status: :ok
-    end
+    breed = cat_params[:breed]
+    all_cats = CatsFinder.new.call
+
+    cats = CatsFilter.new.call(all_cats, location: location, breed: breed)
+
+    render json: cats, status: :ok
   end
 
   def cat_params
-    params.permit(:breed, :location, :price)
+    params.permit(:breed, :location)
   end
 end

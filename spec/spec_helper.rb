@@ -9,6 +9,13 @@ VCR.configure do |config|
 end
 
 RSpec.configure do |config|
+  config.around(:example, :cassette_names) do |example|
+    cassette_names = example.metadata[:cassette_names]
+    names = Array.wrap(cassette_names).map { { name: _1 } }
+    VCR.use_cassettes(names) do
+      example.run
+    end
+  end
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
