@@ -13,9 +13,9 @@ RSpec.describe 'Cats', cassette_names: %w(all_cats_unlimited all_happy_cats) do
       expect(body.size).to eq 21
       expect(response.body).to include_json(
         [{
-          breed: 'Abyssin',
-          price: 500,
-          location: 'Lviv',
+          breed: 'Siamese',
+          price: 20,
+          location: 'Kharkiv',
           image: a_string_starting_with('https')
         }]
       )

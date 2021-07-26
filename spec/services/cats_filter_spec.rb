@@ -7,21 +7,27 @@ RSpec.describe CatsFilter do
         {
           breed: 'Abyssin',
           location: 'Lviv',
+          price: 500.0,
         }, {
           breed: 'Abyssin',
           location: 'Odessa',
+          price: 550.0,
         }, {
           breed: 'Siamese',
           location: 'Kharkiv',
+          price: 200.0,
         }, {
           breed: 'British Shorthair',
           location: 'Kyiv',
+          price: 600.0,
         }, {
           breed: 'Bengal',
           location: 'Lviv',
+          price: 480.0,
         }, {
           breed: 'American Curl',
           location: 'Vinnytsya',
+          price: 800.0,
         }
       ]
     end
@@ -32,7 +38,11 @@ RSpec.describe CatsFilter do
     context 'without any attributes' do
       it 'returns original array' do
         expect(cats.size).to eq 6
-        expect(cats).to eq all_cats
+        expect(cats).to include *all_cats
+      end
+
+      it 'sorts cats by price' do
+        expect(cats).to eq all_cats.sort_by { _1[:price] }
       end
     end
 
