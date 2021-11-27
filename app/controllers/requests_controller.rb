@@ -11,8 +11,10 @@ class RequestsController < ApplicationController
   end
 
   def result
-    @cats_list = params[:cats_list].select do |list|
+    cats_list = params[:cats_list].select do |list|
       list['location'] == params[:location] && list['name'] == params[:cat_type]
     end
+
+    render json: cats_list
   end
 end
