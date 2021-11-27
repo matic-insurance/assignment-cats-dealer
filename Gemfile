@@ -14,6 +14,8 @@ group :development do
   gem 'web-console', '>= 3.3.0'
 end
 
-group :test do
-  gem 'rspec-rails', '~> 3.6.0'
+group :development, :test do
+  gem 'rspec-rails', '~> 4.1.0'
+  gem 'vcr'
+  gem 'webmock'
 end
