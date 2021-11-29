@@ -1,15 +1,23 @@
-module Api::V1
-  class CatsController < ApplicationController
-    def index
-      response = RestClient.get('https://nh7b1g9g23.execute-api.us-west-2.amazonaws.com/dev/cats/json')
-      cats_list = JSON.parse(response.body)
+# frozen_string_literal: true
 
-      cats_list =
-        cats_list.select do |cat|
-          cat['location'] == params[:location] && cat['name'] == params[:cat_type]
-        end
+module Api
+  module V1
+    class CatsController < ApplicationController
+      def index
+        cats = Shops::FetchCats.call(filter_params)
 
-      render json: cats_list
+        render json: {
+          cats: cats
+        }
+      end
+
+      private
+
+      def filter_params
+        params.permit(:location, :cat_type, shops: [])
+              .to_h
+              .symbolize_keys
+      end
     end
   end
 end

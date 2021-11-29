@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe 'CatsController' do
@@ -9,31 +11,33 @@ describe 'CatsController' do
 
       it 'returns all cats', vcr: 'fetch_all_cats' do
         expect(response).to have_http_status(:success)
-        expect(response_hash.size).to eq(11)
+        expect(response_hash['cats'].size).to eq(21)
       end
     end
 
     context 'with location parameter' do
       let(:location) { 'Lviv' }
 
-      before { get path, params: { location: location } }
+      before { get path, params: {location: location} }
 
       it 'returns cats with appropriate location', vcr: 'fetch_all_cats' do
         expect(response).to have_http_status(:success)
-        expect(response_hash.size).to eq(3)
-        expect(response_hash.select {|i| i['location'] == location }.size).to eq(3)
+        expect(response_hash['cats'].size).to eq(
+          response_hash['cats'].select { |i| i['location'] == location }.size
+        ).and eq(5)
       end
     end
 
     context 'with cat_type parameter' do
       let(:cat_type) { 'Bengal' }
 
-      before { get path, params: { cat_type: cat_type } }
+      before { get path, params: {cat_type: cat_type} }
 
       it 'returns cats with appropriate cat_type', vcr: 'fetch_all_cats' do
         expect(response).to have_http_status(:success)
-        expect(response_hash.size).to eq(1)
-        expect(response_hash.select {|i| i['name'] == cat_type }.size).to eq(1)
+        expect(response_hash['cats'].size).to eq(
+          response_hash['cats'].select { |i| i['cat_type'] == cat_type }.size
+        ).and eq(3)
       end
     end
 
@@ -41,12 +45,11 @@ describe 'CatsController' do
       let(:cat_type) { 'Abyssin' }
       let(:location) { 'Lviv' }
 
-      before { get path, params: { location: location, cat_type: cat_type } }
+      before { get path, params: {location: location, cat_type: cat_type} }
 
       it 'returns cats with appropriate cat_type & location', vcr: 'fetch_all_cats' do
         expect(response).to have_http_status(:success)
-        expect(response_hash.size).to eq(2)
-        expect(response_hash.select {|i| i['location'] == location && i['name'] == cat_type }.size).to eq(2)
+        expect(response_hash['cats'].size).to eq(2)
       end
     end
   end
