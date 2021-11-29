@@ -57,5 +57,26 @@ describe 'CatsController' do
         expect(response_hash['data']['cats'].size).to eq(2)
       end
     end
+
+    context 'with order_by parameter', vcr: 'fetch_all_cats' do
+      context 'with valid parameter value' do
+        before { get path, params: {order_by: 'cat_type'} }
+
+        it 'returns cats ordered by parameter value' do
+          expect(response).to have_http_status(:success)
+          expect(response_hash['data']['cats'].size).to eq(21)
+          expect(response_hash['data']['cats'].last['cat_type']).to eq('Sphynx')
+        end
+      end
+
+      context 'with invalid parameter value' do
+        before { get path, params: {order_by: 'name'} }
+
+        it 'returns error' do
+          expect(response).to have_http_status(:bad_request)
+          expect(response_hash['error']).to eq('order_by has invalid value')
+        end
+      end
+    end
   end
 end

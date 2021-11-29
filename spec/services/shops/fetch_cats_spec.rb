@@ -87,5 +87,15 @@ describe Shops::FetchCats do
         expect(result.failed_shops).to eq(['cats_unlimited'])
       end
     end
+
+    context 'when order_by parameter is present', vcr: 'fetch_all_cats' do
+      let(:result) { described_class.call(order_by: :cat_type) }
+
+      it 'returns list ordered by this value' do
+        expect(cat_list.first.cat_type).to eq('Abyssin')
+        expect(cat_list.second.cat_type).to eq('Abyssin')
+        expect(cat_list.last.cat_type).to eq('Sphynx')
+      end
+    end
   end
 end

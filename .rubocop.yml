@@ -39,6 +39,9 @@ Style/FrozenStringLiteralComment:
 Naming/MethodParameterName:
   Enabled: false
 
+Style/GuardClause:
+  Enabled: false
+
 # Disabled because of fact that interfaces are implicit in Ruby
 # It's bad to use `instance_double` for some implementation from separate module
 # Because it couples tested code with that module
@@ -55,3 +58,6 @@ RSpec/DescribeMethod:
 
 RSpec/MultipleExpectations:
   Max: 3
+
+RSpec/NestedGroups:
+  Max: 4

@@ -17,5 +17,9 @@ module Shops
         [attr, send(attr)]
       end.to_h
     end
+
+    def self.valid_attribute?(attr)
+      attr.in?(ATTRIBUTES)
+    end
   end
 end

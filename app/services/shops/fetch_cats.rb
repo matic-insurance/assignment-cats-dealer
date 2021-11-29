@@ -9,19 +9,20 @@ module Shops
 
     Result = Struct.new(:cat_list, :processed_shops, :failed_shops)
 
-    def call(shops: AVAILABLE_SHOPS, **filter_params)
+    def call(shops: AVAILABLE_SHOPS, order_by: :price, **filter_params)
       shops &= AVAILABLE_SHOPS
 
       shops.each do |shop|
-        cat_list.concat(
-          api_for(shop).cat_list.where(filter_params)
-        )
-        processed_shops << shop
-      rescue StandardError => e
-        shop_processing_failed(e, shop)
+        fetch_cats_from(shop, filter_params)
       end
 
-      Result.new(cat_list.sort_by(&:price), processed_shops, failed_shops)
+      cat_list.sort_by!(&order_by.to_sym)
+
+      Result.new(
+        cat_list,
+        processed_shops,
+        failed_shops
+      )
     end
 
     private
@@ -35,8 +36,12 @@ module Shops
       super
     end
 
-    def shop_processing_failed(e, shop)
-      Rails.logger.error e.backtrace
+    def fetch_cats_from(shop, filter_params)
+      cat_list.concat(
+        api_for(shop).cat_list.where(filter_params)
+      )
+      processed_shops << shop
+    rescue StandardError
       # TODO: Send error to the bug tracker
       failed_shops << shop
     end
