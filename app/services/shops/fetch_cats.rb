@@ -17,7 +17,7 @@ module Shops
           api_for(shop).cat_list.where(filter_params)
         )
         processed_shops << shop
-      rescue Exception => e
+      rescue StandardError => e
         shop_processing_failed(e, shop)
       end
 
@@ -32,6 +32,7 @@ module Shops
       @cat_list = CatList.new
       @processed_shops = []
       @failed_shops = []
+      super
     end
 
     def shop_processing_failed(e, shop)

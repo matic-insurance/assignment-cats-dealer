@@ -66,10 +66,10 @@ describe Shops::FetchCats do
       end
     end
 
-    context 'when one of the shops cannot be parsed ("cats unlimited")', vcr: 'double_happy_cats' do
+    context 'when "cats unlimited" cannot be parsed', vcr: 'double_happy_cats' do
       before do
         fake_cats_unlimited_api = Shops::CatsUnlimitedApi.new
-        allow(fake_cats_unlimited_api).to receive(:url) { 'https://nh7b1g9g23.execute-api.us-west-2.amazonaws.com/dev/cats/xml' }
+        allow(fake_cats_unlimited_api).to receive(:url).and_return('https://nh7b1g9g23.execute-api.us-west-2.amazonaws.com/dev/cats/xml')
         allow(Shops::CatsUnlimitedApi).to receive(:new) { fake_cats_unlimited_api }
       end
 
