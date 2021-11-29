@@ -10,7 +10,7 @@ module Shops
     end
 
     def url
-      'https://nh7b1g9g23.execute-api.us-west-2.amazonaws.com/dev/cats/xml'
+      ENV.fetch('HAPPY_CATS_URL')
     end
 
     def hash_to_cat(h)

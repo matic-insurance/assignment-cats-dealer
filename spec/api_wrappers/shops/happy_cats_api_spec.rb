@@ -13,7 +13,7 @@ describe Shops::HappyCatsApi do
     end
 
     context 'when response is in the wrong format', vcr: 'cats_unlimited' do
-      before { allow(instance).to receive(:url).and_return('https://nh7b1g9g23.execute-api.us-west-2.amazonaws.com/dev/cats/json') }
+      before { allow(instance).to receive(:url).and_return(ENV.fetch('CATS_UNLIMITED_URL')) }
 
       it 'raises an error' do
         expect { result }.to raise_error(REXML::ParseException)
