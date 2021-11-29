@@ -7,6 +7,8 @@ module Shops
       happy_cats
     ].freeze
 
+    Result = Struct.new(:cat_list, :processed_shops, :failed_shops)
+
     def call(shops: AVAILABLE_SHOPS, **filter_params)
       shops &= AVAILABLE_SHOPS
 
@@ -16,9 +18,7 @@ module Shops
         )
         processed_shops << shop
       rescue Exception => e
-        Rails.logger.error e.backtrace
-        # TODO: Send error to the bug tracker
-        failed_shops << shop
+        shop_processing_failed(e, shop)
       end
 
       Result.new(cat_list.sort_by(&:price), processed_shops, failed_shops)
@@ -28,12 +28,16 @@ module Shops
 
     attr_reader :cat_list, :processed_shops, :failed_shops
 
-    Result = Struct.new(:cat_list, :processed_shops, :failed_shops)
-
     def initialize
       @cat_list = CatList.new
       @processed_shops = []
       @failed_shops = []
+    end
+
+    def shop_processing_failed(e, shop)
+      Rails.logger.error e.backtrace
+      # TODO: Send error to the bug tracker
+      failed_shops << shop
     end
 
     def api_for(shop)
