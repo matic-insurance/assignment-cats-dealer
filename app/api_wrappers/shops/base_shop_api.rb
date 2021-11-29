@@ -4,9 +4,6 @@ module Shops
   class BaseShopApi
     def cat_list
       format(parse(RestClient.get(url)))
-    rescue RestClient::Exception => e
-      Rails.logger.error e.backtrace
-      []
     end
 
     private

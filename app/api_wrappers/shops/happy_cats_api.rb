@@ -7,9 +7,6 @@ module Shops
     def parse(data)
       hash = Hash.from_xml(data)
       hash.dig('cats', 'cat')
-    rescue REXML::ParseException => e
-      Rails.logger.error e.backtrace
-      []
     end
 
     def url

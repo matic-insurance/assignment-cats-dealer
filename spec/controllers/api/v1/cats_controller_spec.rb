@@ -11,7 +11,12 @@ describe 'CatsController' do
 
       it 'returns all cats', vcr: 'fetch_all_cats' do
         expect(response).to have_http_status(:success)
-        expect(response_hash['cats'].size).to eq(21)
+        expect(response_hash['data']['cats'].size).to eq(21)
+      end
+
+      it 'returns meta data about shops', vcr: 'fetch_all_cats' do
+        expect(response_hash['shops']['processed'].size).to eq(2)
+        expect(response_hash['shops']['failed'].size).to eq(0)
       end
     end
 
@@ -22,8 +27,8 @@ describe 'CatsController' do
 
       it 'returns cats with appropriate location', vcr: 'fetch_all_cats' do
         expect(response).to have_http_status(:success)
-        expect(response_hash['cats'].size).to eq(
-          response_hash['cats'].select { |i| i['location'] == location }.size
+        expect(response_hash['data']['cats'].size).to eq(
+          response_hash['data']['cats'].select { |i| i['location'] == location }.size
         ).and eq(5)
       end
     end
@@ -35,8 +40,8 @@ describe 'CatsController' do
 
       it 'returns cats with appropriate cat_type', vcr: 'fetch_all_cats' do
         expect(response).to have_http_status(:success)
-        expect(response_hash['cats'].size).to eq(
-          response_hash['cats'].select { |i| i['cat_type'] == cat_type }.size
+        expect(response_hash['data']['cats'].size).to eq(
+          response_hash['data']['cats'].select { |i| i['cat_type'] == cat_type }.size
         ).and eq(3)
       end
     end
@@ -49,7 +54,7 @@ describe 'CatsController' do
 
       it 'returns cats with appropriate cat_type & location', vcr: 'fetch_all_cats' do
         expect(response).to have_http_status(:success)
-        expect(response_hash['cats'].size).to eq(2)
+        expect(response_hash['data']['cats'].size).to eq(2)
       end
     end
   end

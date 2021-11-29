@@ -6,9 +6,6 @@ module Shops
 
     def parse(data)
       JSON.parse(data)
-    rescue JSON::ParserError => e
-      Rails.logger.error e.backtrace
-      []
     end
 
     def url
