@@ -1,7 +1,10 @@
-require: rubocop-rspec
+require:
+  - rubocop-rails
+  - rubocop-rspec
 
 AllCops:
-  TargetRubyVersion: 2.6
+  TargetRubyVersion: 2.7.5
+  NewCops: enable
   Exclude:
     - vendor/**/*
     - config/**/*
@@ -9,7 +12,7 @@ AllCops:
     - bin/**/*
     - tmp/**/*
 
-Metrics/LineLength:
+Layout/LineLength:
   Max: 95
 
 Style/Documentation:
@@ -22,11 +25,11 @@ Metrics/BlockLength:
 Style/MultilineBlockChain:
   Enabled: false
 
-Style/PredicateName:
+Naming/PredicateName:
   NamePrefix:
     - is_
     - have_
-  NamePrefixBlacklist:
+  ForbiddenPrefixes:
     - is_
     - have_
 

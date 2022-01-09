@@ -9,7 +9,7 @@ jobs:
       - uses: actions/checkout@v1
       - uses: actions/setup-ruby@v1
         with:
-          ruby-version: 2.6.x
+          ruby-version: 2.7.x
       - name: Install dependencies
         run: sudo apt-get install sqlite3 libsqlite3-dev
       - name: Install bundler
@@ -28,10 +28,12 @@ jobs:
       - uses: actions/checkout@v1
       - uses: actions/setup-ruby@v1
         with:
-          ruby-version: 2.6.x
+          ruby-version: 2.7.x
       - name: Install rubocop
-        run: gem install rubocop -v 0.74.0
+        run: gem install rubocop -v 1.24
+      - name: Install rubocop-rails
+        run: gem install rubocop-rails -v 2.13.0
       - name: Install rubocop-rspec
-        run: gem install rubocop-rspec -v 1.36.0
+        run: gem install rubocop-rspec -v 2.7.0
       - name: Run rubocop
         run: rubocop
