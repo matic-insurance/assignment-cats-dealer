@@ -13,7 +13,7 @@ AllCops:
     - tmp/**/*
 
 Layout/LineLength:
-  Max: 95
+  Max: 120
 
 Style/Documentation:
   Enabled: false
