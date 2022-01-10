@@ -1,7 +1,10 @@
 module CatsDealers
   module Parsers
     class Json
-      def initialize
+      def parse(response_body)
+        JSON.parse(response_body, symbolize_names: true)
+      rescue JSON::ParserError
+        []
       end
     end
   end

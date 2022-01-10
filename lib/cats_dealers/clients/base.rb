@@ -1,14 +1,22 @@
 module CatsDealers
   module Clients
     class Base
-      def initialize
-        @resource = RestClient::Resource.new hostname
-        @path = path
+      def get(params = {}, headers = {})
+        execute_request do
+          response = RestClient::Request.execute(
+            method: :get,
+            url: url,
+            headers: headers,
+            params: params
+          )
+          parser.parse(response.body)
+        end
       end
 
-      def get(params = {})
-        response = @resource.get(@path, params)
-        parser.parse(response.body)
+      def execute_request
+        yield
+      rescue RestClient::RequestFailed
+        []
       end
 
       private
@@ -17,11 +25,7 @@ module CatsDealers
         raise NotImplementedError
       end
 
-      def hostname
-        raise NotImplementedError
-      end
-
-      def path
+      def url
         raise NotImplementedError
       end
     end
