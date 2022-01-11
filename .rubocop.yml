@@ -52,3 +52,9 @@ RSpec/DescribeClass:
 
 RSpec/DescribeMethod:
   Enabled: false
+
+RSpec/ExampleLength:
+  Enabled: false
+
+RSpec/MultipleExpectations:
+  Max: 4

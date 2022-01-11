@@ -1,3 +1,7 @@
+require 'cats_dealers/adapters/base'
+require 'cats_dealers/clients/base'
+require 'cats_dealers/parsers/json'
+
 module CatsDealers
   module Adapters
     class CatsUnlimited < Base

@@ -1,3 +1,7 @@
+require 'cats_dealers/adapters/base'
+require 'cats_dealers/clients/base'
+require 'cats_dealers/parsers/xml'
+
 module CatsDealers
   module Adapters
     class HappyCats < Base

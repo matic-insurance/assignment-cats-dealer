@@ -5,7 +5,7 @@ module CatsDealers
         document = Nokogiri::XML(response_body)
         Hash.from_xml(document.to_s).deep_symbolize_keys
       rescue REXML::ParseException
-        []
+        {}
       end
     end
   end
