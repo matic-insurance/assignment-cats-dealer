@@ -16,7 +16,7 @@ module CatsDealers
           parsed_response.map do |item|
             {
               breed: item[:name],
-              price: item[:price],
+              price: item[:price].to_d,
               location: item[:location],
               image: item[:image]
             }
