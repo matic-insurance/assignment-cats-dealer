@@ -3,6 +3,8 @@ require_relative '../clients/json'
 module Cats
   module Shops
     class CatsUnlimited
+      CACHE_TTL = 1.day
+
       def self.build_record(record)
         ::Cats::Record.new(
           name: record['name'],
@@ -18,8 +20,10 @@ module Cats
       end
 
       def call
-        records = client.call(url)
-        records.map { |record| self.class.build_record(record) }
+        Rails.cache.fetch('sources:cats-unlimited:result', expires_in: CACHE_TTL) do
+          records = client.call(url)
+          records.map { |record| self.class.build_record(record) }
+        end
       end
 
       private
