@@ -111,7 +111,7 @@ table th, table td {
         <p class="explanation">Suggest the best deal for a customer</p>
 
       <div class="article">
-        <h2>Getting a list of cats</h2>
+        <h2>Getting a list of cats using filters</h2>
         <h3>GET /api/v1/cats</h3>
 
           <h3>Parameters</h3>
@@ -151,15 +151,15 @@ Host: example.org
 Cookie: </pre>
 
           <h4>Route</h4>
-          <pre class="request route highlight">GET /api/v1/cats?location=Kharkiv&amp;cat_type=Devon+Rex</pre>
+          <pre class="request route highlight">GET /api/v1/cats?location=Odessa&amp;cat_type=Bengal</pre>
 
             <h4>Query Parameters</h4>
-            <pre class="request query_parameters highlight">location: Kharkiv
-cat_type: Devon Rex</pre>
+            <pre class="request query_parameters highlight">location: Odessa
+cat_type: Bengal</pre>
 
 
             <h4>cURL</h4>
-            <pre class="request curl">curl -g &quot;http://localhost:3000/api/v1/cats?location=Kharkiv&amp;cat_type=Devon+Rex&quot; -X GET \
+            <pre class="request curl">curl -g &quot;http://localhost:3000/api/v1/cats?location=Odessa&amp;cat_type=Bengal&quot; -X GET \
 	-H &quot;Content-Type: application/json&quot; \
 	-H &quot;Host: example.org&quot; \
 	-H &quot;Cookie: &quot;</pre>
@@ -167,18 +167,18 @@ cat_type: Devon Rex</pre>
             <h3>Response</h3>
               <h4>Headers</h4>
               <pre class="response headers">Content-Type: application/json; charset=utf-8
-ETag: W/&quot;8cea25c9ce91c9786ed33da3b7eda000&quot;
+ETag: W/&quot;83a91e1a79e229b217385c3ea0a89d52&quot;
 Cache-Control: max-age=0, private, must-revalidate
-X-Request-Id: 73125554-ef0e-4d47-8b96-0b83f44e2550
-X-Runtime: 0.012528
-Content-Length: 89</pre>
+X-Request-Id: c63a1915-2d92-438c-a8bd-a991591b3b4f
+X-Runtime: 0.022262
+Content-Length: 85</pre>
             <h4>Status</h4>
             <pre class="response status">200 OK</pre>
               <h4>Body</h4>
               <pre class="response body">{
-  &quot;name&quot;: &quot;Devon Rex&quot;,
-  &quot;price&quot;: 100,
-  &quot;location&quot;: &quot;Kharkiv&quot;,
+  &quot;name&quot;: &quot;Bengal&quot;,
+  &quot;price&quot;: 800,
+  &quot;location&quot;: &quot;Odessa&quot;,
   &quot;image&quot;: &quot;https://picsum.photos/200&quot;
 }</pre>
       </div>
