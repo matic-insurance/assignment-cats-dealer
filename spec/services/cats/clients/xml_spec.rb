@@ -24,6 +24,6 @@ describe Cats::Clients::Xml do
 
     result = described_class.new.call('http://example.com/api')
 
-    expect(result.count).to eq(0)
+    expect(result).to be_an(Hash)
   end
 end

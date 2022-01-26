@@ -1,10 +1,6 @@
 module Fixtures
   class Cats
     def self.happy_cats_xml
-      happy_cats.to_xml(root: 'cats')
-    end
-
-    def self.happy_cats
       [
         {
           title: 'American Curl',
@@ -24,7 +20,11 @@ module Fixtures
           location: 'Kyiv',
           img: 'https://picsum.photos/200'
         }
-      ]
+      ].to_xml(root: :cats)
+    end
+
+    def self.happy_cats
+      ::Ox.load(happy_cats_xml, mode: :hash_no_attrs)
     end
 
     def self.cats_unlimited_json

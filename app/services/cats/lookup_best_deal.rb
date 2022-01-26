@@ -9,7 +9,7 @@ module Cats
       cats = apply_location_filter(cats, location)
       cats = apply_cat_type_filter(cats, cat_type)
 
-      find_cheapest(cats)
+      find_cheapest(cats) || {}
     end
 
     private

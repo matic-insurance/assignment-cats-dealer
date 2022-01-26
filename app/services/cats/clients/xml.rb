@@ -6,7 +6,7 @@ module Cats
         ::Ox.load(response, mode: :hash_no_attrs)
       rescue StandardError => e
         Rails.logger.error(e.message)
-        []
+        {}
       end
     end
   end

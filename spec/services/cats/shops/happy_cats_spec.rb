@@ -2,10 +2,10 @@
 
 require 'rails_helper'
 
-describe Cats::Shops::CatsUnlimited do
+describe Cats::Shops::HappyCats do
   it 'calls client with correct url' do
     url = 'https://fake.com/api'
-    client = double(call: [])
+    client = double(call: {})
 
     described_class.new(client: client, url: url).call
 
@@ -13,7 +13,7 @@ describe Cats::Shops::CatsUnlimited do
   end
 
   it 'returns list of records' do
-    client = double(call: ::Fixtures::Cats.cats_unlimited)
+    client = double(call: ::Fixtures::Cats.happy_cats)
 
     result = described_class.new(client: client).call
 
@@ -21,20 +21,26 @@ describe Cats::Shops::CatsUnlimited do
   end
 
   it 'builds records correctly' do
-    record = {
-      'name' => 'Abyssin',
-      'price' => 500,
-      'location' => 'Lviv',
-      'image' => 'https://picsum.photos/200'
+    response = {
+      cats: {
+        cat: [
+          {
+            title: 'American Curl',
+            cost: '650',
+            location: 'Odessa',
+            img: 'https://picsum.photos/200'
+          }
+        ]
+      }
     }
-    client = double(call: [record])
+    client = double(call: response)
 
     cat = described_class.new(client: client).call.first
 
     aggregate_failures('testing record') do
-      expect(cat.name).to eq('Abyssin')
-      expect(cat.price).to eq(500)
-      expect(cat.location).to eq('Lviv')
+      expect(cat.name).to eq('American Curl')
+      expect(cat.price).to eq(650)
+      expect(cat.location).to eq('Odessa')
       expect(cat.image).to eq('https://picsum.photos/200')
     end
   end

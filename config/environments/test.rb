@@ -1,4 +1,5 @@
 require_relative '../../spec/support/fakes/cats/shops/cats_unlimited'
+require_relative '../../spec/support/fakes/cats/shops/happy_cats'
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
@@ -43,6 +44,7 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
 
   config.available_cat_shops = [
-    ::Fakes::Cats::Shops::CatsUnlimited.new
+    ::Fakes::Cats::Shops::CatsUnlimited.new,
+    ::Fakes::Cats::Shops::HappyCats.new
   ]
 end

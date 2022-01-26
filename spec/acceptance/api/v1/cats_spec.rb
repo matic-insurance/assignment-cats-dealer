@@ -10,13 +10,13 @@ resource 'Cats' do
     parameter :location, 'Customer location', type: :string, with_example: true
 
     example 'Getting a list of cats using filters' do
-      do_request(location: 'Odessa', cat_type: 'American Curl')
+      do_request(location: 'Odessa', cat_type: 'Bengal')
 
       aggregate_failures('testing response') do
         record = json
         expect(status).to eq(200)
-        expect(record['name']).to eq('American Curl')
-        expect(record['price']).to eq(450)
+        expect(record['name']).to eq('Bengal')
+        expect(record['price']).to eq(800)
         expect(record['location']).to eq('Odessa')
         expect(record['image']).to eq('https://picsum.photos/200')
       end
