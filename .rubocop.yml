@@ -1,7 +1,7 @@
 require: rubocop-rspec
 
 AllCops:
-  TargetRubyVersion: 2.6
+  TargetRubyVersion: 2.7.5
   Exclude:
     - vendor/**/*
     - config/**/*
@@ -10,7 +10,7 @@ AllCops:
     - tmp/**/*
 
 Metrics/LineLength:
-  Max: 95
+  Max: 115
 
 Style/Documentation:
   Enabled: false
@@ -31,7 +31,7 @@ Style/PredicateName:
     - have_
 
 Layout/SpaceInsideHashLiteralBraces:
-  EnforcedStyle: no_space
+  EnforcedStyle: space
 
 Style/FrozenStringLiteralComment:
   Enabled: false

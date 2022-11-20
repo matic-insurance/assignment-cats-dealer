@@ -1,22 +1,32 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 
-gem 'rails', '~> 5.2'
-gem 'sqlite3'
+ruby '2.7.5'
 
-gem 'puma'
-gem 'rest-client'
+gem 'benchmark'
+gem 'dry-initializer', '~> 3.1.1'
+gem 'dry-struct', '~> 1.4.0'
+gem 'parallel', '~> 1.22.1'
+gem 'puma', '~> 6.0.0'
+gem 'rails', '~> 7.0.4'
+gem 'rest-client', '~> 2.1.0'
+gem 'sqlite3', '~> 1.5.3'
 
-gem 'bootstrap-sass', '~> 3.4.1'
-gem 'coffee-rails', '~> 4.2'
-gem 'sass-rails', '~> 5.0'
-gem 'turbolinks', '~> 5'
-gem 'uglifier', '>= 1.3.0'
+group :development, :test do
+  gem 'pry'
+  gem 'rubocop'
+  gem 'rubocop-rails', require: false
+  gem 'rubocop-rspec', require: false
+  gem 'simplecov', require: false
+end
 
 group :development do
-  gem 'listen', '>= 3.0.5', '< 3.2'
-  gem 'web-console', '>= 3.3.0'
+  gem 'listen', '~> 3.7.1'
+  gem 'web-console', '~> 4.2.0'
 end
 
 group :test do
-  gem 'rspec-rails', '~> 3.6.0'
+  gem 'rspec-rails', '~> 6.0.1'
+  gem 'webmock'
 end
