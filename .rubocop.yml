@@ -1,7 +1,9 @@
-require: rubocop-rspec
+require:
+  - rubocop-rspec
+  - rubocop-rails
 
 AllCops:
-  TargetRubyVersion: 2.7.5
+  TargetRubyVersion: 2.7.6
   Exclude:
     - vendor/**/*
     - config/**/*
@@ -14,6 +16,9 @@ Metrics/LineLength:
 
 Style/Documentation:
   Enabled: false
+
+Metrics/AbcSize:
+  Max: 35
 
 Metrics/BlockLength:
   Enabled: true

@@ -51,6 +51,7 @@ RSpec.describe CatsFetchService do
 
       it { is_expected.to be_kind_of(Array) }
       it { expect(cats_list.first).to be_kind_of(Cat) }
+      it { expect(cats_list.first.shop_name).to eq('Happy Cats') }
     end
 
     context 'when clients responses not successful' do

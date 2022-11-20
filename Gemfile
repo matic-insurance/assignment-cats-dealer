@@ -2,7 +2,7 @@
 
 source 'https://rubygems.org'
 
-ruby '2.7.5'
+ruby '2.7.6'
 
 gem 'benchmark'
 gem 'dry-initializer', '~> 3.1.1'
