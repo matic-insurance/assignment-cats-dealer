@@ -10,7 +10,7 @@ RSpec.shared_examples 'expected response' do
   end
 end
 
-RSpec.describe CatsController, type: :controller do
+RSpec.describe V1::CatsController, type: :controller do
   describe '#index' do
     before do
       stub_request(:get, 'https://nh7b1g9g23.execute-api.us-west-2.amazonaws.com/dev/cats/json')
