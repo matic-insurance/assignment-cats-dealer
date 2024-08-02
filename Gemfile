@@ -1,22 +1,28 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 5.2'
-gem 'sqlite3'
-
-gem 'puma'
-gem 'rest-client'
-
-gem 'bootstrap-sass', '~> 3.4.1'
-gem 'coffee-rails', '~> 4.2'
-gem 'sass-rails', '~> 5.0'
-gem 'turbolinks', '~> 5'
-gem 'uglifier', '>= 1.3.0'
+ruby '3.1.2'
+gem 'async-http-faraday', '~> 0.15'
+gem 'dotenv-rails', '~> 3.1'
+gem 'faraday', '~> 2.10'
+gem 'interactor', '~> 3.1'
+gem 'oj', '~> 3.16'
+gem 'ox', '~> 2.14'
+gem 'puma', '~> 6.4.2'
+gem 'rails', '~> 7.1'
+gem 'sqlite3', '~> 1.4'
 
 group :development do
-  gem 'listen', '>= 3.0.5', '< 3.2'
-  gem 'web-console', '>= 3.3.0'
+  gem 'pry-rails', '~> 0.3', group: :test
+  gem 'rubocop', '~> 1.65', require: false
+  gem 'rubocop-performance', '~> 1.21', require: false
+  gem 'rubocop-rails', '~> 2.25', require: false
+  gem 'rubocop-rspec', '~> 2.1', require: false
 end
 
 group :test do
-  gem 'rspec-rails', '~> 3.6.0'
+  gem 'database_cleaner', '~> 2.0', require: false
+  gem 'rspec-rails', '~> 6.1', require: false
+  gem 'simplecov', '~> 0.22', require: false
+  gem 'vcr', '~> 6.2', require: false
+  gem 'webmock', '~> 3.23', require: false
 end
