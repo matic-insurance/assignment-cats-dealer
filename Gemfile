@@ -7,6 +7,7 @@ gem 'rest-client', '~> 2.1'                             # REST client for making
 
 group :development do
   gem 'dotenv-rails', '~> 3.1', '>= 3.1.2'              # Allows developers to override ENV variables
+  gem 'magic_frozen_string_literal', '~> 1.2'           # Magic comment for frozen string literals
   gem 'rails_best_practices', '~> 1.23.2'               # a code metric tool for rails codes, written in Ruby.
   gem 'rubocop', '~> 1.64', '>= 1.64.0', require: false # A Ruby static code analyzer https://github.com/bbatsov/rubocop
   gem 'rubocop-performance', '~> 1.21', '>= 1.21.1', require: false # A rubocop Performance extension
