@@ -1,51 +1,118 @@
-require: rubocop-rspec
+require:
+  - rubocop-performance
+  - rubocop-rake
+  - rubocop-rspec
+  - rubocop-rails
 
 AllCops:
-  TargetRubyVersion: 2.6
+  NewCops: enable
+  TargetRubyVersion: 3.0
   Exclude:
-    - vendor/**/*
-    - config/**/*
-    - db/**/*
-    - bin/**/*
-    - tmp/**/*
+    - 'vendor/**/*'
+    - 'tmp/**/*'
+    - 'bin/*'
 
-Metrics/LineLength:
-  Max: 95
+Style/PercentLiteralDelimiters:
+  PreferredDelimiters:
+    default: '[]'
+
+Style/DoubleNegation:
+  Enabled: no
+
+Style/ReturnNilInPredicateMethodDefinition:
+  Enabled: no
+
+Rails/InverseOf:
+  Enabled: no
 
 Style/Documentation:
-  Enabled: false
+  Enabled: no
+
+RSpec/Rails/InferredSpecType:
+  Enabled: no
+
+Rails/BulkChangeTable:
+  Enabled: no
+
+RSpec/NamedSubject:
+  Enabled: no
+
+RSpec/AnyInstance:
+  Enabled: no
+
+RSpec/ContextWording:
+  Enabled: no
+
+Metrics/AbcSize:
+  Enabled: yes
+  Max: 50
+
+Metrics/MethodLength:
+  Enabled: yes
+  Max: 150
+
+Naming/VariableNumber:
+  Enabled: no
+
+Metrics/CyclomaticComplexity:
+  Enabled: yes
+  Max: 25
+
+Metrics/PerceivedComplexity:
+  Enabled: yes
+  Max: 25
+
+Metrics/ClassLength:
+  Enabled: yes
+
+Naming/AccessorMethodName:
+  Enabled: yes
+
+Layout/LineLength:
+  Max: 200
+
+RSpec/MultipleExpectations:
+  Max: 11
 
 Metrics/BlockLength:
   Enabled: true
   Max: 200
 
-Style/MultilineBlockChain:
-  Enabled: false
+RSpec/NestedGroups:
+  Max: 5
 
-Style/PredicateName:
-  NamePrefix:
-    - is_
-    - have_
-  NamePrefixBlacklist:
-    - is_
-    - have_
+RSpec/ExampleLength:
+  Max: 10
 
-Layout/SpaceInsideHashLiteralBraces:
-  EnforcedStyle: no_space
+RSpec/MultipleMemoizedHelpers:
+  Max: 20
 
-Style/FrozenStringLiteralComment:
-  Enabled: false
+RSpec/LetSetup:
+  Enabled: no
 
-# Disabled because of fact that interfaces are implicit in Ruby
-# It's bad to use `instance_double` for some implementation from separate module
-# Because it couples tested code with that module
+RSpec/MessageSpies:
+  Enabled: no
+
+Rails/SkipsModelValidations:
+  Enabled: no
+
+RSpec/MessageChain:
+  Enabled: no
+  
+RSpec/ExpectInHook:
+  Enabled: no
+
+RSpec/ExampleLength:
+  Enabled: no
+
+Lint/SymbolConversion:
+  Enabled: no
+
+Rails/CreateTableWithTimestamps:
+  Enabled: no
+
+Rails/I18nLocaleTexts:
+  Enabled: no
+
 RSpec/VerifiedDoubles:
-  Enabled: false
-
-RSpec/DescribeClass:
-  Exclude:
-    - 'spec/dependencies_spec.rb'
-    - 'spec/features/**/*'
-
-RSpec/DescribeMethod:
   Enabled: false

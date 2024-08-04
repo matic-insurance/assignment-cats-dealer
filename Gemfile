@@ -1,22 +1,30 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 
-gem 'rails', '~> 5.2'
-gem 'sqlite3'
+ruby '3.0.0'
 
+gem 'rails', '~> 7.0.0'
+
+gem 'dotenv-rails', require: 'dotenv/load'
 gem 'puma'
-gem 'rest-client'
-
-gem 'bootstrap-sass', '~> 3.4.1'
-gem 'coffee-rails', '~> 4.2'
-gem 'sass-rails', '~> 5.0'
-gem 'turbolinks', '~> 5'
-gem 'uglifier', '>= 1.3.0'
 
 group :development do
-  gem 'listen', '>= 3.0.5', '< 3.2'
-  gem 'web-console', '>= 3.3.0'
+  gem 'listen', '~> 3.5'
+end
+
+group :development, :test do
+  gem 'pry'
+  gem 'rubocop'
+  gem 'rubocop-performance'
+  gem 'rubocop-rails'
+  gem 'rubocop-rake'
+  gem 'rubocop-rspec', '~> 2.4'
 end
 
 group :test do
-  gem 'rspec-rails', '~> 3.6.0'
+  gem 'rspec-rails', '~> 4.0.1'
+  gem 'shoulda-matchers', '~> 5.3.0'
+  gem 'vcr'
+  gem 'webmock'
 end
