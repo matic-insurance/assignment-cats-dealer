@@ -274,8 +274,6 @@ GEM
       rubocop (~> 1.61)
     ruby-progressbar (1.13.0)
     sexp_processor (4.17.2)
-    shoulda-callback-matchers (1.1.4)
-      activesupport (>= 3)
     shoulda-matchers (6.2.0)
       activesupport (>= 5.2.0)
     simplecov (0.22.0)
@@ -321,7 +319,6 @@ DEPENDENCIES
   rubocop-performance (~> 1.21, >= 1.21.1)
   rubocop-rails (~> 2.25, >= 2.25.1)
   rubocop-rspec (~> 2.30, >= 2.30.0)
-  shoulda-callback-matchers (~> 1.1.4)
   shoulda-matchers (~> 6.2)
   simplecov
   webmock (~> 3.23, >= 3.23.1)

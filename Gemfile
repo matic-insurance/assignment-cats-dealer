@@ -19,7 +19,6 @@ end
 group :test do
   gem 'rspec-rails', '~> 6.1', '>= 6.1.2'               # rspec-rails is a testing framework for Rails 3+.
   gem 'rubocop-rspec', '~> 2.30', '>= 2.30.0'           # Code style checking for RSpec files
-  gem 'shoulda-callback-matchers', '~> 1.1.4'           # Matchers to test before, after and around hooks
   gem 'shoulda-matchers', '~> 6.2'                      # Collection of testing matchers extracted from Shoulda http://thoughtbot.com/community
   gem 'simplecov', require: false                       # To help calculate test coverage percentage: https://github.com/simplecov-ruby/simplecov
   gem 'webmock', '~> 3.23', '>= 3.23.1'                 # To stub RestClient requests
