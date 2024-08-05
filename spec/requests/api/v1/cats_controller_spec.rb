@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'Api::V1::Cats', type: :request do
+describe 'Api::V1::Cats' do
   describe 'GET /api/v1/cats/best_deal' do
     let(:location) { 'New York' }
     let(:cat_type) { 'Siamese' }

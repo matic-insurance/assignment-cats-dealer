@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-describe Api::V1::CatsController, type: :controller do
-  let(:logger) { instance_double('Logger') }
+describe Api::V1::CatsController do
+  let(:logger) { instance_double(Logger) }
 
   before do
     allow(Rails).to receive(:logger).and_return(logger)
