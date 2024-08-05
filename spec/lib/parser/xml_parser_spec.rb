@@ -5,13 +5,13 @@ describe Parser::XmlParser do
   describe '.parse_body' do
     it 'parses an XML string into a Nokogiri XML document' do
       xml_string = '<cats><cat><title>Bengal</title><cost>700</cost><location>Rivne</location><img>image_url</img></cat></cats>'
-      parsed_doc = Parser::XmlParser.parse_body(xml_string)
+      parsed_doc = described_class.parse_body(xml_string)
       expect(parsed_doc).to be_a(Nokogiri::XML::Document)
       expect(parsed_doc.xpath('//cat/title').text).to eq('Bengal')
     end
   end
 
-  describe '.solidify_keys' do
+  describe '.consolidate_keys' do
     it 'transforms XML nodes into a hash with the expected keys and values' do
       xml_string = '<cats><cat><title>Bengal</title><cost>700</cost><location>Rivne</location><img>image_url</img></cat></cats>'
       parsed_doc = Nokogiri::XML(xml_string)
@@ -23,7 +23,7 @@ describe Parser::XmlParser do
           Parser::BaseParser::IMAGE_KEY => 'image_url'
         }
       ]
-      expect(Parser::XmlParser.solidify_keys(parsed_doc)).to eq(expected_result)
+      expect(described_class.consolidate_keys(parsed_doc)).to eq(expected_result)
     end
 
     it 'correctly handles multiple cat nodes' do
@@ -43,7 +43,7 @@ describe Parser::XmlParser do
           Parser::BaseParser::IMAGE_KEY => 'image_url2'
         }
       ]
-      expect(Parser::XmlParser.solidify_keys(parsed_doc)).to eq(expected_result)
+      expect(described_class.consolidate_keys(parsed_doc)).to eq(expected_result)
     end
   end
 end

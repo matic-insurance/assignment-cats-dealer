@@ -5,25 +5,36 @@ module Parser
     RELATED_KEYS = {
       'name' => BaseParser::CAT_TYPE_KEY,
       'price' => BaseParser::PRICE_KEY
-    }
-    def self.parse_body(parsed_data)
-      JSON.parse(parsed_data)
-    end
+    }.freeze
 
-    def self.solidify_keys(parsed_data)
-      case parsed_data
-      when Array
-        parsed_data.map { |item| solidify_keys(item) }
-      when Hash
-        parsed_data.each_with_object({}) do |(key, value), result|
+    class << self
+      def parse_body(parsed_data)
+        JSON.parse(parsed_data)
+      end
+
+      def consolidate_keys(parsed_data)
+        case parsed_data
+        when Array
+          consolidate_keys_for_array(parsed_data)
+        when Hash
+          consolidate_keys_for_hash(parsed_data)
+        else
+          parsed_data
+        end
+      end
+
+      def consolidate_keys_for_array(array_data)
+        array_data.map { |item| consolidate_keys(item) }
+      end
+
+      def consolidate_keys_for_hash(hash_data)
+        hash_data.each_with_object({}) do |(key, value), result|
           if RELATED_KEYS.key?(key)
             result[RELATED_KEYS[key]] = value
           else
-            result[key] = solidify_keys(value)
+            result[key] = consolidate_keys(value)
           end
         end
-      else
-        parsed_data
       end
     end
   end

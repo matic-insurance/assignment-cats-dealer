@@ -6,5 +6,4 @@ class LibLoader
       require file
     end
   end
-
 end

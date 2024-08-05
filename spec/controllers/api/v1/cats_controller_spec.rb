@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe Api::V1::CatsController, type: :controller do
-  let(:logger) { instance_double("Logger") }
+  let(:logger) { instance_double('Logger') }
 
   before do
     allow(Rails).to receive(:logger).and_return(logger)
@@ -12,6 +12,7 @@ describe Api::V1::CatsController, type: :controller do
     let(:location) { 'New York' }
     let(:cat_type) { 'Siamese' }
     let(:best_deal) { { name: 'Fluffy', price: 100 } }
+
     context 'successful request' do
       before do
         allow(CatDealerService).to receive(:find_best_deal).and_return(best_deal)
@@ -49,7 +50,7 @@ describe Api::V1::CatsController, type: :controller do
 
       it 'logs the error' do
         get :best_deal, params: { user_location: location, cats_type: cat_type }
-        expect(logger).to have_received(:error).with("StandardError: StandardError")
+        expect(logger).to have_received(:error).with('StandardError: StandardError')
       end
     end
     context 'ParameterMissing raised' do
@@ -69,7 +70,7 @@ describe Api::V1::CatsController, type: :controller do
 
       it 'logs the error' do
         get :best_deal, params: { user_location: location, cats_type: cat_type }
-        expect(logger).to have_received(:error).with("ParameterMissing: param is missing or the value is empty: user_location")
+        expect(logger).to have_received(:error).with('ParameterMissing: param is missing or the value is empty: user_location')
       end
     end
   end

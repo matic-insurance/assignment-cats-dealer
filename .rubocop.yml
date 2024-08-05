@@ -9,7 +9,11 @@ AllCops:
     - tmp/**/*
 
 Layout/LineLength:
-  Max: 95
+  Max: 125
+  Exclude:
+    - '**/*_spec.rb'
+    - '**/*_helper.rb'
+    - 'Gemfile'
 
 Style/Documentation:
   Enabled: false
@@ -28,10 +32,28 @@ Naming/PredicateName:
     - has_
 
 Layout/SpaceInsideHashLiteralBraces:
-  EnforcedStyle: no_space
+  EnforcedStyle: space
 
 Style/FrozenStringLiteralComment:
   Enabled: false
+
+RSpec/ContextWording:
+  Enabled: no
+
+RSpec/EmptyLineAfterExampleGroup:
+  Enabled: false
+
+RSpec/ExampleLength:
+  Max: 30
+
+RSpec/NestedGroups:
+  Max: 5
+
+RSpec/MultipleMemoizedHelpers:
+  Max: 25
+
+RSpec/MultipleExpectations:
+  Max: 2
 
 # Disabled because of fact that interfaces are implicit in Ruby
 # It's bad to use `instance_double` for some implementation from separate module

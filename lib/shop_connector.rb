@@ -5,7 +5,7 @@ require 'rest-client'
 class ShopConnector
   INVALID_SHOP_URL_MSG = 'Invalid shop URL'
   INVALID_RESPONSE_FORMAT_MSG = 'Invalid response format'
-  VALID_RESPONSE_FORMATS = %i[json xml]
+  VALID_RESPONSE_FORMATS = %i[json xml].freeze
   class InvalidShopUrlError < StandardError; end
   class InvalidResponseFormatError < StandardError; end
 
@@ -15,7 +15,7 @@ class ShopConnector
     validate_input_params!
   end
 
-  def get_cats
+  def fetch_cats
     response = RestClient.get(api_url)
     { cats: parse_response(response.body) }.with_indifferent_access
   rescue RestClient::ExceptionWithResponse => e
@@ -27,6 +27,7 @@ class ShopConnector
   end
 
   private
+
   attr_accessor :api_url, :response_format
 
   def parse_response(body)

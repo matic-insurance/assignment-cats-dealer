@@ -4,7 +4,7 @@ class CatDealerService
   SHOPS = [
     { name: 'Happy Cats', url: ENV.fetch('HAPPY_CATS_ENDPOINT'), format: :xml },
     { name: 'Unlimited Cats',  url: ENV.fetch('UNLIMITED_CATS_ENDPOINT'), format: :json }
-  ]
+  ].freeze
 
   class << self
     def find_best_deal(location, cats_type)
@@ -24,6 +24,7 @@ class CatDealerService
   end
 
   private
+
   attr_reader :location, :cats_type
 
   def fetch_cats
@@ -31,7 +32,7 @@ class CatDealerService
       connector = shop_connector(shop)
       next unless connector
 
-      response = connector.get_cats
+      response = connector.fetch_cats
       handle_response(shop, response)
     end.compact.flatten
   end

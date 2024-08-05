@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby '3.2.4'
 
-gem 'mime-types', '~> 3.3', '>= 3.3.1'                 # A library for dealing with MIME types
+gem 'mime-types', '~> 3.3', '>= 3.3.1'                  # A library for dealing with MIME types
 gem 'puma', '~> 6.4', '>= 6.4.2'                        # Webserver for Rails
 gem 'rails', '~> 7.1', '>= 7.1.3.4'                     # Ruby on Rails is a full-stack web framework.
 gem 'rest-client', '~> 2.1'                             # REST client for making API requests

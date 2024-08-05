@@ -16,7 +16,7 @@ describe CatDealerService do
   describe '.find_best_deal' do
     context 'when cats are available that match the criteria' do
       it 'returns the cat with the lowest price' do
-        best_deal = CatDealerService.find_best_deal(location, cat_type)
+        best_deal = described_class.find_best_deal(location, cat_type)
         expect(best_deal.slice(:cat_type, :price, :location, :image)).to eq({
           cat_type: 'American Curl',
           price: 350,
@@ -31,7 +31,7 @@ describe CatDealerService do
       let(:xml_response) { '<cats></cats>' }
 
       it 'returns an error message' do
-        best_deal = CatDealerService.find_best_deal(location, cat_type)
+        best_deal = described_class.find_best_deal(location, cat_type)
         expect(best_deal).to eq({ error: 'Oops, no cats found' })
       end
     end
@@ -42,7 +42,7 @@ describe CatDealerService do
       end
 
       it 'returns an error message' do
-        best_deal = CatDealerService.find_best_deal(location, cat_type)
+        best_deal = described_class.find_best_deal(location, cat_type)
         expect(best_deal).to eq({ error: 'Oops, no cats found' })
       end
     end
@@ -51,13 +51,13 @@ describe CatDealerService do
       it 'returns a response using another shop source' do
         allow(ShopConnector).to receive(:new).with(shop_json_url, :json).and_return(nil)
         allow(ShopConnector).to receive(:new).with(shop_xml_url, :xml).and_call_original
-        best_deal = CatDealerService.find_best_deal(location, cat_type)
+        best_deal = described_class.find_best_deal(location, cat_type)
         expect(best_deal.slice(:cat_type, :price, :location, :image)).to eq({
-                                                                              cat_type: 'American Curl',
-                                                                              price: 350,
-                                                                              location: 'Kharkiv',
-                                                                              image: 'https://olxua-ring07.akamaized'
-                                                                            }.with_indifferent_access)
+          cat_type: 'American Curl',
+          price: 350,
+          location: 'Kharkiv',
+          image: 'https://olxua-ring07.akamaized'
+        }.with_indifferent_access)
       end
     end
   end
