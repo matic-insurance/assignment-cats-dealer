@@ -30,7 +30,7 @@ RSpec.describe CatDealerService do
 
       it 'returns an error message' do
         best_deal = CatDealerService.find_best_deal(location, cat_type)
-        expect(best_deal).to eq({ error: 'No cats found' })
+        expect(best_deal).to eq({ error: 'Oops, no cats found' })
       end
     end
 
@@ -41,7 +41,7 @@ RSpec.describe CatDealerService do
 
       it 'returns an error message' do
         best_deal = CatDealerService.find_best_deal(location, cat_type)
-        expect(best_deal).to eq({ error: 'No cats found' })
+        expect(best_deal).to eq({ error: 'Oops, no cats found' })
       end
     end
   end

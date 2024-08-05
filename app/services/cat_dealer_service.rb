@@ -46,6 +46,7 @@ class CatDealerService
   def handle_response(shop, response)
     if response[:error]
       Rails.logger.error("Error response from shop: #{shop[:name]} - #{response[:error]}")
+      nil
     else
       response[:cats]
     end
