@@ -1,11 +1,10 @@
 require: rubocop-rspec
 
 AllCops:
-  TargetRubyVersion: 2.6
+  TargetRubyVersion: 3.2.4
   Exclude:
     - vendor/**/*
     - config/**/*
-    - db/**/*
     - bin/**/*
     - tmp/**/*
 
