@@ -25,6 +25,7 @@ Naming/PredicateName:
   NamePrefix:
     - is_
     - have_
+    - has_
 
 Layout/SpaceInsideHashLiteralBraces:
   EnforcedStyle: no_space
