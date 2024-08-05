@@ -19,7 +19,11 @@ class ShopConnector
     response = RestClient.get(api_url)
     { cats: parse_response(response.body) }.with_indifferent_access
   rescue RestClient::ExceptionWithResponse => e
-    { error: e.response }
+    { error: "Rest client error: #{e.response}" }
+  rescue JSON::ParserError, Nokogiri::XML::SyntaxError => e
+    { error: "Parsing error: #{e.message}" }
+  rescue StandardError => e
+    { error: "Unexpected error: #{e.message}" }
   end
 
   private

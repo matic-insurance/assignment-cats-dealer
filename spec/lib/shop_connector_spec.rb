@@ -81,12 +81,43 @@ describe ShopConnector do
     end
 
     context 'when an error occurs' do
-      let(:connector) { ShopConnector.new(json_url, :json) }
+      context 'RestClient::ExceptionWithResponse error' do
+        let(:connector) { ShopConnector.new(json_url, :json) }
 
-      it 'returns an error response' do
-        allow(RestClient).to receive(:get).with(json_url).and_raise(RestClient::ExceptionWithResponse.new(double))
-        result = connector.get_cats
-        expect(result).to have_key(:error)
+        it 'returns an error response' do
+          allow(RestClient).to receive(:get).with(json_url).and_raise(RestClient::ExceptionWithResponse.new(double))
+          result = connector.get_cats
+          expect(result).to have_key(:error)
+        end
+      end
+      context 'JSON::ParserError error' do
+        let(:connector) { ShopConnector.new(json_url, :json) }
+
+        it 'returns an error response' do
+          allow(RestClient).to receive(:get).with(json_url).and_return(double(body: 'invalid json'))
+          result = connector.get_cats
+          expect(result).to have_key(:error)
+        end
+      end
+
+      context 'Nokogiri::XML::SyntaxError error' do
+        let(:connector) { ShopConnector.new(xml_url, :xml) }
+
+        it 'returns an error response' do
+          allow(RestClient).to receive(:get).with(xml_url).and_raise(Nokogiri::XML::SyntaxError)
+          result = connector.get_cats
+          expect(result).to have_key(:error)
+        end
+      end
+
+      context 'unexpected error' do
+        let(:connector) { ShopConnector.new(xml_url, :xml) }
+
+        it 'returns an error response' do
+          allow(RestClient).to receive(:get).with(xml_url).and_raise(StandardError)
+          result = connector.get_cats
+          expect(result).to have_key(:error)
+        end
       end
     end
   end
