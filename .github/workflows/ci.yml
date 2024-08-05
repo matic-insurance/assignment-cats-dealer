@@ -27,8 +27,8 @@ jobs:
         with:
           ruby-version: 3.2
       - name: Install rubocop
-        run: gem install rubocop -v 0.74.0
+        run: gem install rubocop
       - name: Install rubocop-rspec
-        run: gem install rubocop-rspec -v 1.42.0
+        run: gem install rubocop-rspec
       - name: Run rubocop
         run: rubocop
