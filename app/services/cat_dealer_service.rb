@@ -63,6 +63,8 @@ class CatDealerService
   def find_best_deal(cats)
     return { error: 'Oops, no cats found' } if cats.empty?
 
-    cats.min_by { |cat| cat[:price] }
+    min_price = cats.min_by { |cat| cat[:price] }[:price]
+    best_deals = cats.select { |cat| cat[:price] == min_price }
+    best_deals.first
   end
 end
