@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 module Parser
   class BaseParser
-    CAT_TYPE_KEY = 'cat_type'.freeze
-    PRICE_KEY = 'price'.freeze
-    LOCATION_KEY = 'location'.freeze
-    IMAGE_KEY = 'image'.freeze
+    CAT_TYPE_KEY = 'cat_type'
+    PRICE_KEY = 'price'
+    LOCATION_KEY = 'location'
+    IMAGE_KEY = 'image'
 
     def self.parse(data)
       parsed_data = parse_body(data)

@@ -1,11 +1,13 @@
+# frozen_string_literal: true
+
 require 'nokogiri'
 
 module Parser
   class XmlParser < BaseParser
-    TITLE_KEY = 'title'.freeze
-    COST_KEY = 'cost'.freeze
-    LOCATION_KEY = 'location'.freeze
-    IMG_KEY = 'img'.freeze
+    TITLE_KEY = 'title'
+    COST_KEY = 'cost'
+    LOCATION_KEY = 'location'
+    IMG_KEY = 'img'
 
     def self.parse_body(xml)
       Nokogiri::XML(xml)

@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 require 'rest-client'
 
 class ShopConnector
-  INVALID_SHOP_URL_MSG = 'Invalid shop URL'.freeze
-  INVALID_RESPONSE_FORMAT_MSG = 'Invalid response format'.freeze
-  VALID_RESPONSE_FORMATS = %i[json xml].freeze
+  INVALID_SHOP_URL_MSG = 'Invalid shop URL'
+  INVALID_RESPONSE_FORMAT_MSG = 'Invalid response format'
+  VALID_RESPONSE_FORMATS = %i[json xml]
   class InvalidShopUrlError < StandardError; end
   class InvalidResponseFormatError < StandardError; end
 

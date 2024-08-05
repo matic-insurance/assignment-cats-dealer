@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Api::V1::CatsController < ApplicationController
   def best_deal
     best_deal = CatDealerService.find_best_deal(best_deal_params[:user_location], best_deal_params[:cats_type])

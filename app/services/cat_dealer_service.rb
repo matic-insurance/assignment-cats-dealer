@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CatDealerService
   SHOPS = [
     { name: 'Happy Cats', url: ENV.fetch('HAPPY_CATS_ENDPOINT'), format: :xml },
