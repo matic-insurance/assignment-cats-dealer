@@ -36,7 +36,7 @@ class ShopConnector
     when :xml
       Parser::XmlParser.parse(body)
     else
-      { error: 'Unsupported format' }
+      []
     end
   end
 
