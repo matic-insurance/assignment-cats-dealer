@@ -32,7 +32,7 @@ class CatDealerService
       next unless connector
 
       response = connector.get_cats
-      response[:cats] unless response[:error]
+      handle_response(shop, response)
     end.compact.flatten
   end
 
@@ -41,6 +41,14 @@ class CatDealerService
   rescue ShopConnector::InvalidShopUrlError, ShopConnector::InvalidResponseFormatError => e
     Rails.logger.error("Connector error: #{e} for shop: #{shop[:name]}")
     nil
+  end
+
+  def handle_response(shop, response)
+    if response[:error]
+      Rails.logger.error("Error response from shop: #{shop[:name]} - #{response[:error]}")
+    else
+      response[:cats]
+    end
   end
 
   def filter_cats(cats)
