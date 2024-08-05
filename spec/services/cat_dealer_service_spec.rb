@@ -1,14 +1,16 @@
 require 'rails_helper'
 
-RSpec.describe CatDealerService do
+describe CatDealerService do
   let(:location) { 'Kharkiv' }
   let(:cat_type) { 'American Curl' }
+  let(:shop_json_url) { ENV.fetch('UNLIMITED_CATS_ENDPOINT', 'https://example.com/cats/json') }
+  let(:shop_xml_url) { ENV.fetch('HAPPY_CATS_ENDPOINT', 'https://example.com/cats/xml') }
   let(:json_response) { File.read(Rails.root.join('spec/fixtures/cats_unlimited/response.json')) }
   let(:xml_response) { File.read(Rails.root.join('spec/fixtures/happy_cats/response.xml')) }
 
   before do
-    allow(RestClient).to receive(:get).with('https://nh7b1g9g23.execute-api.us-west-2.amazonaws.com/dev/cats/json').and_return(double(body: json_response))
-    allow(RestClient).to receive(:get).with('https://nh7b1g9g23.execute-api.us-west-2.amazonaws.com/dev/cats/xml').and_return(double(body: xml_response))
+    allow(RestClient).to receive(:get).with(shop_json_url).and_return(double(body: json_response))
+    allow(RestClient).to receive(:get).with(shop_xml_url).and_return(double(body: xml_response))
   end
 
   describe '.find_best_deal' do
