@@ -1,0 +1,26 @@
+<cats>
+  <cat>
+    <title>American Curl</title>
+    <cost>350</cost>
+    <location>Kharkiv</location>
+    <img>https://olxua-ring07.akamaized</img>
+  </cat>
+  <cat>
+    <title>Bengal</title>
+    <cost>100</cost>
+    <location>Rivne</location>
+    <img>https://olxua-ring01.akamaized.net/images_slandocomua/some.jpg</img>
+  </cat>
+  <cat>
+    <title>Bengal</title>
+    <cost>600</cost>
+    <location>Kyiv</location>
+    <img>https://olxua-ring10.akamaized.net/images_slandocomua/some1.jpg</img>
+  </cat>
+  <cat>
+    <title>Bobtail</title>
+    <cost>369</cost>
+    <location>Kyiv</location>
+    <img>https://olxua-ring09.akamaized.net/images_slandocomua/some3.jpg</img>
+  </cat>
+</cats>

@@ -12,7 +12,9 @@ module Cats
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.1
-
+    config.eager_load_paths += %W[
+      #{Rails.root.join('lib/**')}
+    ]
     # Make the application API-only
     config.api_only = true
 
