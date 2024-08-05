@@ -8,7 +8,7 @@ AllCops:
     - bin/**/*
     - tmp/**/*
 
-Metrics/LineLength:
+Layout/LineLength:
   Max: 95
 
 Style/Documentation:
@@ -21,11 +21,8 @@ Metrics/BlockLength:
 Style/MultilineBlockChain:
   Enabled: false
 
-Style/PredicateName:
+Naming/PredicateName:
   NamePrefix:
-    - is_
-    - have_
-  NamePrefixBlacklist:
     - is_
     - have_
 
