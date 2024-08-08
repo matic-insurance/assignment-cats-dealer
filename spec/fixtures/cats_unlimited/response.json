@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Bengal",
+    "price": 700,
+    "location": "Rivne",
+    "image": "https://olxua-ring10.akamaized.net/images_slandocomua/some1.jpg"
+  },
+  {
+    "name": "Bobtail",
+    "price": 349,
+    "location": "Kharkiv",
+    "image": "https://olxua-ring09.akamaized.net/images_slandocomua/some2.jpg"
+  },
+  {
+    "name": "British Shorthair",
+    "price": 350,
+    "location": "Kyiv",
+    "image": "https://olxua-ring09.akamaized.net/images_slandocomua/some3.jpg"
+  }
+]
