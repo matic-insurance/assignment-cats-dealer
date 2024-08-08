@@ -2,8 +2,8 @@
 
 class CatDealerService
   SHOPS = [
-    { name: 'Happy Cats', url: ENV.fetch('HAPPY_CATS_ENDPOINT'), format: :xml },
-    { name: 'Unlimited Cats',  url: ENV.fetch('UNLIMITED_CATS_ENDPOINT'), format: :json }
+    { id: :happy_cats, url: ENV.fetch('HAPPY_CATS_ENDPOINT'), format: :xml },
+    { id: :unlimited_cats,  url: ENV.fetch('UNLIMITED_CATS_ENDPOINT'), format: :json }
   ].freeze
 
   class << self
