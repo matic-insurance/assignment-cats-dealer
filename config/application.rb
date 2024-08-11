@@ -9,10 +9,10 @@ Bundler.require(*Rails.groups)
 module Cats
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 5.1
+    config.load_defaults 7.0
 
-    # Settings in config/environments/* take precedence over those specified here.
-    # Application configuration should go into files in config/initializers
-    # -- all .rb files in that directory are automatically loaded.
+    config.api_only = true
+
+    config.autoload_paths += %W(#{config.root}/lib)
   end
 end
